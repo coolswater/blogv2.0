@@ -82,7 +82,6 @@
 //
 // })
 $(document).ready(function () {
-
     $("#leftsead a").hover(function () {
         if ($(this).prop("className") == "youhui") {
             $(this).children("img.hides").show();
@@ -97,11 +96,58 @@ $(document).ready(function () {
             });
         }
     });
-
     $("#top_btn").click(function () {
         if (scroll == "off") return;
         $("html,body").animate({scrollTop: 0}, 600);
     });
-
 });
+
+function DataBinder(object_id) {
+    // Use a jQuery object as simple PubSub
+    var pubSub = jQuery({});
+
+    // We expect a `data` element specifying the binding
+    // in the form:data-bind-<object_id>="<property_name>"
+    var data_attr = "bind-" + object_id,
+        message = object_id + ":change";
+
+    // Listen to chagne events on elements with data-binding attribute and proxy
+    // then to the PubSub, so that the change is "broadcasted" to all connected objects
+    jQuery(document).on("change", "[data-]" + data_attr + "]", function (eve) {
+        var $input = jQuery(this);
+
+        pubSub.trigger(message, [$input.data(data_attr), $input.val()]);
+    });
+
+    // PubSub propagates chagnes to all bound elemetns,setting value of
+    // input tags or HTML content of other tags
+    pubSub.on(message, function (evt, prop_name, new_val) {
+        jQuery("[data-" + data_attr + "=" + prop_name + "]").each(function () {
+            var $bound = jQuery(this);
+
+            if ($bound.is("")) {
+                $bound.val(new_val);
+            } else {
+                $bound.html(new_val);
+            }
+        });
+    });
+    return pubSub;
+}
+
+
+//ajax请求
+function ajaxRequest(url, data) {
+    $.ajax({
+        url: url,
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+            return data.data;
+        },
+        error: function () {
+            $('.alert').alert();
+        }
+    })
+}
 

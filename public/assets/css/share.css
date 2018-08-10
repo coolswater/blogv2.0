@@ -3,7 +3,7 @@ a { text-decoration: none; }
 a:active, a:hover { text-decoration: none; }
 
 /*通用侧边栏分享*/
-#appgame-leftside-share{width:44px; height:302px; position:fixed; left:50%; margin-left:-664px; top:50%; margin-top:-151px; z-index:9999;}
+#appgame-leftside-share{width:44px; height:302px; position:fixed; left:50%; margin-left:-664px; top:50%; margin-top:-151px; z-index:1000;}
 .appgame-leftside-share{width:44px; height:259px;}
 #appgame-leftside-share a{display:block; width:44px; height:44px; background-color:#fff; z-index:1; position:absolute; left:0; box-sizing:border-box; -moz-box-sizing:border-box; border:1px #e6e6e6 solid; background-image:url(../images/share-icons.png); background-repeat:no-repeat; margin:0;  transition:0.4s; -webkit-transition:0.4s; -moz-transition:0.4s;}
 #appgame-leftside-share a:hover{background-color:#bf1313; border:1px #bf1313 solid; z-index:2;}

@@ -12,6 +12,10 @@
     /*color: #f40c14;*/
 }
 
+.list-group-item {
+    padding: 0.55rem 1.25rem;
+}
+
 .form-group .glyphicon {
     left: 10px;
     top: 33px;
@@ -33,8 +37,13 @@
     padding: 0 1rem;
 }
 
-a, a:hover {
-    color: #fff;
+a {
+    color: #222;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #dc3545;
     text-decoration: none;
 }
 
@@ -85,6 +94,8 @@ a, a:hover {
     padding: 5px;
     font-size: 0.8rem;
     margin-bottom: 0;
+    width: 100%;
+    line-height: 30px;
 }
 
 .featured-item:first-child {
@@ -96,7 +107,8 @@ a, a:hover {
 .featured-item:first-child h5 {
     position: relative;
     font-size: 1rem;
-    padding: 11px 5px;
+    height: 60px;
+    line-height: 60px;
 }
 
 .artcle_thumb {
@@ -194,7 +206,7 @@ a, a:hover {
     margin: 0 auto;
     color: #fff;
     font-size: 0.95rem;
-    line-height: 60px;
+    line-height: 30px;
 }
 
 .copyright {
@@ -334,7 +346,6 @@ a, a:hover {
 
 .comment li {
     border-bottom: 1px dashed #e6e6e6;
-    padding-top: 20px;
 }
 
 .comment_nav {
