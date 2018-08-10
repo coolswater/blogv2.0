@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <title>贺小东的个人网站-Hexd&#039;s Personal Website一个记录程序员成长历程网站，与大家一起分享!http://www.hexiaodong.com</title>
     <meta name="Keywords" content=PHP,PHP开发, Hexd,PHP笔记，编程开发，网络日志(Blog)/>
-    <meta name="Description" content=Hexd&#039;s Personal Website一个记录程序员成长历程网站，与大家一起分享，http://www.hexiaodong.com/>
+    <meta name="Description" content=Hexd&#039;s Personal Website一个记录程序员成长历程网站，与大家一起分享，http:
+    //www.hexiaodong.com/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
@@ -29,12 +30,13 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">首页 <span class="sr-only">(current)</span></a>
-                    </li>
                     <?php foreach ($categoryList as $cate): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $cate['url'] ?>" target="_blank"><?= $cate['category'] ?></a>
+                        <?php if (isset($cid) && $cid === $cate['cid']): ?>
+                            <li class="nav-item active">
+                        <?php else: ?>
+                            <li class="nav-item">
+                        <?php endif; ?>
+                        <a class="nav-link" href="<?= $cate['url'] ?>"><?= $cate['category'] ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -51,8 +53,8 @@
             </div>
         </nav>
     </div>
-    <?php $this->load->view('home/login') ?>
-    <?php $this->load->view('home/register') ?>
+        <?php $this->load->view('home/login') ?>
+        <?php $this->load->view('home/register') ?>
 
 </div>
 <!--header end-->

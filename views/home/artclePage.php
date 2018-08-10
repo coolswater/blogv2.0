@@ -41,7 +41,7 @@
     </div>
     <!--main_left end-->
     <!--main_right start-->
-    <div class="main_right col-12 col-md-3 bg-white pt-3">
+    <div class="main_right col-12 col-md-3 bg-white pt-3 pb-3">
         <!--专题 start-->
         <?php $this->load->view('home/subject') ?>
         <div class="right_ads">

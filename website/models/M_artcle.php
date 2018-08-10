@@ -43,17 +43,14 @@ class M_artcle extends M_comm {
         return $result;
     }
     
-    //获取文章列表
-    public function getArtcleList($cid = NULL) {
-        $limit = 10;
-        $offset = 0;
+    //获取最新文章
+    public function getLastArtcleList($param) {
+        $limit = $param['pageSize'];
+        $offset = ($param['pageNo'] - 1) * $param['pageSize'];
         $cols = 't_artcles.id,t_artcles.cid,title,thumb,category,publish_time as publishTime,nick_name as nickName,summary';
         $where = array(
             't_artcles.status' => 1,
         );
-        if ($cid) {
-            $where['t_artcles.cid'] = $cid;
-        }
         $result = $this->db->select($cols)
             ->from($this->_table)
             ->join('t_artcle_categorys', 't_artcle_categorys.cid=t_artcles.cid', 'left')
@@ -65,6 +62,33 @@ class M_artcle extends M_comm {
             ->result_array();
         
         return $result;
+    }
+    
+    //获取文章列表
+    public function getArtcleList($param) {
+        $cid = $param['cid'];
+        $limit = $param['pageSize'];
+        $offset = ($param['pageNo'] - 1) * $param['pageSize'];
+        $cols = 't_artcles.id,t_artcles.cid,title,thumb,category,publish_time as publishTime,nick_name as nickName,summary';
+        $where = array(
+            't_artcles.status' => 1,
+        );
+        if ($cid) {
+            $where['t_artcles.cid'] = $cid;
+        }
+        $list = $this->db->select($cols)
+            ->from($this->_table)
+            ->join('t_artcle_categorys', 't_artcle_categorys.cid=t_artcles.cid', 'left')
+            ->join('t_users', 't_artcles.user_id=t_users.id', 'left')
+            ->where($where)
+            ->limit($limit, $offset)
+            ->order_by('publishTime desc')
+            ->get()
+            ->result_array();
+        $pageNo = $param['pageNo'];
+        $totalPage = $this->getTotal($where);
+        
+        return compact('pageNo', 'totalPage', 'list');
     }
     
     //获取专题文章

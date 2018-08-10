@@ -56,5 +56,6 @@ $route = array(
     'default_controller'   => 'Artcle/index',
     'lists/(:num)'         => 'Artcle/lists/$1',
     'artcle/(:num)'        => 'Artcle/show/$1',
+    'getArtcleList'        => 'Artcle/getArtcleList',
     'getCommentList'       => 'Comment/getCommentList',
 );

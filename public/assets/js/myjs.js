@@ -1,86 +1,3 @@
-//表单验证
-// $.validator.addMethod("checkName", function (value, element, params) {
-//     var checkName = /^\w{6,18}$/g
-//     return this.optional(element) || (checkName.test(value))
-// }, "6-18位英文、数字或下画线")
-// $.validator.addMethod("checkPwd", function (value, element, params) {
-//     var checkName = /^\w{8,24}$/g
-//     return this.optional(element) || (checkName.test(value))
-// }, "8-24位英文、数字或下画线")
-// $.validator.addMethod("checkEmail", function (value, element, params) {
-//     var checkEmail = /^[a-z0-9]+@([a-z0-9]+\.)+[a-z]{2,4}$/i
-//     return this.optional(element) || (checkEmail.test(value))
-// }, "请输入正确的邮箱！")
-//
-// $.validator.onfocusout = false
-
-//登录表单与验证
-// $("#loginForm").validate({
-//     rules: {
-//         username: {
-//             required: true,
-//             checkName: true
-//         },
-//         password: {
-//             required: true,
-//             checkPwd: true
-//         }
-//     },
-//     submitHandler: function (form) {
-//         alert("登录事件!")
-//         // form.submit()
-//     },
-//     messages: {
-//         username: {
-//             required: "用户名不能为空"
-//         },
-//         password: {
-//             required: "密码不能为空"
-//         }
-//     }
-// })
-// //注册表单验证
-// $("#registerForm").validate({
-//     rules: {
-//         regusername: {
-//             required: true,
-//             checkName: true
-//         },
-//         regpassword: {
-//             required: true,
-//             checkPwd: true
-//         },
-//         confirm_password: {
-//             required: true,
-//             checkPwd: true,
-//             equalTo: "#regpassword"
-//         },
-//         email: {
-//             required: true,
-//             checkEmail: true
-//         }
-//     },
-//     messages: {
-//         regusername: {
-//             required: "用户名不能为空"
-//         },
-//         regpassword: {
-//             required: "密码不能为空"
-//         },
-//         confirm_password: {
-//             required: "确认密码不能为空",
-//             equalTo: "两次密码输入不一致"
-//         },
-//         email: {
-//             required: "用户名不能为空"
-//         }
-//     },
-//     submitHandler: function (form) {
-//         alert("注册事件!")
-//         // form.submit()
-//     }
-//
-// })
 $(document).ready(function () {
     $("#leftsead a").hover(function () {
         if ($(this).prop("className") == "youhui") {
@@ -173,8 +90,8 @@ var ajaxReuest = function (url, params, callback) {
     });
 }
 //分页插件
-var setPaginator = function (pageCurr, pageSum, callback, callbackParam) {
-    $('#commentPagination').bootstrapPaginator({
+var setPaginator = function (pagination, pageCurr, pageSum, callback, callbackParam) {
+    $(pagination).bootstrapPaginator({
         /*当前使用的是3版本的bootstrap*/
         bootstrapMajorVersion: 3,
         /*配置的字体大小是小号*/
@@ -239,28 +156,54 @@ function getCommentList(artcleId) {
             html += '</li>';
         }
         $('#commentList').html(html);
-
-        setPaginator(pageNo, Math.ceil(totalPage / pageSize), getCommentList, artcleId);
+        if (totalPage > pageNo) {
+            setPaginator('#commentPagination', pageNo, Math.ceil(totalPage / pageSize), getCommentList, artcleId);
+        }
     };
     //ajax请求
     ajaxReuest(url, param, callbacks);
 }
 
 //获取文章列表
-var getArtcleList = function () {
+var getArtcleList = function (cid) {
     var url = '/getArtcleList';
     var param = {
         pageNo: currPage,
-        artcleId: 1,
+        cid: cid,
         pageSize: 10
     };
-    var callback = function (data) {
+    var callbacks = function (data) {
         var totalPage = data.data.totalPage;
-        var pageSize = 5;
+        var pageSize = 10;
         var pageNo = data.data.pageNo;
-        $("tbody").html('dfadf');
-        setPaginator(pageNo, Math.ceil(totalPage / pageSize), getCommentList);
+        var lists = data.data.list;
+        var category = data.data.category;
+        var html = '';
+        for (i = 0; i < lists.length; i++) {
+            html += '<li class="media">';
+            html += '<a href="' + lists[i].url + '" target="_blank">';
+            html += '<img class="mr-3 artcle_thumb rounded" src="' + lists[i].thumb + '" alt="文章缩略图">';
+            html += '</a>';
+            html += '<div class="media-body">';
+            html += '<h5 class="mt-1 mb-3"><a href="' + lists[i].url + '" target="_blank">' + lists[i].title + '</a>';
+            html += '</h5>';
+            html += '<p class="media-content">' + lists[i].title + '</p>';
+            html += '<div class="media-footer">';
+            html += '<span class="category">' + lists[i].category + '</span>';
+            html += '<span>/</span>';
+            html += '<span class="author">' + lists[i].nickName + '</span>';
+            html += '<span>/</span>';
+            html += '<span class="publish_time">' + lists[i].publishTime + '</span>';
+            html += '</div>';
+            html += '</div>';
+            html += '</li>';
+        }
+        $('#artcleList').html(html);
+        $('#listCategory').html(category);
+        if (Math.ceil(totalPage / pageSize) > pageNo) {
+            setPaginator('#artcleListPagination', pageNo, Math.ceil(totalPage / pageSize), getCommentList, cid);
+        }
     };
     //ajax请求
-    ajaxReuest(url, param, callback);
+    ajaxReuest(url, param, callbacks);
 };

@@ -1,5 +1,5 @@
 <!--统计 start-->
-<div class="total-info">
+<div class="total-info pb-3">
     <h5 class="card-header bg-white"><span class="glyphicon glyphicon-stats icon"></span>网站统计</h5>
     <ul class="list-unstyled pt-3">
         <li><strong>文章总数：</strong><?= $totalInfo['totalArtcle'] ?>篇</li>

@@ -20,9 +20,7 @@ class Artcle extends MY_controller {
         //获取推荐文章
         $recommendList = $this->getRecommendList();
         //获取最新文章
-        $artcleList = $this->getArtcleList();
-        $category = $artcleList['category'];
-        unset($artcleList['category']);
+        $artcleList = $this->getLastArtcleList();
         //获取专题列表
         $subjectList = $this->getSubjectList();
         //获取热门文章
@@ -42,18 +40,14 @@ class Artcle extends MY_controller {
     public function lists($cid) {
         //获取栏目列表
         $categoryList = $this->getCategoryList();
-        //获取文章列表
-        $artcleList = $this->getArtcleList($cid);
-        $category = $artcleList['category'];
-        unset($artcleList['category']);
         //获取专题列表
         $subjectList = $this->getSubjectList();
         //获取猜你喜欢
         $randArtcle = $this->getRandArtcle();
         //获取友情连接
         $friendLink = $this->getFriendLinks();
-        $this->load->view('home/header', compact('category', 'categoryList', 'artcleList', 'subjectList', 'randArtcle', 'friendLink'));
-        $this->load->view('home/header');
+        
+        $this->load->view('home/header', compact('cid', 'categoryList', 'subjectList', 'randArtcle', 'friendLink'));
         $this->load->view('home/listsPage');
         $this->load->view('home/footer');
     }
@@ -104,9 +98,12 @@ class Artcle extends MY_controller {
         return $recommendList;
     }
     
-    //获取文章列表
-    private function getArtcleList($cid = NULL) {
-        $artcleList = $this->artcle->getArtcleList($cid);
+    //获取最新文章
+    private function getLastArtcleList() {
+        $pageNo = getParam($this->input->post('pageNo'), 'int', 1);
+        $pageSize = getParam($this->input->post('pageSize'), 'int', 10);
+        $param = compact('pageNo', 'pageSize', 'cid');
+        $artcleList = $this->artcle->getLastArtcleList($param);
         if ($artcleList) {
             foreach ($artcleList as &$artcle) {
                 $artcle['url'] = '/artcle/' . $artcle['id'] . parent::$urlSuffix;
@@ -114,13 +111,27 @@ class Artcle extends MY_controller {
                 $artcle['publishTime'] = formatTime(strtotime($artcle['publishTime']));
             }
         }
-        if ($cid) {
-            $artcleList['category'] = $artcle['category'];
-        } else {
-            $artcleList['category'] = '最新文章';
-        }
         
         return $artcleList;
+    }
+    
+    //获取文章列表
+    public function getArtcleList() {
+        $cid = getParam($this->input->post('cid'), 'int');
+        $pageNo = getParam($this->input->post('pageNo'), 'int', 1);
+        $pageSize = getParam($this->input->post('pageSize'), 'int', 10);
+        $param = compact('pageNo', 'pageSize', 'cid');
+        $artcleList = $this->artcle->getArtcleList($param);
+        if ($artcleList['list']) {
+            foreach ($artcleList['list'] as &$artcle) {
+                $artcle['url'] = '/artcle/' . $artcle['id'] . parent::$urlSuffix;
+                $artcle['categoryUrl'] = '/artcle/' . $artcle['cid'] . parent::$urlSuffix;
+                $artcle['publishTime'] = formatTime(strtotime($artcle['publishTime']));
+            }
+        }
+        $artcleList['category'] = $artcle['category'];
+        
+        PJsonMsg(REQUEST_SUCCESS, lang('request_success'), $artcleList);
     }
     
     //获取专题列表
