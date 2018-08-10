@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/assets/css/icon.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/share.css">
+    <script src="/assets/js/jquery.min.js"></script>
 </head>
 <body class="bg-light"><!--header start-->
 <div class="container-fluid bg-dark fixed-top header">

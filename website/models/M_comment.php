@@ -15,20 +15,22 @@ class M_comment extends M_comm {
     }
     
     //获取文章评论列表
-    public function getCommentList($artcleId, $limit = 10, $pageSize = 1) {
+    public function getCommentListByArtcleId($param) {
         $cols = 't_artcle_comments.id,nick_name as nickName,portrait,content,t_artcle_comments.create_time';
         $where = array(
-            'artcle_id' => $artcleId,
+            'artcle_id' => $param['artcleId'],
         );
-        $offset = ($pageSize - 1) * $limit;
-        $result = $this->db->select($cols)
+        $offset = ($param['pageNo'] - 1) * $param['pageSize'];
+        $list = $this->db->select($cols)
             ->from($this->_table)
             ->join('t_users', 't_users.id=t_artcle_comments.user_id', 'left')
             ->where($where)
-            ->limit($limit, $offset)
+            ->limit($param['pageSize'], $offset)
             ->get()
             ->result_array();
+        $totalPage = $this->getTotal($where);
+        $pageNo = $param['pageNo'];
         
-        return $result;
+        return compact('list', 'totalPage', 'pageNo');
     }
 }

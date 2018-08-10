@@ -76,11 +76,10 @@ class Artcle extends MY_controller {
         $artcleTags = $this->getArtcleTagsByArtcleId($artcleId);
         //获取猜你喜欢
         $randArtcle = $this->getRandArtcle();
-        //获取评论列表
-        $commentList = $this->getCommentList($artcleId);
+        
         //获取友情连接
         $friendLink = $this->getFriendLinks();
-        $this->load->view('home/header', compact('artcle', 'artcleTags', 'categoryList', 'myTagList', 'subjectList', 'randArtcle', 'friendLink', 'commentList'));
+        $this->load->view('home/header', compact('artcle', 'artcleTags', 'categoryList', 'myTagList', 'subjectList', 'randArtcle', 'friendLink'));
         $this->load->view('home/artclePage');
         $this->load->view('home/footer');
     }
@@ -207,19 +206,5 @@ class Artcle extends MY_controller {
         $friendLinks = $this->link->getFriendLinks();
         
         return $friendLinks;
-    }
-    
-    //获取评论列表
-    private function getCommentList($artcleId, $limit = 5, $pageSize = 1) {
-        $this->load->model('M_comment', 'comment');
-        $commentList = $this->comment->getCommentList($artcleId, $limit, $pageSize);
-        if ($commentList) {
-            foreach ($commentList as &$comment) {
-                $comment['portrait'] = $comment['portrait'] ?? '/assets/images/header.jpg';
-                $comment['create_time'] = date('Y.m.d', strtotime($comment['create_time']));
-            }
-        }
-        
-        return $commentList;
     }
 }
