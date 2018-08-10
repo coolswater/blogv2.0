@@ -171,7 +171,7 @@ class M_artcle extends M_comm {
     public function getRandArtcle() {
         $cols = 't_artcles.id,title,thumb,nick_name as nickName,publish_time as publishTime';
         $where = array(
-            'status' => 1,
+            't_artcles.status' => 1,
         );
         $result = $this->db->select($cols)
             ->from($this->_table)

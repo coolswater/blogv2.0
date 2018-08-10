@@ -14,26 +14,35 @@
                     <div class="form-group">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <input class="form-control" id="regusername" name="regusername" type="text"
-                               placeholder="用户名：6-15位字母或数字">
+                               placeholder="用户名：8-24位字母或数字">
                     </div>
                     <div class="form-group">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         <input class="form-control" id="regpassword" name="regpassword" type="password"
-                               placeholder="密码：至少6位字母或数字">
+                               placeholder="密码：8-24位字母或数字">
                     </div>
                     <div class="form-group">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         <input class="form-control" id="confirm_password" name="confirm_password"
                                type="password"
-                               placeholder="确认密码：至少6位字母或数字">
+                               placeholder="确认密码：8-24位字母或数字">
                     </div>
                     <div class="form-group">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         <input class="form-control" id="email" name="email" type="text"
                                placeholder="邮箱：例如:123@123.com">
                     </div>
+                    <div class="form-group">
+                        <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+                        <input class="form-control w-50" name="regverifyCode" id="regverifyCode" maxlength="4"
+                               placeholder="验证码"
+                               type="text"
+                               placeholder="text">
+                        <img class="codeImage float-right" src="/getVerifyCode" title="点我，换一张"
+                             onclick="javascript:this.src='/getVerifyCode?rand='+Math.random()">
+                    </div>
                     <div class="text-left">
-                        <button class="btn btn-danger w-100 mt-4" type="submit">注册</button>
+                        <button class="btn btn-danger w-100 mt-4" type="submit">注 册</button>
                         <div class="mt-2 button" data-toggle="modal" data-dismiss="modal" data-target="#login">
                             已有账号？<span class="text-primary">去登录</span>
                         </div>

@@ -22,10 +22,20 @@
                                type="password"
                                placeholder="text">
                     </div>
+                    <div class="form-group">
+                        <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+                        <input class="form-control w-50" name="verifyCode" id="verifyCode" maxlength="4"
+                               placeholder="验证码"
+                               type="text"
+                               placeholder="text">
+                        <img class="codeImage float-right" src="/getVerifyCode" title="点我，换一张"
+                             onclick="javascript:this.src='/getVerifyCode?rand='+Math.random()">
+                    </div>
                     <div class="text-left">
-                        <button class="btn btn-danger w-100 mt-4" type="submit">登录</button>
-                        <div class="mt-2 button" data-toggle="modal" data-dismiss="modal" data-target="#register">
-                            没有账号？<span class="text-primary">去注册<span>
+                        <button class="btn btn-danger w-100 mt-4" type="submit">登 录</button>
+                        <div class="mt-2 mb-5 button" data-toggle="modal" data-dismiss="modal" data-target="#register">
+                            <span class="float-left">忘记密码?</span>
+                            <span class="float-right">没有账号?<span class="text-primary">去注册<span></span>
                         </div>
                     </div>
                 </form>

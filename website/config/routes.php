@@ -58,4 +58,6 @@ $route = array(
     'artcle/(:num)'        => 'Artcle/show/$1',
     'getArtcleList'        => 'Artcle/getArtcleList',
     'getCommentList'       => 'Comment/getCommentList',
+    'getVerifyCode'        => 'Login/getVerifyCode',
+    'login'                => 'Login/login',
 );

@@ -4,12 +4,16 @@
 
 .button {
     cursor: pointer;
+    font-size: .9rem;
+}
+
+#verifyCode-error, #regverifyCode-error {
+    right: 170px;
 }
 
 .icon {
     padding-right: 5px;
     color: #fc6d41;
-    /*color: #f40c14;*/
 }
 
 .list-group-item {
@@ -22,7 +26,7 @@
 }
 
 .form-control, .form-group input {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .form-group input {
@@ -257,14 +261,22 @@ a:hover {
 
 .form-group > label {
     position: absolute;
-    top: 0;
+    top: 30px;
     right: 10px;
     color: red;
     font-weight: normal;
+    font-size: .85rem;
 }
 
 .form-group:last-child {
     margin-bottom: 10px;
+}
+
+.codeImage {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    cursor: pointer;
 }
 
 /*内容页*/
@@ -404,9 +416,10 @@ a, img {
 }
 
 /*分页样式*/
-.pagination{
+.pagination {
     margin: 2rem 0;
 }
+
 .pagination li a {
     margin-left: 0;
     cursor: pointer;
@@ -503,5 +516,8 @@ a, img {
 
     .copyright {
         text-align: left;
+    }
+    #verifyCode-error, #regverifyCode-error {
+        right: 145px;
     }
 }

@@ -1723,75 +1723,14 @@ function foreach_arr($arr, $replace) {
     return $replace;
 }
 
-function verify_code($len) {
-    //随机生成的字符串
-    $srcstr = "1a2s3d4f5g6hj8k9qwertyupzxcvbnm";
-    mt_srand();
-    $str = "";
-    for ($i = 0; $i < $len; $i++) {
-        $str .= $srcstr[mt_rand(0, 30)];
-    }
-
-//验证码图片的宽度
-    $width = 50;
-
-//验证码图片的高度
-    $height = 25;
-
-//声明需要创建的图层的图片格式
-    @ header("Content-Type:image/png");
-
-//创建一个图层
-    $im = imagecreate($width, $height);
-
-//背景色
-    $back = imagecolorallocate($im, 0xFF, 0xFF, 0xFF);
-
-//模糊点颜色
-    $pix = imagecolorallocate($im, 187, 230, 247);
-
-//字体色
-    $font = imagecolorallocate($im, 41, 163, 238);
-
-//绘模糊作用的点
-    mt_srand();
-    for ($i = 0; $i < 1000; $i++) {
-        imagesetpixel($im, mt_rand(0, $width), mt_rand(0, $height), $pix);
-    }
-
-//输出字符
-    imagestring($im, 5, 7, 5, $str, $font);
-
-//输出矩形
-    imagerectangle($im, 0, 0, $width - 1, $height - 1, $font);
-
-//输出图片
-    imagepng($im);
-    
-    imagedestroy($im);
-    
-    $str = md5($str);
-
-//选择 cookie
-//SetCookie("verification", $str, time() + 7200, "/");
-
-//选择 Session
-    $_SESSION["code_login"] = $str;
-}
-
 //生成验证码
-function verify_code1($width = 100, $height = 35) {
+function verifyCode($width = 100, $height = 35) {
     //随机生成的字符串
-    $str = rand_str(4);
-    $_SESSION['code_login'] = md5($str);
+    $str = strtoupper(rand_str(4));
+    $_SESSION['verifyCode'] = md5($str);
     $fontface = "./assets/fonts/t1.ttf";
-    
-    //声明需要创建的图层的图片格式
-    @ header("Content-Type:image/png");
     //创建一个图层
     $im = imagecreatetruecolor($width, $height);
-    //背景色
-    $back = imagecolorallocate($im, 255, 255, 255);
     //模糊点颜色
     $pix = imagecolorallocate($im, 250, 250, 250);
     imagefill($im, 0, 0, $pix);
@@ -1813,13 +1752,12 @@ function verify_code1($width = 100, $height = 35) {
         $fontcolor = imagecolorallocate($im, mt_rand(0, 120), mt_rand(0, 120), mt_rand(0, 120));
         imagettftext($im, ($height - 2) / 2, rand(-$height, $height), (($width - 5) / 5) * $i + (($width - 10) / 8), rand($height * 3 / 5, ($height * 3 / 5 + 5)), $fontcolor, $fontface, $str[$i]);
     }
-    
+    //声明需要创建的图层的图片格式
+    ob_clean();
+    @ header("Content-Type:image/png");
     //输出图片
     imagepng($im);
-    
     imagedestroy($im);
-    
-    
 }
 
 //获取随即字符

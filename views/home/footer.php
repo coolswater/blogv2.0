@@ -51,6 +51,7 @@
 <script src="/assets/js/popper.min.js"></script>
 <!--<script src="/assets/js/share.min.js"></script>-->
 <script src="/assets/js/bootstrap-paginator.js"></script>
+<script src="/assets/js/jquery.validate.min.js"></script>
 <script src="/assets/js/myjs.js"></script>
 </body>
 </html>
