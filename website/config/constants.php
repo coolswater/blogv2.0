@@ -87,4 +87,5 @@ defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatic
 //自定义常量
 defined('REQUEST_SUCCESS') OR define('REQUEST_SUCCESS', 1);     //请求成功
 defined('REQUEST_ERROR') OR define('REQUEST_ERROR', 0);         //请求错误
+defined('DEFAULT_HEADER') OR define('DEFAULT_HEADER', '/assets/images/header.jpg');         //用户默认头像
 

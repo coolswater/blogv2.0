@@ -10,6 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <p id="registerError" class="error mt-3" style="display: none"></p>
                 <form class="form-group" id="registerForm">
                     <div class="form-group">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>

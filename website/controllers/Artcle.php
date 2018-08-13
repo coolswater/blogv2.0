@@ -15,6 +15,8 @@ class Artcle extends MY_controller {
     
     //首页
     public function index() {
+        //用户信息
+        $userInfo = $this->userInfo;
         //获取栏目列表
         $categoryList = $this->getCategoryList();
         //获取推荐文章
@@ -31,13 +33,15 @@ class Artcle extends MY_controller {
         $totalInfo = $this->getTotalInfo();
         //获取友情连接
         $friendLink = $this->getFriendLinks();
-        $this->load->view('home/header', compact('category', 'categoryList', 'recommendList', 'artcleList', 'subjectList', 'hotArtcleList', 'myTagList', 'totalInfo', 'friendLink'));
+        $this->load->view('home/header', compact('userInfo', 'category', 'categoryList', 'recommendList', 'artcleList', 'subjectList', 'hotArtcleList', 'myTagList', 'totalInfo', 'friendLink'));
         $this->load->view('home/homePage');
         $this->load->view('home/footer');
     }
     
     //列表页
     public function lists($cid) {
+        //用户信息
+        $userInfo = $this->userInfo;
         //获取栏目列表
         $categoryList = $this->getCategoryList();
         //获取专题列表
@@ -47,7 +51,7 @@ class Artcle extends MY_controller {
         //获取友情连接
         $friendLink = $this->getFriendLinks();
         
-        $this->load->view('home/header', compact('cid', 'categoryList', 'subjectList', 'randArtcle', 'friendLink'));
+        $this->load->view('home/header', compact('userInfo', 'cid', 'categoryList', 'subjectList', 'randArtcle', 'friendLink'));
         $this->load->view('home/listsPage');
         $this->load->view('home/footer');
     }
@@ -58,6 +62,8 @@ class Artcle extends MY_controller {
      * @param $artcleId
      */
     public function show($artcleId) {
+        //用户信息
+        $userInfo = $this->userInfo;
         //获取文章
         $artcle = $this->getArtcleById($artcleId);
         //获取专题列表
@@ -73,7 +79,7 @@ class Artcle extends MY_controller {
         
         //获取友情连接
         $friendLink = $this->getFriendLinks();
-        $this->load->view('home/header', compact('artcle', 'artcleTags', 'categoryList', 'myTagList', 'subjectList', 'randArtcle', 'friendLink'));
+        $this->load->view('home/header', compact('userInfo', 'artcle', 'artcleTags', 'categoryList', 'myTagList', 'subjectList', 'randArtcle', 'friendLink'));
         $this->load->view('home/artclePage');
         $this->load->view('home/footer');
     }

@@ -1,3 +1,13 @@
+//用户退出
+function logout() {
+    ajaxReuest('/logout', '', reloadPage)
+}
+
+//重载页面
+function reloadPage() {
+    window.location.reload();
+}
+
 //表单验证
 $.validator.addMethod("checkName", function (value, element, params) {
     var checkName = /^\w{8,24}$/g
@@ -30,15 +40,6 @@ $("#loginForm").validate({
         },
 
     },
-    submitHandler: function (form) {
-        var url = '/login';
-        var param = {
-            username: $('#username').val(),
-            password: $('#password').val(),
-            verifyCode: $('#verifyCode').val(),
-        };
-        ajaxReuest(url, param);
-    },
     messages: {
         username: {
             required: "用户名为空"
@@ -49,8 +50,99 @@ $("#loginForm").validate({
         verifyCode: {
             required: "验证码为空"
         }
+    },
+    submitHandler: function (form) {
+        var url = '/login';
+        var param = {
+            username: $('#username').val(),
+            password: $('#password').val(),
+            verifyCode: $('#verifyCode').val(),
+        };
+        ajaxReuest(url, param, modifyLoginStatus);
+    },
+});
+
+//更新登录状态
+function modifyLoginStatus(data) {
+    if (data.code == 1) {
+        var html = '';
+        html += '<li class="nav-item dropdown">';
+        html += '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"';
+        html += 'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+        html += '<img src="' + data.data.portrait + '"/>';
+        html += '</a>';
+        html += '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
+        html += '<a class="dropdown-item" href="#">个人主页</a>';
+        html += '<a class="dropdown-item" href="#">修改密码</a>';
+        html += '<div class="dropdown-divider"></div>';
+        html += '<a class="dropdown-item" href="javascript:logout()">用户退出</a>';
+        html += '</div>';
+        html += '</li>';
+        $('.sign-in').html(html);
+        $("#login").modal("hide")
+    } else {
+        $('#loginError').html('*' + data.msg);
+        $('#loginError').show();
+        $('.codeImage').attr('src', '/getVerifyCode?rand=' + Math.random());
     }
-})
+}
+
+//忘记密码表单与验证
+$("#forgetForm").validate({
+    rules: {
+        forgetEmail: {
+            required: true,
+            checkEmail: true
+        },
+        verifyCode: {
+            required: true,
+        },
+
+    },
+    messages: {
+        forgetEmail: {
+            required: "电子邮箱为空",
+        },
+        verifyCode: {
+            required: "验证码为空"
+        }
+    },
+    submitHandler: function (form) {
+        var url = '/forgetPwd';
+        var param = {
+            email: $('#forgetEmail').val(),
+            verifyCode: $('#forgetVerifyCode').val(),
+        };
+        ajaxReuest(url, param, forgetCallback);
+    },
+});
+
+//忘记密码回调
+function forgetCallback(data) {
+    if (data.code == 1) {
+        //找回成功，隐藏找回页，显示成功页
+        $('#forgetPwd').modal('hide');
+        var msg = '新密码已发送至您邮箱，3s后跳转登录页！';
+        $('#successInfo').html(msg);
+        $('#success').modal('show');
+        //3s后隐藏成功页，显示登录页
+        var t = 3;
+        var a = setInterval(function () {
+            t--;
+            var msg = '新密码已发送至您邮箱，' + t + 's后跳转登录页！';
+            $('#successInfo').html(msg);
+            if (t == 0) {
+                $('#success').modal('hide');
+                $('#login').modal('show');
+                clearInterval(a);
+            }
+        }, 1000);
+    } else {
+        $('#forgetError').html('*' + data.msg);
+        $('#forgetError').show();
+        $('.codeImage').attr('src', '/getVerifyCode?rand=' + Math.random());
+    }
+}
 
 //注册表单验证
 $("#registerForm").validate({
@@ -73,8 +165,7 @@ $("#registerForm").validate({
             checkEmail: true
         },
         regverifyCode: {
-            required: true,
-            checkEmail: true
+            required: true
         }
     },
     messages: {
@@ -96,16 +187,45 @@ $("#registerForm").validate({
         }
     },
     submitHandler: function (form) {
-        var url = '/login';
+        var url = '/register';
         var param = {
-            username: $('#username').val(),
-            username: $('#username').val(),
-            username: $('#username').val(),
+            username: $('#regusername').val(),
+            password: $('#regpassword').val(),
+            confirmPassword: $('#confirm_password').val(),
+            email: $('#email').val(),
+            verifyCode: $('#regverifyCode').val(),
         };
-        ajaxReuest();
+        ajaxReuest(url, param, registerCallback);
     }
 
-})
+});
+
+//注册回调
+function registerCallback(data) {
+    if (data.code == 1) {
+        //注册成功，隐藏注册页，显示成功页
+        $('#register').modal('hide')
+        var msg = '注册成功，3s后跳转登录页！';
+        $('#successInfo').html(msg);
+        $('#success').modal('show');
+        //3s后隐藏成功页，显示登录页
+        var t = 3;
+        var a = setInterval(function () {
+            t--;
+            var msg = '注册成功，' + t + 's后跳转登录页！';
+            $('#successInfo').html(msg);
+            if (t == 0) {
+                $('#success').modal('hide');
+                $('#login').modal('show');
+                clearInterval(a);
+            }
+        }, 1000);
+    } else {
+        $('#registerError').html('*' + data.msg);
+        $('#registerError').show();
+        $('.codeImage').attr('src', '/getVerifyCode?rand=' + Math.random());
+    }
+}
 
 //右侧回到顶部
 $(document).ready(function () {
@@ -134,8 +254,8 @@ $(document).ready(function () {
  * @param pagination  分页容器
  * @param pageCurrent 当前所在页
  * @param pageCurrent 当前所在页
- * @param pageSum 总页数
- * @param callback 调用ajax
+ * @param pageSum     总页数
+ * @param callback    调用ajax
  */
 function setPage(pagination, pageCurrent, pageSum, callback) {
     $(pagination).bootstrapPaginator({
@@ -154,15 +274,22 @@ function setPage(pagination, pageCurrent, pageSum, callback) {
     })
 }
 
-//ajax封装
-var ajaxReuest = function (url, params, callback) {
+/**
+ * ajax封装
+ *
+ * @param url           请求地址
+ * @param params        请求参数
+ * @param callback      回调函数
+ * @param callbackParam 回调参数
+ */
+var ajaxReuest = function (url, params, callback, callbackParam) {
     $.ajax({
         url: url,
         type: 'post',
         data: params,
         dataType: 'json',
         success: function (response) {
-            callback && callback(response);
+            callback && callback(response, callbackParam);
         }
     });
 }
@@ -225,10 +352,10 @@ function getCommentList(artcleId) {
             html += '<span class="font-weight-bold">' + lists[i].nickName + '</span>';
             html += '<span class="ml-3">' + lists[i].create_time + '</span>';
             html += '<p class="mt-2">' + lists[i].content + '</p>';
-            html += '<p class="comment_nav">';
-            html += '<span class="mr-4"><i class="glyphicon glyphicon-heart mr-1"></i>赞</span>';
-            html += '<span><i class="glyphicon glyphicon-share-alt mr-1"></i>回复</span>';
-            html += '</p>';
+            // html += '<p class="comment_nav">';
+            // html += '<span class="mr-4"><i class="glyphicon glyphicon-heart mr-1"></i>赞</span>';
+            // html += '<span><i class="glyphicon glyphicon-share-alt mr-1"></i>回复</span>';
+            // html += '</p>';
             html += '</div>';
             html += '</li>';
         }
@@ -284,3 +411,26 @@ var getArtcleList = function (cid) {
     //ajax请求
     ajaxReuest(url, param, callbacks);
 };
+
+//发表评论
+function comment(artcleId) {
+    var url = '/comment';
+    var param = {
+        artcleId: artcleId,
+        content: $('#comment').val()
+    };
+    ajaxReuest(url, param, commentCallback, artcleId);
+}
+
+//评论回调
+function commentCallback(data, artcleId) {
+    if (data.code == 1) {
+        $('#comment').html = '';
+    }
+    $('.error').html(data.msg);
+    var a = setInterval(function () {
+        $('.error').html('');
+        getCommentList(artcleId);
+        clearInterval(a);
+    }, 2000);
+}

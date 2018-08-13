@@ -23,9 +23,40 @@ class Comment extends MY_controller {
         $commentList = $this->comment->getCommentListByArtcleId($param);
         if ($commentList) {
             foreach ($commentList['list'] as &$value) {
-                $value['portrait'] = $value['portrait'] ?? '/assets/images/header.jpg';
+                $value['portrait'] = $value['portrait'] ?? DEFAULT_HEADER;
             }
         }
         PJsonMsg(REQUEST_SUCCESS, lang('request_success'), $commentList);
+    }
+    
+    //发表评论
+    public function comment() {
+        //防刷
+        $this->preventBrush();
+        $content = getParam($this->input->post('content'), 'string');
+        if (empty($content)) {
+            PJsonMsg(REQUEST_ERROR, lang('comment_error'));
+        }
+        //判断是否登录
+        if (!isset($this->userInfo['id'])) {
+            PJsonMsg(REQUEST_ERROR, lang('please_login'));
+        } else {
+            $user_id = $this->userInfo['id'];
+        }
+        //查询文章是否存在
+        $artcle_id = getParam($this->input->post('artcleId'), 'int');
+        $this->load->model('M_artcle', 'artcle');
+        $artcleInfo = $this->artcle->getArtcleById($artcle_id);
+        if (empty($artcleInfo)) {
+            PJsonMsg(REQUEST_ERROR, lang('request_invalid'));
+        }
+        $create_time = date('Y-m-d H:i:s');
+        $param = compact('artcle_id', 'content', 'user_id', 'pid', 'create_time');
+        $result = $this->comment->addComment($param);
+        if ($result) {
+            PJsonMsg(REQUEST_SUCCESS, lang('comment_success'));
+        } else {
+            PJsonMsg(REQUEST_ERROR, lang('server_error'));
+        }
     }
 }

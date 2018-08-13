@@ -43,18 +43,36 @@
                 <!--<form class="form-inline">-->
                 <!--<input class="form-control form-control-sm" type="search" placeholder="请输入" aria-label="Search">-->
                 <!--</form>-->
-                <div class="sign-in">
-                    <button type="button" class="btn btn-secondary btn-sm col-sm-12" data-toggle="modal"
-                            data-target="#login">
-                        <span class="glyphicon glyphicon-user"> </span> Login
-                    </button>
-                </div>
-
+                <?php if ($userInfo): ?>
+                    <div class="sign-in">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="<?= $userInfo['portrait'] ?>"/>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">个人主页</a>
+                                <a class="dropdown-item" href="#">修改密码</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:logout()">用户退出</a>
+                            </div>
+                        </li>
+                    </div>
+                <?php else: ?>
+                    <div class="sign-in">
+                        <button type="button" class="btn btn-secondary btn-sm col-sm-12" data-toggle="modal"
+                                data-target="#login">
+                            <span class="glyphicon glyphicon-user"> </span> Login
+                        </button>
+                    </div>
+                <?php endif; ?>
             </div>
         </nav>
     </div>
-        <?php $this->load->view('home/login') ?>
-        <?php $this->load->view('home/register') ?>
+    <?php $this->load->view('home/login') ?>
+    <?php $this->load->view('home/forgetPwd') ?>
+    <?php $this->load->view('home/success') ?>
+    <?php $this->load->view('home/register') ?>
 
 </div>
 <!--header end-->

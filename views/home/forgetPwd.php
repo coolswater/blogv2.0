@@ -1,31 +1,25 @@
-<!-- 登录窗口 start -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel"
+<!-- 忘记密码 start -->
+<div class="modal fade" id="forgetPwd" tabindex="-1" role="dialog" aria-labelledby="forgetPwdLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-weight-bold" id="loginLabel">用户登录</h5>
+                <h5 class="modal-title font-weight-bold" id="forgetPwdLabel">忘记密码</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p id="loginError" class="error mt-3" style="display: none"></p>
-                <form class="form-group" id="loginForm">
+                <p id="forgetError" class="error mt-3" style="display: none"></p>
+                <form class="form-group" id="forgetForm">
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        <input class="form-control" name="username" id="username" placeholder="用户名/邮箱"
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <input class="form-control" name="forgetEmail" id="forgetEmail" placeholder="注册邮箱"
                                type="text" placeholder="text">
                     </div>
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        <input class="form-control" name="password" id="password" placeholder="登录密码"
-                               type="password"
-                               placeholder="text">
-                    </div>
-                    <div class="form-group">
                         <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
-                        <input class="form-control w-50" name="verifyCode" id="verifyCode" maxlength="4"
+                        <input class="form-control w-50" name="forgetVerifyCode" id="forgetVerifyCode" maxlength="4"
                                placeholder="验证码"
                                type="text"
                                placeholder="text">
@@ -33,13 +27,13 @@
                              onclick="javascript:this.src='/getVerifyCode?rand='+Math.random()">
                     </div>
                     <div class="text-left">
-                        <button class="btn btn-danger w-100 mt-4" type="submit">登 录</button>
+                        <button class="btn btn-danger w-100 mt-4" type="submit">发送邮件</button>
                         <div class="mt-2 mb-5 button">
-                            <span class="float-left" data-toggle="modal" data-dismiss="modal" data-target="#forgetPwd">
-                                忘记密码?</span>
+                            <span class="float-left" data-toggle="modal" data-dismiss="modal" data-target="#login">
+                                有账户?<span class="text-primary">去登录</span>
+                            </span>
                             <span class="float-right" data-toggle="modal" data-dismiss="modal" data-target="#register">
-                                没有账号?
-                                <span class="text-primary">去注册</span>
+                                没有账号?<span class="text-primary">去注册</span>
                             </span>
                         </div>
                     </div>
@@ -48,4 +42,4 @@
         </div>
     </div>
 </div>
-<!-- 登录窗口 end -->
+<!-- 忘记密码 end -->

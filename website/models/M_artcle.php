@@ -18,7 +18,7 @@ class M_artcle extends M_comm {
     public function getArtcleById($id) {
         $cols = 't_artcles.id as aid,title,nick_name as nickName,publish_time as publishTime,hits,summary,content ';
         $where = array(
-            'status'       => 1,
+            't_artcles.status'       => 1,
             't_artcles.id' => $id,
         );
         $artcelInfo = $this->db->select($cols)

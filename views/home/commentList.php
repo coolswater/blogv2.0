@@ -3,7 +3,8 @@
     <h6 class="mb-3 font-weight-bold">说点什么</h6>
     <textarea class="col-md-12" id="comment" name="comment" rows="5" required="required"
               placeholder="请留下您宝贵的意见"></textarea>
-    <input type="button" value="发表" class="btn btn-danger w-25">
+    <p class="error mb-3"></p>
+    <input type="button" value="发表" class="btn btn-danger w-25" onclick="comment(<?= $artcle['aid'] ?>)">
 </div>
 <!--文章评论 end-->
 <div class="comment">
@@ -14,7 +15,6 @@
 </nav>
 <script type="text/javascript">
     $(document).ready(function () {
-        var artcleId = <?= $artcle['aid'] ?>;
-        getCommentList(artcleId);
+        getCommentList(<?= $artcle['aid'] ?>);
     });
 </script>

@@ -7,6 +7,17 @@
     font-size: .9rem;
 }
 
+.alert {
+    position: absolute;
+    right: 0;
+    top: 60px;
+}
+
+.error {
+    font-size: .85rem;
+    color: red;
+}
+
 #verifyCode-error, #regverifyCode-error {
     right: 170px;
 }
@@ -222,10 +233,6 @@ a:hover {
     line-height: 150%;
 }
 
-.modal {
-    top: 15%;
-}
-
 .modal-dialog {
     width: 385px;
 }
@@ -320,6 +327,20 @@ a:hover {
 
 .nav_list li span {
     margin-right: 5px;
+}
+
+.sign-in .nav-link {
+    color: #fff;
+}
+
+.sign-in img {
+    width: 32px;
+    height: 32px;
+    border-radius: 18px;
+}
+
+.dropdown-menu {
+    min-width: 8rem;
 }
 
 .tags a {
@@ -517,6 +538,7 @@ a, img {
     .copyright {
         text-align: left;
     }
+
     #verifyCode-error, #regverifyCode-error {
         right: 145px;
     }

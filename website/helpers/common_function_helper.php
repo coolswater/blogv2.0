@@ -1795,38 +1795,6 @@ function get_excel($title, $data) {
     echo "</table>";
 }
 
-/**
- * 发送电子邮件
- *
- * @param   string $to      收件人
- * @param   string $subject 标题
- * @param   string $message 内容
- */
-function send_email($to, $subject, $message) {
-    $ci = &get_instance();
-    $ci->load->library('email'); //加载类库
-    
-    //以下设置Email参数
-    $config = config_item('email');
-    $ci->email->initialize($config);
-    //以下设置Email内容
-    $ci->email->from($config['from']);
-    $ci->email->to($to);
-    $ci->email->subject($subject);
-    $ci->email->message($message);
-    
-    $result = $ci->email->send();
-    if ($result) {
-        write_log(SEND_EMAIL_LOG, '【mailTo】：' . $to . ' 【title】：' . $subject . '【msg】：' . $message . '【result】：发送成功');
-        
-        return TRUE;
-    } else {
-        write_log(SEND_EMAIL_LOG, '【mailTo】：' . $to . ' 【title】：' . $subject . '【msg】：' . $message . '【result】：发送失败');
-        
-        return FALSE;
-    }
-}
-
 //数组转xml格式
 class array_to_xml {
     private $version = '1.0';
