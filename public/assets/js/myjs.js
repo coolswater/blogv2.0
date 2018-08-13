@@ -383,24 +383,28 @@ var getArtcleList = function (cid) {
         var lists = data.data.list;
         var category = data.data.category;
         var html = '';
-        for (i = 0; i < lists.length; i++) {
-            html += '<li class="media">';
-            html += '<a href="' + lists[i].url + '" target="_blank">';
-            html += '<img class="mr-3 artcle_thumb rounded" src="' + lists[i].thumb + '" alt="文章缩略图">';
-            html += '</a>';
-            html += '<div class="media-body">';
-            html += '<h5 class="mt-1 mb-3"><a href="' + lists[i].url + '" target="_blank">' + lists[i].title + '</a>';
-            html += '</h5>';
-            html += '<p class="media-content">' + lists[i].title + '</p>';
-            html += '<div class="media-footer">';
-            html += '<span class="category">' + lists[i].category + '</span>';
-            html += '<span>/</span>';
-            html += '<span class="author">' + lists[i].nickName + '</span>';
-            html += '<span>/</span>';
-            html += '<span class="publish_time">' + lists[i].publishTime + '</span>';
-            html += '</div>';
-            html += '</div>';
-            html += '</li>';
+        if (lists.length > 0) {
+            for (i = 0; i < lists.length; i++) {
+                html += '<li class="media">';
+                html += '<a href="' + lists[i].url + '" target="_blank">';
+                html += '<img class="mr-3 artcle_thumb rounded" src="' + lists[i].thumb + '" alt="文章缩略图">';
+                html += '</a>';
+                html += '<div class="media-body">';
+                html += '<h5 class="mt-1 mb-3"><a href="' + lists[i].url + '" target="_blank">' + lists[i].title + '</a>';
+                html += '</h5>';
+                html += '<p class="media-content">' + lists[i].title + '</p>';
+                html += '<div class="media-footer">';
+                html += '<span class="category">' + lists[i].category + '</span>';
+                html += '<span>/</span>';
+                html += '<span class="author">' + lists[i].nickName + '</span>';
+                html += '<span>/</span>';
+                html += '<span class="publish_time">' + lists[i].publishTime + '</span>';
+                html += '</div>';
+                html += '</div>';
+                html += '</li>';
+            }
+        } else {
+            html += '<p class="mt-3 ml-4">暂无数据</p>';
         }
         $('#artcleList').html(html);
         $('#listCategory').html(category);
@@ -426,11 +430,14 @@ function comment(artcleId) {
 function commentCallback(data, artcleId) {
     if (data.code == 1) {
         $('#comment').html = '';
+    } else if (data.code == 10020) {
+        $('#login').modal('show');
+    } else {
+        $('.error').html(data.msg);
+        var a = setInterval(function () {
+            $('.error').html('');
+            getCommentList(artcleId);
+            clearInterval(a);
+        }, 2000);
     }
-    $('.error').html(data.msg);
-    var a = setInterval(function () {
-        $('.error').html('');
-        getCommentList(artcleId);
-        clearInterval(a);
-    }, 2000);
 }

@@ -14,32 +14,21 @@
     <div id="leftsead">
         <ul>
             <li>
-                <a href="">
-                    <img src="/assets/images/ll03.png" width="47" height="49" class="hides"/>
-                    <img src="/assets/images/l03.png" width="47" height="49" class="shows"/>
+                <a href="https://github.com/coolswater">
+                    <img src="/assets/images/github.png" title="GitHub" width="47" height="49" class="shows"/>
                 </a>
             </li>
-
-            <li>
-                <a href="">
-                    <img src="/assets/images/ll02.png" width="166" height="49" class="hides"/>
-                    <img src="/assets/images/l04.png" width="47" height="49" class="shows"/>
-                </a>
-            </li>
-
             <li>
                 <a class="youhui">
                     <img src="/assets/images/l02.png" width="47" height="49" class="shows"/>
-                    <img src="/assets/images/wechat.jpg" class="hides" usemap="#taklhtml"/>
+                    <img src="/assets/images/wechat.jpg" title="Wechat" class="hides" usemap="#taklhtml"/>
                 </a>
             </li>
             <li>
                 <a id="top_btn">
-                    <img src="/assets/images/ll06.png" width="47" height="49" class="hides"/>
                     <img src="/assets/images/l06.png" width="47" height="49" class="shows"/>
                 </a>
             </li>
-
         </ul>
     </div><!--leftsead end-->
 

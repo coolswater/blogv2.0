@@ -39,7 +39,7 @@ class Comment extends MY_controller {
         }
         //判断是否登录
         if (!isset($this->userInfo['id'])) {
-            PJsonMsg(REQUEST_ERROR, lang('please_login'));
+            PJsonMsg(NEED_LOGIN, lang('please_login'));
         } else {
             $user_id = $this->userInfo['id'];
         }

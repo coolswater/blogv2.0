@@ -134,8 +134,13 @@ class Artcle extends MY_controller {
                 $artcle['categoryUrl'] = '/artcle/' . $artcle['cid'] . parent::$urlSuffix;
                 $artcle['publishTime'] = formatTime(strtotime($artcle['publishTime']));
             }
+            $artcleList['category'] = $artcle['category'];
+        } else {
+            //查询栏目名称
+            $this->load->model('M_category', 'category');
+            $category = $this->category->getCategoryByCid($cid);
+            $artcleList = array_merge($category, $artcleList);
         }
-        $artcleList['category'] = $artcle['category'];
         
         PJsonMsg(REQUEST_SUCCESS, lang('request_success'), $artcleList);
     }

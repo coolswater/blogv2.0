@@ -64,4 +64,5 @@ $route = array(
     'logout'               => 'Login/logout',
     'register'             => 'Login/register',
     'forgetPwd'            => 'Login/forgetPwd',
+    'ucenter'              => 'Login/ucenter',
 );

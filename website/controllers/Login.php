@@ -14,6 +14,40 @@ class Login extends MY_controller {
         $this->load->model('M_user', 'user');
     }
     
+    //用户中心
+    public function ucenter() {
+        //用户信息
+        $userInfo = $this->userInfo;
+        //获取栏目列表
+        $categoryList = $this->getCategoryList();
+        //获取友情连接
+        $friendLink = $this->getFriendLinks();
+        $this->load->view('home/header', compact('userInfo', 'categoryList', 'friendLink'));
+        $this->load->view('home/ucenter');
+        $this->load->view('home/footer');
+    }
+    
+    //获取栏目列表
+    private function getCategoryList() {
+        $this->load->model('M_category', 'category');
+        $categoryList = $this->category->getCategoryList();
+        if ($categoryList) {
+            foreach ($categoryList as &$value) {
+                $value['url'] = '/lists/' . $value['cid'] . parent::$urlSuffix;
+            }
+        }
+        
+        return $categoryList;
+    }
+    
+    //获取友情连接
+    private function getFriendLinks() {
+        $this->load->model('M_link', 'link');
+        $friendLinks = $this->link->getFriendLinks();
+        
+        return $friendLinks;
+    }
+    
     //用户登录
     public function login() {
         $username = getParam($this->input->post('username'), 'string');

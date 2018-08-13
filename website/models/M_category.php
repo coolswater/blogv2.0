@@ -14,6 +14,18 @@ class M_category extends M_comm {
         $this->_table = 't_artcle_categorys';
     }
     
+    //根据栏目id查询栏目名称
+    public function getCategoryByCid($cid) {
+        $cols = 'category';
+        $where = array(
+            'cid' => $cid,
+        );
+        $result = $this->getOne($cols, $where);
+        
+        return $result;
+    }
+    
+    //查询栏目列表
     public function getCategoryList() {
         $cols = 'cid,category,';
         $where = array(
