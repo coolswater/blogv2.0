@@ -4,18 +4,18 @@ if (!defined('BASEPATH')) {
 }
 
 /**
- * 登录控制器
+ * 用户控制器
  * author: hexiaodong
  * Date: 2018/8/10
  */
-class Login extends MY_controller {
+class User extends MY_controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_user', 'user');
     }
     
     //用户中心
-    public function ucenter() {
+    public function profile() {
         //用户信息
         $userInfo = $this->userInfo;
         //获取栏目列表
@@ -23,29 +23,8 @@ class Login extends MY_controller {
         //获取友情连接
         $friendLink = $this->getFriendLinks();
         $this->load->view('home/header', compact('userInfo', 'categoryList', 'friendLink'));
-        $this->load->view('home/ucenter');
+        $this->load->view('home/profile');
         $this->load->view('home/footer');
-    }
-    
-    //获取栏目列表
-    private function getCategoryList() {
-        $this->load->model('M_category', 'category');
-        $categoryList = $this->category->getCategoryList();
-        if ($categoryList) {
-            foreach ($categoryList as &$value) {
-                $value['url'] = '/lists/' . $value['cid'] . parent::$urlSuffix;
-            }
-        }
-        
-        return $categoryList;
-    }
-    
-    //获取友情连接
-    private function getFriendLinks() {
-        $this->load->model('M_link', 'link');
-        $friendLinks = $this->link->getFriendLinks();
-        
-        return $friendLinks;
     }
     
     //用户登录

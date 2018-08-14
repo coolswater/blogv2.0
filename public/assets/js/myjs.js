@@ -1,3 +1,15 @@
+//获取url参数
+function GetRequest() {
+    var url = location.href; //获取url中"?"符后的字串
+    var reg = '-?[1-9]\\d*';
+    var str = url.match(reg);
+    if (str != null) {
+        return str[0];
+    } else {
+        return false;
+    }
+}
+
 //用户退出
 function logout() {
     ajaxReuest('/logout', '', reloadPage)
@@ -333,6 +345,7 @@ var currPage = 1;
 //获取评论列表
 
 function getCommentList(artcleId) {
+    GetRequest();
     var url = '/getCommentList';
     var param = {
         pageSize: 5,

@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @date   2018/08/08
  */
 class MY_controller extends CI_Controller {
-    protected static $urlSuffix;        //url后缀
+    protected static $urlSuffix;
     protected $userInfo;
     
     public function __construct() {
@@ -21,7 +21,7 @@ class MY_controller extends CI_Controller {
     
     //初始化数据
     private function initData() {
-        self::$urlSuffix = config_item('url_suffix');
+        self::$urlSuffix = config_item('url_suffix');//url后缀
     }
     
     //是否登录
@@ -81,5 +81,26 @@ class MY_controller extends CI_Controller {
         } else {
             $_SESSION['preventBrush'] = time();
         }
+    }
+    
+    //获取栏目列表
+    protected function getCategoryList() {
+        $this->load->model('M_category', 'category');
+        $categoryList = $this->category->getCategoryList();
+        if ($categoryList) {
+            foreach ($categoryList as &$value) {
+                $value['url'] = '/lists/' . $value['cid'] . self::$urlSuffix;
+            }
+        }
+        
+        return $categoryList;
+    }
+    
+    //获取友情连接
+    protected function getFriendLinks() {
+        $this->load->model('M_link', 'link');
+        $friendLinks = $this->link->getFriendLinks();
+        
+        return $friendLinks;
     }
 }

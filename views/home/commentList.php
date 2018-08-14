@@ -15,6 +15,6 @@
 </nav>
 <script type="text/javascript">
     $(document).ready(function () {
-        getCommentList(<?= $artcle['aid'] ?>);
+        getCommentList(GetRequest());
     });
 </script>

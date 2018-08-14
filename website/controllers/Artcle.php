@@ -84,19 +84,6 @@ class Artcle extends MY_controller {
         $this->load->view('home/footer');
     }
     
-    //获取栏目列表
-    private function getCategoryList() {
-        $this->load->model('M_category', 'category');
-        $categoryList = $this->category->getCategoryList();
-        if ($categoryList) {
-            foreach ($categoryList as &$value) {
-                $value['url'] = '/lists/' . $value['cid'] . parent::$urlSuffix;
-            }
-        }
-        
-        return $categoryList;
-    }
-    
     //获取推荐文章
     private function getRecommendList() {
         $recommendList = $this->artcle->getRecommendList();
@@ -220,13 +207,5 @@ class Artcle extends MY_controller {
         }
         
         return $randArtcle;
-    }
-    
-    //获取友情连接
-    private function getFriendLinks() {
-        $this->load->model('M_link', 'link');
-        $friendLinks = $this->link->getFriendLinks();
-        
-        return $friendLinks;
     }
 }

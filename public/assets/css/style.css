@@ -487,6 +487,7 @@ a, img {
     background: #fff;
     border-radius: 4px;
     overflow: hidden;
+    font-size: .95rem;
 }
 
 .avatar-container-80.center {
@@ -530,28 +531,38 @@ a, img {
 .card-media-mid-btn {
     height: 36px;
     line-height: 36px;
-    font-size: 14px;
     padding: 0 20px;
     box-sizing: border-box;
 }
 
+.card-media-mid-btn:hover {
+    color: #fff;
+}
+
 .btn-default-main {
-    color: #444;
-    background: #ffd100;
-    border: 1px solid #ffd100;
+    color: #fff;
+    background: #dc3545;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
-    padding: 5px 35px;
+    padding: 8px 46px;
+}
+
+.btn-default-main:hover {
+    background: #F83949;
 }
 
 .personal-menu a {
     display: block;
-    color: #333;
+    color: #6c757d;
     height: 52px;
     line-height: 52px;
     padding: 0 30px;
     position: relative;
+}
+
+.personal-menu a:hover {
+    color: #fff;
 }
 
 .personal-menu .menu-list .menu-list-default.current i {
@@ -561,9 +572,15 @@ a, img {
     top: 10px;
     width: 3px;
     height: 32px;
-    background: #ffd100;
+    background: #dc3545;
     vertical-align: middle;
 }
+
+.menu-list-default:hover {
+    background: #dc3545;
+}
+
+/*用户中心结束*/
 
 @media (min-width: 1200px) {
     .container {

@@ -12,7 +12,6 @@
 </nav>
 <script type="text/javascript">
     $(document).ready(function () {
-        var cid = <?= $cid?>;
-        getArtcleList(cid);
+        getArtcleList(GetRequest());
     });
 </script>

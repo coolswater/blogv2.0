@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route = array(
     'translate_uri_dashes' => FALSE,
-    '404_override'         => 'Error/error404',
+    '404_override'         => 'Errors/error404',
     'default_controller'   => 'Artcle/index',
     'lists/(:num)'         => 'Artcle/lists/$1',
     'artcle/(:num)'        => 'Artcle/show/$1',
@@ -60,9 +60,9 @@ $route = array(
     'comment'              => 'Comment/comment',
     'getCommentList'       => 'Comment/getCommentList',
     'getVerifyCode'        => 'Login/getVerifyCode',
-    'login'                => 'Login/login',
-    'logout'               => 'Login/logout',
-    'register'             => 'Login/register',
-    'forgetPwd'            => 'Login/forgetPwd',
-    'ucenter'              => 'Login/ucenter',
+    'User'                 => 'User/login',
+    'logout'               => 'User/logout',
+    'register'             => 'User/register',
+    'forgetPwd'            => 'User/forgetPwd',
+    'profile'              => 'User/profile',
 );
