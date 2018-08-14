@@ -6,8 +6,9 @@
             <img class="rounded-circle" src="https://static.zcool.cn/git_z/z/images/boy.png" width="80" height="80"
                  title="牛盾007" alt=""/>
             <div class="presonal-info font-weight-bold">牛盾007</div>
-            <a href="/publish" target="targetDiv" class="btn btn-danger mt-3 pl-5 pr-5">发表文章</a>
+            <a href="/publish" target="targetDiv" class="btn btn-danger col-md-8 col-xs-2 mt-3">发表文章</a>
         </div>
+        
         <div class="card-media personal-menu pt-4 pb-5">
             <ul class="menu-list">
                 <li class="menu-list-default ">
@@ -52,7 +53,7 @@
     <!--main_left end-->
     <!--main_right start-->
     <div class="main_right col-md-10 pr-0">
-        <iframe height="1000px" name="targetDiv" width="100%" scrolling="no" frameborder="0"></iframe>
+        <iframe height="1100px" name="targetDiv" width="100%" scrolling="no" frameborder="0"></iframe>
     </div>
 
     <!--main_right end-->

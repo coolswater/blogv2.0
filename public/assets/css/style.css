@@ -559,20 +559,6 @@ a, img {
 
 .personal-menu a:hover {
     color: #fff;
-}
-
-.personal-menu .menu-list .menu-list-default.current i {
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 3px;
-    height: 32px;
-    background: #dc3545;
-    vertical-align: middle;
-}
-
-.menu-list-default:hover {
     background: #dc3545;
 }
 
@@ -588,7 +574,9 @@ a, img {
     .container {
         padding: 0;
     }
-
+    .main{
+        margin-top: 70px;
+    }
     .main_right {
         padding-left: 15px;
     }

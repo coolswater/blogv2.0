@@ -6,30 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b3463fd-f8db-493f-abe2-1cf21ee1c355" name="Default" comment="【提交】完成404页面、用户中心首页设计">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/fileinput.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/summernote.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/fonts/summernote.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/fonts/summernote.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/fonts/summernote.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/fileinput.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/piexif.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/purify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/sortable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/summernote.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/zh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/home/publishArtcle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/summernote-bs4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/summernote-zh-CN.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/fileinput.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/fileinput.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/summernote.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/myjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/myjs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/home/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/home/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/summernote.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/summernote-bs4.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/home/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/home/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/config/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/config/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/controllers/Artcle.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/controllers/Artcle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/helpers/common_function_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/helpers/common_function_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/home/publishArtcle.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/home/publishArtcle.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,39 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="myjs.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/js/myjs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1529">
-              <caret line="454" selection-start-line="454" selection-end-line="454" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="publishArtcle.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="publishArtcle.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/home/publishArtcle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="61" lean-forward="true" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.min.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/css/bootstrap.min.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-438">
-              <caret line="5" column="5219" lean-forward="true" selection-start-line="5" selection-start-column="5219" selection-end-line="5" selection-end-column="5219" />
-              <folding>
-                <element signature="e#61909#62109#2" expanded="true" />
-                <element signature="e#62317#62466#2" expanded="true" />
-                <element signature="e#62968#63114#2" expanded="true" />
-                <element signature="e#63415#63581#1" expanded="true" />
-                <element signature="e#74301#74544#2" expanded="true" />
-                <element signature="e#75411#75660#2" expanded="true" />
-                <element signature="e#101957#102147#2" expanded="true" />
-                <element signature="e#102193#102383#2" expanded="true" />
-              </folding>
+            <state relative-caret-position="988">
+              <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -83,34 +41,8 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/home/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zh.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/js/zh.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-19">
-              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-              <folding>
-                <element signature="e#8#16#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="purify.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/js/purify.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/home/profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1007">
-              <caret line="53" column="26" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="26" />
+            <state relative-caret-position="285">
+              <caret line="30" column="78" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -118,17 +50,17 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-568">
-              <caret line="165" column="19" selection-start-line="165" selection-start-column="19" selection-end-line="165" selection-end-column="19" />
+            <state relative-caret-position="229">
+              <caret line="548" column="1" lean-forward="true" selection-start-line="548" selection-start-column="1" selection-end-line="548" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="summernote.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/css/summernote.css">
+      <file leaf-file-name="profile.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/home/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret column="5298" selection-start-column="5298" selection-end-column="5298" />
+            <state relative-caret-position="152">
+              <caret line="8" column="89" selection-start-line="8" selection-start-column="89" selection-end-line="8" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -139,17 +71,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>随机</find>
-      <find>getRandArtcle</find>
-      <find>getUserByUsername</find>
-      <find>sign-in</find>
       <find>/assets/images/hea</find>
       <find>alert</find>
       <find>error</find>
@@ -176,6 +104,10 @@
       <find>showClose</find>
       <find>glyphicon-resize-vertical</find>
       <find>main_right</find>
+      <find>.file-drop-zone-title</find>
+      <find>.file-drop-zone</find>
+      <find>./font/summernote</find>
+      <find>lang</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -189,6 +121,7 @@
       <replace>'/artcle/'</replace>
       <replace>$timestamp</replace>
       <replace>./fonts</replace>
+      <replace>../fonts/summernote</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -202,9 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/home/artcleTags.php" />
-        <option value="$PROJECT_DIR$/website/models/M_comm.php" />
-        <option value="$PROJECT_DIR$/website/models/M_tags.php" />
         <option value="$PROJECT_DIR$/views/home/randArtcle.php" />
         <option value="$PROJECT_DIR$/website/models/M_link.php" />
         <option value="$PROJECT_DIR$/public/assets/css/share.css" />
@@ -241,18 +171,21 @@
         <option value="$PROJECT_DIR$/website/controllers/User.php" />
         <option value="$PROJECT_DIR$/website/config/config.php" />
         <option value="$PROJECT_DIR$/website/helpers/common_function_helper.php" />
-        <option value="$PROJECT_DIR$/website/config/routes.php" />
         <option value="$PROJECT_DIR$/website/controllers/Artcle.php" />
-        <option value="$PROJECT_DIR$/public/assets/js/summernote.js" />
         <option value="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/public/assets/js/popper.min.js" />
-        <option value="$PROJECT_DIR$/public/assets/css/summernote.css" />
-        <option value="$PROJECT_DIR$/views/home/profile.php" />
-        <option value="$PROJECT_DIR$/public/assets/js/myjs.js" />
         <option value="$PROJECT_DIR$/public/assets/css/font-awesome.min.css" />
         <option value="$PROJECT_DIR$/views/home/header.php" />
+        <option value="$PROJECT_DIR$/website/config/routes.php" />
+        <option value="$PROJECT_DIR$/public/assets/css/fileinput.min.css" />
+        <option value="$PROJECT_DIR$/public/assets/js/zncc.js" />
+        <option value="$PROJECT_DIR$/public/assets/css/summernote.css" />
+        <option value="$PROJECT_DIR$/public/assets/js/summernote.js" />
+        <option value="$PROJECT_DIR$/public/assets/css/summernote-bs4.css" />
+        <option value="$PROJECT_DIR$/public/assets/js/myjs.js" />
         <option value="$PROJECT_DIR$/public/assets/css/style.css" />
         <option value="$PROJECT_DIR$/views/home/publishArtcle.php" />
+        <option value="$PROJECT_DIR$/views/home/profile.php" />
       </list>
     </option>
   </component>
@@ -272,7 +205,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
+    <navigator proportions="" version="1">
       <autoscrollFromSource Scope="true" ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
@@ -282,117 +215,57 @@
           <expand>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
               <item name="public" type="cbb8eebc:String" user="public" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
               <item name="public" type="cbb8eebc:String" user="public" />
               <item name="assets" type="cbb8eebc:String" user="assets" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
               <item name="public" type="cbb8eebc:String" user="public" />
               <item name="assets" type="cbb8eebc:String" user="assets" />
               <item name="css" type="cbb8eebc:String" user="css" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
-              <item name="public" type="cbb8eebc:String" user="public" />
-              <item name="assets" type="cbb8eebc:String" user="assets" />
-              <item name="fonts" type="cbb8eebc:String" user="fonts" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
-              <item name="public" type="cbb8eebc:String" user="public" />
-              <item name="assets" type="cbb8eebc:String" user="assets" />
-              <item name="js" type="cbb8eebc:String" user="js" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
               <item name="views" type="cbb8eebc:String" user="views" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
               <item name="views" type="cbb8eebc:String" user="views" />
               <item name="home" type="cbb8eebc:String" user="home" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
               <item name="website" type="cbb8eebc:String" user="website" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
-              <item name="website" type="cbb8eebc:String" user="website" />
-              <item name="config" type="cbb8eebc:String" user="config" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
               <item name="website" type="cbb8eebc:String" user="website" />
               <item name="config" type="cbb8eebc:String" user="config" />
-              <item name="development" type="cbb8eebc:String" user="development" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
-              <item name="website" type="cbb8eebc:String" user="website" />
-              <item name="config" type="cbb8eebc:String" user="config" />
-              <item name="production" type="cbb8eebc:String" user="production" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
-              <item name="website" type="cbb8eebc:String" user="website" />
-              <item name="config" type="cbb8eebc:String" user="config" />
-              <item name="testing" type="cbb8eebc:String" user="testing" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
               <item name="website" type="cbb8eebc:String" user="website" />
               <item name="controllers" type="cbb8eebc:String" user="controllers" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
-              <item name="website" type="cbb8eebc:String" user="website" />
-              <item name="core" type="cbb8eebc:String" user="core" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
-              <item name="website" type="cbb8eebc:String" user="website" />
-              <item name="helpers" type="cbb8eebc:String" user="helpers" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
-              <item name="website" type="cbb8eebc:String" user="website" />
-              <item name="language" type="cbb8eebc:String" user="language" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
-              <item name="website" type="cbb8eebc:String" user="website" />
-              <item name="language" type="cbb8eebc:String" user="language" />
-              <item name="english" type="cbb8eebc:String" user="english" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="blogv2.0" type="cbb8eebc:String" user="blogv2.0" />
+              <item name="hexiaodong_html" type="cbb8eebc:String" user="hexiaodong_html" />
               <item name="website" type="cbb8eebc:String" user="website" />
               <item name="models" type="cbb8eebc:String" user="models" />
             </path>
@@ -406,6 +279,38 @@
             <path>
               <item name="hexiaodong_html" type="b2602c69:ProjectViewProjectNode" />
               <item name="hexiaodong_html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexiaodong_html" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hexiaodong_html" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexiaodong_html" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hexiaodong_html" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexiaodong_html" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hexiaodong_html" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexiaodong_html" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hexiaodong_html" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="fonts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hexiaodong_html" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hexiaodong_html" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hexiaodong_html" type="b2602c69:ProjectViewProjectNode" />
@@ -517,36 +422,96 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171098000" />
+    <option name="totallyTimeSpent" value="176480000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="14" />
-      <window_info anchor="bottom" id="Event Log" order="20" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="17" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="19" />
-      <window_info anchor="bottom" id="Run" order="4" />
-      <window_info anchor="bottom" id="Terminal" order="18" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23340471" />
-      <window_info anchor="bottom" id="Docker" order="15" show_stripe_button="false" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.19939117" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.5169492" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="Docker" order="15" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23340471" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="14" />
+      <window_info anchor="bottom" id="Version Control" order="19" />
+      <window_info anchor="bottom" id="Run" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="17" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Messages" order="16" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="20" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="18" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23340471" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Messages" order="8" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -559,20 +524,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="【提交】完成404页面、用户中心首页设计" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/hexiaodong_html.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
@@ -769,41 +720,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/controllers/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="27" />
+        <state relative-caret-position="266">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/config/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="56" column="45" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="45" />
+        <state relative-caret-position="495">
+          <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/controllers/Artcle.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="87" column="27" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/summernote.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="788">
-          <caret line="7284" column="42" selection-start-line="7284" selection-start-column="42" selection-end-line="7284" selection-end-column="42" />
+        <state relative-caret-position="344">
+          <caret line="213" column="8" selection-start-line="213" selection-start-column="8" selection-end-line="213" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/jquery.slim.min.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/jquery.validate.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="3" column="4927" selection-start-line="3" selection-start-column="4927" selection-end-line="3" selection-end-column="4927" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/popper.min.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -811,16 +748,6 @@
           <caret line="3" column="8581" selection-start-line="3" selection-start-column="8581" selection-end-line="3" selection-end-column="8581" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/summernote.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret column="5298" selection-start-column="5298" selection-end-column="5298" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/fileinput.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/piexif.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -839,9 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-19">
           <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding>
-            <element signature="e#8#16#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -872,38 +796,80 @@
     <entry file="file://$PROJECT_DIR$/public/assets/js/purify.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/fileinput.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="6187" selection-start-line="11" selection-start-column="6187" selection-end-line="11" selection-end-column="6187" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/icon.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/summernote-zh-CN.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2471">
+          <caret line="154" column="11" selection-start-line="154" selection-start-column="11" selection-end-line="154" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/summernote-bs4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="7283" column="5" selection-start-line="7283" selection-start-column="5" selection-end-line="7283" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/summernote-bs4.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret column="828" selection-start-column="828" selection-end-column="828" />
+          <folding>
+            <element signature="e#8258#8515#1" expanded="true" />
+            <element signature="e#8812#9069#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/myjs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1529">
-          <caret line="454" selection-start-line="454" selection-end-line="454" />
+        <state relative-caret-position="951">
+          <caret line="520" column="3" selection-start-line="520" selection-start-column="3" selection-end-line="520" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/home/header.php">
+    <entry file="file://$PROJECT_DIR$/public/assets/js/jquery.validate.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/home/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1007">
-          <caret line="53" column="26" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="26" />
+        <state relative-caret-position="361">
+          <caret line="3" column="4927" selection-start-line="3" selection-start-column="4927" selection-end-line="3" selection-end-column="4927" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-568">
-          <caret line="165" column="19" selection-start-line="165" selection-start-column="19" selection-end-line="165" selection-end-column="19" />
+        <state relative-caret-position="229">
+          <caret line="548" column="1" lean-forward="true" selection-start-line="548" selection-start-column="1" selection-end-line="548" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/home/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="30" column="78" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/home/publishArtcle.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="61" lean-forward="true" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
+        <state relative-caret-position="988">
+          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/home/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="89" selection-start-line="8" selection-start-column="89" selection-end-line="8" selection-end-column="89" />
         </state>
       </provider>
     </entry>
