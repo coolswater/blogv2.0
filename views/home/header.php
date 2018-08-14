@@ -51,8 +51,7 @@
                                 <img src="<?= $userInfo['portrait'] ?>"/>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">个人主页</a>
-                                <a class="dropdown-item" href="#">修改密码</a>
+                                <a class="dropdown-item" href="/profile">个人主页</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:logout()">用户退出</a>
                             </div>

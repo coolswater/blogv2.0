@@ -18,6 +18,9 @@ class User extends MY_controller {
     public function profile() {
         //用户信息
         $userInfo = $this->userInfo;
+        if (!$userInfo) {
+            redirect(base_url('/'));
+        }
         //获取栏目列表
         $categoryList = $this->getCategoryList();
         //获取友情连接
@@ -105,7 +108,7 @@ class User extends MY_controller {
             if (empty($email) || !validEmail($email)) {
                 PJsonMsg(REQUEST_ERROR, lang('error_invalid'));
             }
-            $userInfo = $userInfo = $this->user->getUserByEmail($email);
+            $userInfo = $this->user->getUserByEmail($email);
             if ($userInfo) {
                 $to = 'hexiaodong@forex.com.cn';
                 $subject = '重置密码';

@@ -74,14 +74,11 @@ a:hover {
     box-shadow: 0px 1px 3px #dee1e3;
     margin: 90px auto 15px;
     overflow: hidden;
+    font-size: .9rem;
 }
 
 .main_left {
     padding: 0 15px;
-}
-
-.main_right {
-    border-left: 10px solid #f8f9fa;
 }
 
 .featured {
@@ -166,8 +163,7 @@ a:hover {
 }
 
 .card-header {
-    padding: .75rem 0;
-    margin-top: 15px;
+    padding: .75rem;
     font-size: 1rem;
     font-weight: 700;
 }

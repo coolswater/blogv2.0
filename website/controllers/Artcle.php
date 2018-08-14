@@ -84,6 +84,12 @@ class Artcle extends MY_controller {
         $this->load->view('home/footer');
     }
     
+    //发表文章
+    public function publish() {
+        $this->load->view('home/publishArtcle');
+    }
+    
+    
     //获取推荐文章
     private function getRecommendList() {
         $recommendList = $this->artcle->getRecommendList();

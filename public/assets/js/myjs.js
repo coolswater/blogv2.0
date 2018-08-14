@@ -84,8 +84,7 @@ function modifyLoginStatus(data) {
         html += '<img src="' + data.data.portrait + '"/>';
         html += '</a>';
         html += '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
-        html += '<a class="dropdown-item" href="#">个人主页</a>';
-        html += '<a class="dropdown-item" href="#">修改密码</a>';
+        html += '<a class="dropdown-item" href="/profile">个人主页</a>';
         html += '<div class="dropdown-divider"></div>';
         html += '<a class="dropdown-item" href="javascript:logout()">用户退出</a>';
         html += '</div>';

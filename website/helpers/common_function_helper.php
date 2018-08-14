@@ -1729,8 +1729,13 @@ function verifyCode($width = 100, $height = 35) {
     $str = strtoupper(rand_str(4));
     $_SESSION['verifyCode'] = md5($str);
     $fontface = "./assets/fonts/t1.ttf";
+    
+    //声明需要创建的图层的图片格式
+    @ header("Content-Type:image/png");
     //创建一个图层
     $im = imagecreatetruecolor($width, $height);
+    //背景色
+    $back = imagecolorallocate($im, 255, 255, 255);
     //模糊点颜色
     $pix = imagecolorallocate($im, 250, 250, 250);
     imagefill($im, 0, 0, $pix);
@@ -1752,9 +1757,7 @@ function verifyCode($width = 100, $height = 35) {
         $fontcolor = imagecolorallocate($im, mt_rand(0, 120), mt_rand(0, 120), mt_rand(0, 120));
         imagettftext($im, ($height - 2) / 2, rand(-$height, $height), (($width - 5) / 5) * $i + (($width - 10) / 8), rand($height * 3 / 5, ($height * 3 / 5 + 5)), $fontcolor, $fontface, $str[$i]);
     }
-    //声明需要创建的图层的图片格式
-    ob_clean();
-    @ header("Content-Type:image/png");
+    
     //输出图片
     imagepng($im);
     imagedestroy($im);
