@@ -46,7 +46,7 @@
         </form>
     </div>
 </div>
-<script src="/assets/js/jquery.slim.min.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/popper.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/summernote-bs4.js"></script>
@@ -58,7 +58,7 @@
 <script src="/assets/js/fileinput.min.js"></script>
 <script src="/assets/js/zh.js"></script>
 <script src="/assets/js/jquery.validate.min.js"></script>
-<script src="/assets/js/myjs.js"></script>
+<script src="/assets/js/homeJs.js"></script>
 
 </body>
 </html>
