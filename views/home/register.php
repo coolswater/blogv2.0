@@ -13,28 +13,28 @@
                 <p id="registerError" class="error mt-3" style="display: none"></p>
                 <form class="form-group" id="registerForm">
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-user form-control-feedback icon"></span>
                         <input class="form-control" id="regusername" name="regusername" type="text"
                                placeholder="用户名：8-24位字母或数字">
                     </div>
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-lock form-control-feedback icon"></span>
                         <input class="form-control" id="regpassword" name="regpassword" type="password"
                                placeholder="密码：8-24位字母或数字">
                     </div>
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-lock form-control-feedback icon"></span>
                         <input class="form-control" id="confirm_password" name="confirm_password"
                                type="password"
                                placeholder="确认密码：8-24位字母或数字">
                     </div>
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback icon"></span>
                         <input class="form-control" id="email" name="email" type="text"
                                placeholder="邮箱：例如:123@123.com">
                     </div>
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-barcode form-control-feedback icon"></span>
                         <input class="form-control w-50" name="regverifyCode" id="regverifyCode" maxlength="4"
                                placeholder="验证码"
                                type="text"

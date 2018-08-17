@@ -13,12 +13,12 @@
                 <p id="forgetError" class="error mt-3" style="display: none"></p>
                 <form class="form-group" id="forgetForm">
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback icon"></span>
                         <input class="form-control" name="forgetEmail" id="forgetEmail" placeholder="注册邮箱"
                                type="text" placeholder="text">
                     </div>
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-barcode form-control-feedback icon"></span>
                         <input class="form-control w-50" name="forgetVerifyCode" id="forgetVerifyCode" maxlength="4"
                                placeholder="验证码"
                                type="text"

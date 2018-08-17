@@ -13,18 +13,18 @@
                 <p id="loginError" class="error mt-3" style="display: none"></p>
                 <form class="form-group" id="loginForm">
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-user form-control-feedback icon"></span>
                         <input class="form-control" name="username" id="username" placeholder="用户名/邮箱"
                                type="text" placeholder="text">
                     </div>
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-lock form-control-feedback icon"></span>
                         <input class="form-control" name="password" id="password" placeholder="登录密码"
                                type="password"
                                placeholder="text">
                     </div>
                     <div class="form-group">
-                        <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+                        <span class="glyphicon glyphicon-barcode form-control-feedback icon"></span>
                         <input class="form-control w-50" name="verifyCode" id="verifyCode" maxlength="4"
                                placeholder="验证码"
                                type="text"
