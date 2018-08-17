@@ -2,13 +2,12 @@
 <div class="row main container">
     <!--main_left start-->
     <div class="main_left col-12 col-md-9 bg-white">
+        <?php $this->load->view('home/featured'); ?>
         <?php $this->load->view('home/artcleList'); ?>
     </div>
     <!--main_left end-->
     <!--main_right start-->
     <div class="main_right col-12 col-md-3 bg-white pt-3">
-        <!--专题-->
-        <?php $this->load->view('home/subject'); ?>
         <div class="right_ads">
             <img class="w-100" src="/assets/images/right_ads.jpg"/>
         </div>

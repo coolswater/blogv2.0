@@ -2,6 +2,18 @@
     padding: 0;
 }
 
+.border-bottom-dashed {
+    border-bottom: 1px dashed #e6e6e6;
+}
+
+.border-right-dashed {
+    border-right: 1px dashed #e6e6e6;
+}
+
+.font-85 {
+    font-size: .85rem;
+}
+
 .button {
     cursor: pointer;
     font-size: .9rem;
@@ -74,7 +86,6 @@ a:hover {
     box-shadow: 0px 1px 3px #dee1e3;
     margin: 90px auto 15px;
     overflow: hidden;
-    font-size: .9rem;
 }
 
 .main_left {
@@ -103,24 +114,21 @@ a:hover {
     bottom: 0;
     background: black;
     color: #fff;
-    padding: 5px;
+    padding: .8rem;
     font-size: 0.8rem;
     margin-bottom: 0;
     width: 100%;
-    line-height: 30px;
 }
 
 .featured-item:first-child {
     width: 400px;
-    height: 250px;
+    height: 265px;
     margin-left: 0;
 }
 
 .featured-item:first-child h5 {
     position: relative;
     font-size: 1rem;
-    height: 60px;
-    line-height: 60px;
 }
 
 .artcle_thumb {
@@ -147,15 +155,17 @@ a:hover {
     border: 0;
 }
 
+.media-body, .mydata {
+    font-size: .85rem;
+}
+
 .media-content, .media-footer {
     color: #6c757d;
-    font-size: .9rem;
 }
 
 .media-footer {
     position: absolute;
     bottom: 15px;
-    font-size: .9rem;
 }
 
 .media-footer span {
@@ -171,7 +181,6 @@ a:hover {
 .refresh {
     cursor: pointer;
     float: right;
-    font-size: .9rem;
     font-weight: normal;
 }
 
@@ -197,6 +206,16 @@ a:hover {
 .card-text {
     color: #6c757d;
     font-size: 0.85rem;
+}
+
+.card-deck .card {
+    margin-right: 0;
+    border: 0;
+    box-shadow: 0px 0px 3px #dee1e3;
+}
+
+.card-deck .card:last-child {
+    margin-right: 15px;
 }
 
 .my-tags {
@@ -369,6 +388,11 @@ a:hover {
     height: 48px;
 }
 
+.portrait_small {
+    width: 32px;
+    height: 32px;
+}
+
 .comment {
     font-size: .95rem;
 }
@@ -486,6 +510,21 @@ a, img {
     font-size: .95rem;
 }
 
+.menu-list-default {
+    position: relative;
+}
+
+.personal-menu .menu-list .menu-list-default.current i {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 3px;
+    height: 32px;
+    background: #dc3545;
+    vertical-align: middle;
+}
+
 .avatar-container-80.center {
     margin: 0 auto;
     position: relative;
@@ -574,9 +613,11 @@ a, img {
     .container {
         padding: 0;
     }
-    .main{
+
+    .main {
         margin-top: 70px;
     }
+
     .main_right {
         padding-left: 15px;
     }

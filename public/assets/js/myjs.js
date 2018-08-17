@@ -338,19 +338,18 @@ var setPaginator = function (pagination, pageCurr, pageSum, callback, callbackPa
         }
     });
 };
-
+//定义默认页码
 var currPage = 1;
 
 //获取评论列表
-
-function getCommentList(artcleId) {
-    GetRequest();
-    var url = '/getCommentList';
+function getCommentList(params) {
+    var url = params.url;
     var param = {
         pageSize: 5,
         pageNo: currPage,
-        artcleId: artcleId
+        param: params.data,
     };
+
     var callbacks = function (data) {
         var totalPage = data.data.totalPage;
         var pageSize = 5;
@@ -358,22 +357,22 @@ function getCommentList(artcleId) {
         var lists = data.data.list;
         var html = '';
         for (i = 0; i < lists.length; i++) {
-            html += '<li class="media pt-3 pb-3">';
-            html += '<img class="portrait rounded-circle mr-3" src="' + lists[i].portrait + '" alt="用户头像">';
+            html += '<li class="media border-bottom-dashed mt-3">';
+            html += '<img class="portrait_small rounded-circle mr-3" src="' + lists[i].portrait + '"';
+            html += 'alt="用户头像">';
             html += '<div class="media-body">';
-            html += '<span class="font-weight-bold">' + lists[i].nickName + '</span>';
-            html += '<span class="ml-3">' + lists[i].create_time + '</span>';
-            html += '<p class="mt-2">' + lists[i].content + '</p>';
-            // html += '<p class="comment_nav">';
-            // html += '<span class="mr-4"><i class="glyphicon glyphicon-heart mr-1"></i>赞</span>';
-            // html += '<span><i class="glyphicon glyphicon-share-alt mr-1"></i>回复</span>';
-            // html += '</p>';
+            html += '<p class="create_time mb-1">' + lists[i].create_time + '</p>';
+            html += '<p class="mt-0 mb-1">';
+            html += '<span class="font-weight-bold">' + lists[i].nickName + ' </span>';
+            html += '<span>评论了《' + lists[i].title + '》</span>';
+            html += '</p>';
+            html += '<p>“' + lists[i].content + '”</p>';
             html += '</div>';
             html += '</li>';
         }
         $('#commentList').html(html);
         if (totalPage > pageNo) {
-            setPaginator('#commentPagination', pageNo, Math.ceil(totalPage / pageSize), getCommentList, artcleId);
+            setPaginator('#commentPagination', pageNo, Math.ceil(totalPage / pageSize), getCommentList, params);
         }
     };
     //ajax请求

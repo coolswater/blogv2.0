@@ -18,8 +18,8 @@ class M_artcle extends M_comm {
     public function getArtcleById($id) {
         $cols = 't_artcles.id as aid,title,nick_name as nickName,publish_time as publishTime,hits,summary,content ';
         $where = array(
-            't_artcles.status'       => 1,
-            't_artcles.id' => $id,
+            't_artcles.status' => 1,
+            't_artcles.id'     => $id,
         );
         $artcelInfo = $this->db->select($cols)
             ->from($this->_table)
@@ -32,13 +32,13 @@ class M_artcle extends M_comm {
     }
     
     //获取5条推荐文章
-    public function getRecommendList() {
-        $cols = 'id,title,thumb';
+    public function getRecommendList($pageSize = 5) {
+        $cols = 'id,title,thumb,summary';
         $where = array(
             'status' => 1,
             'type'   => 1,
         );
-        $result = $this->getList($cols, $where, 'update_time desc', 5);
+        $result = $this->getList($cols, $where, 'update_time desc', $pageSize);
         
         return $result;
     }
@@ -125,11 +125,14 @@ class M_artcle extends M_comm {
     }
     
     //获取统计信息
-    public function getTotalInfo() {
-        $cols = 'max(publish_time) as lastTime,count(1) as totalArtcle';
+    public function getTotalInfo($param = NULL) {
+        $cols = 'max(publish_time) as lastTime,count(1) as totalArtcle,count(hits) as totalHits';
         $where = array(
             'status' => 1,
         );
+        if ($param) {
+            $where = array_merge($where, $param);
+        }
         $result = $this->db->select($cols)
             ->from($this->_table)
             ->where($where)

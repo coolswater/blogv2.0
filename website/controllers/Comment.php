@@ -14,13 +14,28 @@ class Comment extends MY_controller {
         $this->load->model('M_comment', 'comment');
     }
     
-    //评论列表
-    public function getCommentList() {
+    //根据文章id评论列表
+    public function getCommentListById() {
         $pageNo = getParam($this->input->post('pageNo'), 'int', 1);
         $pageSize = getParam($this->input->post('pageSize'), 'int', 10);
-        $artcleId = getParam($this->input->post('artcleId'), 'int');
+        $artcleId = getParam($this->input->post('param'), 'int');
         $param = compact('pageNo', 'pageSize', 'artcleId');
         $commentList = $this->comment->getCommentListByArtcleId($param);
+        if ($commentList) {
+            foreach ($commentList['list'] as &$value) {
+                $value['portrait'] = $value['portrait'] ?? DEFAULT_HEADER;
+            }
+        }
+        PJsonMsg(REQUEST_SUCCESS, lang('request_success'), $commentList);
+    }
+    
+    //根据用户id评论列表
+    public function getCommentListByUserId() {
+        $pageNo = getParam($this->input->post('pageNo'), 'int', 1);
+        $pageSize = getParam($this->input->post('pageSize'), 'int', 10);
+        $userId = $this->userInfo['id'];
+        $param = compact('pageNo', 'pageSize', 'userId');
+        $commentList = $this->comment->getCommentListByUserId($param);
         if ($commentList) {
             foreach ($commentList['list'] as &$value) {
                 $value['portrait'] = $value['portrait'] ?? DEFAULT_HEADER;

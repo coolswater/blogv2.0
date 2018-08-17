@@ -15,6 +15,10 @@
 </nav>
 <script type="text/javascript">
     $(document).ready(function () {
-        getCommentList(GetRequest());
+        var param = {
+            url: '/getCommentListById',
+            data: GetRequest()
+        };
+        getCommentList(param);
     });
 </script>

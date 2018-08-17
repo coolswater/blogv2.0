@@ -51,19 +51,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route = array(
-    'translate_uri_dashes' => FALSE,
-    '404_override'         => 'Errors/error404',
-    'default_controller'   => 'Artcle/index',
-    'publish'              => 'Artcle/publish',
-    'lists/(:num)'         => 'Artcle/lists/$1',
-    'artcle/(:num)'        => 'Artcle/show/$1',
-    'getArtcleList'        => 'Artcle/getArtcleList',
-    'comment'              => 'Comment/comment',
-    'getCommentList'       => 'Comment/getCommentList',
-    'login'                => 'User/login',
-    'logout'               => 'User/logout',
-    'profile'              => 'User/profile',
-    'register'             => 'User/register',
-    'forgetPwd'            => 'User/forgetPwd',
-    'getVerifyCode'        => 'User/getVerifyCode',
+    'translate_uri_dashes'   => FALSE,
+    '404_override'           => 'Errors/error404',                //404页面
+    'default_controller'     => 'Artcle/index',                   //网站首页
+    'publish'                => 'Artcle/publish',                 //发表文章
+    'lists/(:num)'           => 'Artcle/lists/$1',                //文章列表
+    'artcle/(:num)'          => 'Artcle/show/$1',                 //文章详情
+    'getArtcleList'          => 'Artcle/getArtcleList',           //文章列表
+    'comment'                => 'Comment/comment',                //提交评论
+    'getCommentListById'     => 'Comment/getCommentListById',     //根据文章id获取评论列表
+    'getCommentListByUserId' => 'Comment/getCommentListByUserId', //根据用户id获取评论列表
+    'login'                  => 'User/login',                     //用户登录
+    'logout'                 => 'User/logout',                    //用户退出
+    'myPage'                 => 'User/myPage',                    //我的主页
+    'myArtcles'              => 'User/myArtcles',                 //我的文章
+    'myCollections'          => 'User/myCollections',             //我的收藏
+    'myFollow'               => 'User/myFollow',                  //我的关注
+    'mySetting'              => 'User/mySetting',                 //个人设置
+    'profile'                => 'User/profile',                   //用户中心
+    'register'               => 'User/register',                  //用户注册
+    'forgetPwd'              => 'User/forgetPwd',                 //忘记密码
+    'getVerifyCode'          => 'User/getVerifyCode',             //验证码
 );

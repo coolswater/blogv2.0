@@ -6,14 +6,10 @@
     <link href="/assets/css/icon.css" rel="stylesheet">
     <link href="/assets/css/summernote-bs4.css" rel="stylesheet">
     <link href="/assets/css/fileinput.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
 </head>
-<style>
-    .main, .form-control {
-        font-size: .9rem;
-    }
-</style>
 <body class="bg-light">
-<div class="main mt-0">
+<div class="main mt-0 font-85">
     <h6 class="mb-2 bg-white p-3 border-bottom-0 font-weight-bold">发表文章</h6>
     <div class="bg-white p-3">
         <form>
@@ -38,11 +34,14 @@
                     <label class="form-check-label" for="inlineRadio3">专题</label>
                 </div>
             </div>
-            <div id="summernote"></div>
-            <div class="form-group mt-3">
+            <div class="form-group mt-3 mb-3">
                 <input id="thumb" name="thumb[]" type="file" multiple>
             </div>
-            <button type="submit" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">发表</button>
+            <div id="summernote"></div>
+            <div class="mt-3">
+                <button type="submit" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">保存</button>
+                <button type="submit" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">发表</button>
+            </div>
         </form>
     </div>
 </div>
@@ -59,6 +58,5 @@
 <script src="/assets/js/zh.js"></script>
 <script src="/assets/js/jquery.validate.min.js"></script>
 <script src="/assets/js/homeJs.js"></script>
-
 </body>
 </html>

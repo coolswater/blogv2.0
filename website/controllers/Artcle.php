@@ -48,10 +48,12 @@ class Artcle extends MY_controller {
         $subjectList = $this->getSubjectList();
         //获取猜你喜欢
         $randArtcle = $this->getRandArtcle();
+        //获取推荐文章
+        $recommendList = $this->getRecommendList(4);
         //获取友情连接
         $friendLink = $this->getFriendLinks();
         
-        $this->load->view('home/header', compact('userInfo', 'cid', 'categoryList', 'subjectList', 'randArtcle', 'friendLink'));
+        $this->load->view('home/header', compact('userInfo', 'cid', 'categoryList', 'subjectList', 'randArtcle', 'recommendList', 'friendLink'));
         $this->load->view('home/listsPage');
         $this->load->view('home/footer');
     }
@@ -91,8 +93,8 @@ class Artcle extends MY_controller {
     
     
     //获取推荐文章
-    private function getRecommendList() {
-        $recommendList = $this->artcle->getRecommendList();
+    private function getRecommendList($pageSize = 5) {
+        $recommendList = $this->artcle->getRecommendList($pageSize);
         
         return $recommendList;
     }

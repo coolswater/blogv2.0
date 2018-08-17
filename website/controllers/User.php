@@ -12,6 +12,7 @@ class User extends MY_controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_user', 'user');
+        $this->load->model('M_artcle', 'artcle');
     }
     
     //用户中心
@@ -28,6 +29,19 @@ class User extends MY_controller {
         $this->load->view('home/header', compact('userInfo', 'categoryList', 'friendLink'));
         $this->load->view('home/profile');
         $this->load->view('home/footer');
+    }
+    
+    //我的主页
+    public function myPage() {
+        //获取信息
+        $user_id = $this->userInfo['id'];
+        $totalInfo = $this->artcle->getTotalInfo(compact('user_id'));
+        $this->load->view('home/myPage', $totalInfo);
+    }
+    
+    //我的文章
+    public function myArtcles() {
+        $this->load->view('home/myArtcles');
     }
     
     //用户登录
