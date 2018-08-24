@@ -335,6 +335,7 @@ var setPaginator = function (pagination, pageCurr, pageSum, callback, callbackPa
         onPageClicked: function (event, originalEvent, type, page) {
             currPage = page; // 注意currPage的作用域
             callback && callback(callbackParam);
+            $("html,body").animate({scrollTop: 0}, 0);
         }
     });
 };

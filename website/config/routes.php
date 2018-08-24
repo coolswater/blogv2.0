@@ -58,6 +58,7 @@ $route = array(
     'lists/(:num)'           => 'Artcle/lists/$1',                //文章列表
     'artcle/(:num)'          => 'Artcle/show/$1',                 //文章详情
     'getArtcleList'          => 'Artcle/getArtcleList',           //文章列表
+    'publishArtcle'          => 'Artcle/publishArtcle',           //发表文章
     'comment'                => 'Comment/comment',                //提交评论
     'getCommentListById'     => 'Comment/getCommentListById',     //根据文章id获取评论列表
     'getCommentListByUserId' => 'Comment/getCommentListByUserId', //根据用户id获取评论列表

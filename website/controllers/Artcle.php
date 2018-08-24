@@ -87,8 +87,19 @@ class Artcle extends MY_controller {
     }
     
     //发表文章
-    public function publish() {
-        $this->load->view('home/publishArtcle');
+    public function publishArtcle() {
+        if ($_POST) {
+            var_dump($_FILES);
+            var_dump($_POST);
+            die;
+            $title = getParam($this->input->post('title'), 'string');
+            $summary = getParam($this->input->post('content'), 'string');
+            $type = getParam($this->input->post('type'), 'int');
+            $content = getParam($this->input->post('content'), 'html');
+            $thumb = getParam($this->input->post('thumb'), 'string');
+        } else {
+            $this->load->view('home/publishArtcle');
+        }
     }
     
     
@@ -127,7 +138,7 @@ class Artcle extends MY_controller {
             foreach ($artcleList['list'] as &$artcle) {
                 $artcle['url'] = '/artcle/' . $artcle['id'] . parent::$urlSuffix;
                 $artcle['categoryUrl'] = '/artcle/' . $artcle['cid'] . parent::$urlSuffix;
-                $artcle['publishTime'] = formatTime(strtotime($artcle['publishTime']));
+                $artcle['publishTime'] = formatTime(strtotime($artcle['publishTime']), 'Y.m.d');
             }
             $artcleList['category'] = $artcle['category'];
         } else {

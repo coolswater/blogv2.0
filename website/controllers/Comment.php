@@ -23,7 +23,7 @@ class Comment extends MY_controller {
         $commentList = $this->comment->getCommentListByArtcleId($param);
         if ($commentList) {
             foreach ($commentList['list'] as &$value) {
-                $value['portrait'] = $value['portrait'] ?? DEFAULT_HEADER;
+                $value['portrait'] = $value['portrait'] ? $value['portrait'] : DEFAULT_HEADER;
             }
         }
         PJsonMsg(REQUEST_SUCCESS, lang('request_success'), $commentList);
@@ -38,7 +38,7 @@ class Comment extends MY_controller {
         $commentList = $this->comment->getCommentListByUserId($param);
         if ($commentList) {
             foreach ($commentList['list'] as &$value) {
-                $value['portrait'] = $value['portrait'] ?? DEFAULT_HEADER;
+                $value['portrait'] = $value['portrait'] ? $value['portrait'] : DEFAULT_HEADER;
             }
         }
         PJsonMsg(REQUEST_SUCCESS, lang('request_success'), $commentList);

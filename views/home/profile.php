@@ -6,7 +6,7 @@
             <img class="rounded-circle" src="https://static.zcool.cn/git_z/z/images/boy.png" width="80" height="80"
                  title="牛盾007" alt=""/>
             <div class="presonal-info font-weight-bold">牛盾007</div>
-            <a href="/publish" target="targetDiv" class="btn btn-danger col-md-8 col-xs-2 mt-3">发表文章</a>
+            <a href="/publishArtcle" target="targetDiv" class="btn btn-danger col-md-8 col-xs-2 mt-3">发表文章</a>
         </div>
 
         <div class="card-media personal-menu pt-4 pb-5">
@@ -77,7 +77,7 @@
         var iDoc = ifr.contentDocument || ifr.document
         var height = calcPageHeight(iDoc)
         if (height < 850) {
-            height = 850;
+            height = 950;
         }
         ifr.style.height = height + 'px'
     }

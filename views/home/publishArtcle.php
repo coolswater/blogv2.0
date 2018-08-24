@@ -12,12 +12,13 @@
 <div class="main mt-0 font-85">
     <h6 class="mb-2 bg-white p-3 border-bottom-0 font-weight-bold">发表文章</h6>
     <div class="bg-white p-3">
-        <form>
+        <form id="publishArtcle" enctype="multipart/form-data">
             <div class="form-group mb-4">
-                <input type="title" class="form-control pl-3" id="title" placeholder="标题">
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                <input type="title" class="form-control pl-3" id="title" placeholder="标题：8-50个字">
             </div>
             <div class="form-group">
-                <textarea class="form-control pl-3" id="summary" rows="3" placeholder="摘要"></textarea>
+                <textarea class="form-control pl-3" id="summary" rows="2" placeholder="摘要：150个字"></textarea>
             </div>
             <div class="form-group mt-3 mb-3">
                 <span>类别：</span>
@@ -58,5 +59,54 @@
 <script src="/assets/js/zh.js"></script>
 <script src="/assets/js/jquery.validate.min.js"></script>
 <script src="/assets/js/homeJs.js"></script>
+<script src="/assets/js/myjs.js"></script>
+<script>
+    //注册表单验证
+    $("#publishArtcle").validate({
+        rules: {
+            title: {
+                required: true,
+            },
+            summary: {
+                required: true,
+                checkPwd: true
+            },
+            thumb: {
+                required: true
+            },
+            summernote: {
+                required: true,
+            },
+        },
+        messages: {
+            title: {
+                required: "标题不能为空"
+            },
+            summary: {
+                required: "摘要不能为空"
+            },
+            thumb: {
+                required: "缩率图不能为空"
+            },
+            summernote: {
+                required: "内容不能为空"
+            }
+        },
+        submitHandler: function (form) {
+            var url = '/publishArtcle';
+            var param = {
+                title: $('#title').val(),
+                summary: $('#summary').val(),
+                thumb: $('#thumb').val(),
+                content: $('#summernote').val()
+            };
+            ajaxReuest(url, param, publishCallback);
+        }
+    });
+
+    function publishCallback(data) {
+        console.log(data)
+    }
+</script>
 </body>
 </html>

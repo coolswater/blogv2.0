@@ -14,7 +14,7 @@ $('#summernote').summernote({
     ],
     lang: 'zh-CN',
     placeholder: '内容',
-    height: 300,                 //编辑器高度
+    height: 280,                 //编辑器高度
     disableDragAndDrop: true,    //禁止拖放,
     focus: true,
     airMode: false,
@@ -27,7 +27,7 @@ $('#summernote').summernote({
             formData.append("picture", file[0]);
             $.ajax({
                 type: 'post',
-                url: '请求后台地址',
+                url: '/',
                 cache: false,
                 data: formData,
                 processData: false,
@@ -48,7 +48,6 @@ $('#thumb').fileinput({
     language: 'zh', //设置语言
     uploadUrl: "/uploadFiles.do", //上传的地址
     allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
-    //uploadExtraData:{"id": 1, "fileName":'123.mp3'},
     uploadAsync: true, //默认异步上传
     showUpload: true, //是否显示上传按钮
     showPreview: true, //是否显示预览
@@ -57,7 +56,7 @@ $('#thumb').fileinput({
     dropZoneEnabled: true,//是否显示拖拽区域
     maxFileSize: 2048,//单位为kb，如果为0表示不限制文件大小
     minFileCount: 1,
-    maxFileCount: 1, //表示允许同时上传的最大文件个数
+    maxFileCount: 4, //表示允许同时上传的最大文件个数
     enctype: 'multipart/form-data',
     validateInitialCount: true,
 }).on("fileuploaded", function (event, data, previewId, index) {
