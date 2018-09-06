@@ -2,6 +2,7 @@
 <div class="card">
     <?php foreach ($subjectList as $key => $subject): ?>
         <?php if ($key === 0): ?>
+            <img class="card-img-top" src="/assets/images/Parallax.jpg" alt="Card image cap">
             <div class="card-body">
                 <span class="badge badge-primary">专题</span>
                 <h5 class="card-title small_title">

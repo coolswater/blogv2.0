@@ -11,6 +11,7 @@ class Artcle extends MY_controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_artcle', 'artcle');
+        $this->load->model('M_category', 'category');
     }
     
     //首页
@@ -31,9 +32,11 @@ class Artcle extends MY_controller {
         $myTagList = $this->getTagsList();
         //统计数据
         $totalInfo = $this->getTotalInfo();
+        //获取猜你喜欢
+        $randArtcle = $this->getRandArtcle();
         //获取友情连接
         $friendLink = $this->getFriendLinks();
-        $this->load->view('home/header', compact('userInfo', 'category', 'categoryList', 'recommendList', 'artcleList', 'subjectList', 'hotArtcleList', 'myTagList', 'totalInfo', 'friendLink'));
+        $this->load->view('home/header', compact('userInfo', 'category', 'categoryList', 'recommendList', 'artcleList', 'subjectList', 'hotArtcleList', 'myTagList', 'totalInfo', 'randArtcle', 'friendLink'));
         $this->load->view('home/homePage');
         $this->load->view('home/footer');
     }
@@ -98,7 +101,9 @@ class Artcle extends MY_controller {
             $content = getParam($this->input->post('content'), 'html');
             $thumb = getParam($this->input->post('thumb'), 'string');
         } else {
-            $this->load->view('home/publishArtcle');
+            $categoryList = $this->category->getAllCategory();
+            $data = compact('categoryList');
+            $this->load->view('home/publishArtcle', $data);
         }
     }
     
@@ -120,7 +125,7 @@ class Artcle extends MY_controller {
             foreach ($artcleList as &$artcle) {
                 $artcle['url'] = '/artcle/' . $artcle['id'] . parent::$urlSuffix;
                 $artcle['categoryUrl'] = '/artcle/' . $artcle['cid'] . parent::$urlSuffix;
-                $artcle['publishTime'] = formatTime(strtotime($artcle['publishTime']));
+                $artcle['publishTime'] = formatTime(strtotime($artcle['publishTime']), 'Y.m.d');
             }
         }
         

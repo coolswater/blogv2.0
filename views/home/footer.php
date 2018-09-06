@@ -12,7 +12,7 @@
     </div>
 
     <div id="leftsead">
-        <ul>
+        <ul class="hidden-xs">
             <li>
                 <a href="https://github.com/coolswater">
                     <img src="/assets/images/github.png" title="GitHub" width="47" height="49" class="shows"/>

@@ -254,6 +254,7 @@ $(document).ready(function () {
             });
         }
     });
+    var scroll = 'off';
     $("#top_btn").click(function () {
         if (scroll == "off") return;
         $("html,body").animate({scrollTop: 0}, 600);

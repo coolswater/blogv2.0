@@ -5,7 +5,9 @@
             <a href="/artcle/<?= $recommend['id'] ?>.html">
                 <img class="w-100 artcle_thumb" src="<?= $recommend['thumb'] ?>">
             </a>
-            <h5><?= $recommend['title'] ?></h5>
+            <h5>
+                <a href="/artcle/<?= $recommend['id'] ?>.html"><?= $recommend['title'] ?></a>
+            </h5>
         </div>
     <?php endforeach; ?>
 </div>

@@ -43,22 +43,3 @@ $('#summernote').summernote({
         }
     }
 });
-//图片上传
-$('#thumb').fileinput({
-    language: 'zh', //设置语言
-    uploadUrl: "/uploadFiles.do", //上传的地址
-    allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
-    uploadAsync: true, //默认异步上传
-    showUpload: true, //是否显示上传按钮
-    showPreview: true, //是否显示预览
-    showClose: false,//是否显示标题
-    browseClass: "btn btn-danger", //按钮样式
-    dropZoneEnabled: true,//是否显示拖拽区域
-    maxFileSize: 2048,//单位为kb，如果为0表示不限制文件大小
-    minFileCount: 1,
-    maxFileCount: 4, //表示允许同时上传的最大文件个数
-    enctype: 'multipart/form-data',
-    validateInitialCount: true,
-}).on("fileuploaded", function (event, data, previewId, index) {
-
-});

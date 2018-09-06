@@ -1,7 +1,3 @@
-<h5 class="card-header bg-white">
-    <span class="glyphicon glyphicon-th-list icon"></span>
-    <span>热门推荐</span>
-</h5>
 <div class="card-deck mt-3 mb-3">
     <?php foreach ($recommendList as $recomment): ?>
         <div class="card">

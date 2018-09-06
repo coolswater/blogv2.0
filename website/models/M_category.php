@@ -35,4 +35,15 @@ class M_category extends M_comm {
         
         return $result;
     }
+    
+    //查询所有栏目
+    public function getAllCategory() {
+        $cols = 'cid,category,';
+        $where = array(
+            'status' => 0,
+        );
+        $result = $this->getList($cols, $where, 'cid asc');
+        
+        return $result;
+    }
 }
