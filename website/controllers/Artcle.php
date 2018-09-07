@@ -91,12 +91,12 @@ class Artcle extends MY_controller {
     
     //发表文章
     public function publishArtcle() {
+        
         if ($_POST) {
-            var_dump($_FILES);
             var_dump($_POST);
             die;
             $title = getParam($this->input->post('title'), 'string');
-            $summary = getParam($this->input->post('content'), 'string');
+            $summary = getParam($this->input->post('summary'), 'string');
             $type = getParam($this->input->post('type'), 'int');
             $content = getParam($this->input->post('content'), 'html');
             $thumb = getParam($this->input->post('thumb'), 'string');
@@ -231,5 +231,52 @@ class Artcle extends MY_controller {
         }
         
         return $randArtcle;
+    }
+    
+    //上传图片
+    public function uploadThumb() {
+        if (isset($_FILES['thumb']) && !empty($_FILES['thumb'])) {
+            $typeThumb = $_FILES['thumb']['type'];
+            $tmpThumb = $_FILES['thumb']['tmp_name'];
+            $sizeThumb = $_FILES['thumb']['size'];
+            //验证图片格式
+            $imgType = array(
+                'image/jpeg',
+                'image/jpg',
+                'image/png',
+                'image/gif',
+            );
+            foreach ($typeThumb as $key => $type) {
+                if (!in_array($type, $imgType)) {
+                    PJsonMsg(REQUEST_ERROR, '第' . $key + 1 . '张图片' . lang('thumbType_error'));
+                }
+            }
+            foreach ($sizeThumb as $key => $size) {
+                if ($size > 1024 * 1024 * 2) {
+                    PJsonMsg(REQUEST_ERROR, '第' . $key + 1 . '张图片' . lang('thumbSize_error'));
+                }
+            }
+            if (!is_dir(UPLOAD_FILE_PATH)) {
+                mkdir(UPLOAD_FILE_PATH, 0755);
+            }
+            foreach ($tmpThumb as $key => $tmp) {
+                $thumb = UPLOAD_FILE_PATH . time() . random(6) . '.jpg';
+                $result = move_uploaded_file($tmp, $thumb);
+                if ($result) {
+                    $newThumb = substr($thumb, 1);
+                    PJsonMsg(REQUEST_SUCCESS, lang('upload_success'), $newThumb);
+                } else {
+                    PJsonMsg(REQUEST_ERROR, lang('upload_error'));
+                }
+            }
+        } else {
+            PJsonMsg(REQUEST_ERROR, lang('request_invalid'));
+        }
+        
+    }
+    
+    public function deleteThumb() {
+        var_dump($_POST);
+        die;
     }
 }

@@ -33,7 +33,6 @@ $.validator.addMethod("checkEmail", function (value, element, params) {
     var checkEmail = /^[a-z0-9]+@([a-z0-9]+\.)+[a-z]{2,4}$/i
     return this.optional(element) || (checkEmail.test(value))
 }, "请输入正确的邮箱！")
-
 $.validator.onfocusout = false
 
 //登录表单与验证
@@ -254,7 +253,6 @@ $(document).ready(function () {
             });
         }
     });
-    var scroll = 'off';
     $("#top_btn").click(function () {
         if (scroll == "off") return;
         $("html,body").animate({scrollTop: 0}, 600);
@@ -324,9 +322,9 @@ var setPaginator = function (pagination, pageCurr, pageSum, callback, callbackPa
                 case "first":
                     return "首页";
                 case "prev":
-                    return "上一页";
+                    return "<";
                 case "next":
-                    return "下一页";
+                    return ">";
                 case "last":
                     return "末页";
                 case "page":

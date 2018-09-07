@@ -87,6 +87,7 @@ defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatic
 //自定义常量
 defined('REQUEST_SUCCESS') OR define('REQUEST_SUCCESS', 1);     //请求成功
 defined('REQUEST_ERROR') OR define('REQUEST_ERROR', 0);         //请求错误
-defined('DEFAULT_HEADER') OR define('DEFAULT_HEADER', '/assets/images/header.jpg');   //用户默认头像
+defined('DEFAULT_HEADER') OR define('DEFAULT_HEADER', '/assets/images/header.png');   //用户默认头像
 defined('NEED_LOGIN') OR define('NEED_LOGIN', 10020);          //用户默认头像
+defined('UPLOAD_FILE_PATH') OR define('UPLOAD_FILE_PATH', './assets/uploadfiles/' . date('Ymd') . '/');          //用户默认头像
 

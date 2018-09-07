@@ -117,7 +117,6 @@ a:hover {
 }
 
 .featured-item img {
-    height: 100%;
     transition: all 0.6s;
 }
 
@@ -152,7 +151,6 @@ a:hover {
 
 .artcle_thumb {
     width: 200px;
-    height: 135px;
 }
 
 .artcle_thumb_small {
@@ -516,7 +514,7 @@ a, img {
     font-size: .9rem;
 }
 
-.pagination .active > a, .pagination li > a:hover {
+#commentPagination .active > a, #commentPagination li > a:hover {
     color: #fff;
     background: #dc3545;
 }
@@ -539,8 +537,8 @@ a, img {
 
 /*个人中心样式*/
 .thumbImg {
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
 }
 
 .personal-card {
@@ -645,6 +643,31 @@ a, img {
 .personal-menu a:hover {
     color: #fff;
     background: #dc3545;
+}
+
+/*重置上传插件样式*/
+.krajee-default .file-footer-caption {
+    margin-bottom: 0;
+}
+
+.krajee-default.file-preview-frame .kv-file-content {
+    width: 170px;
+    height: 120px;
+}
+
+.btn-group-sm > .btn, .btn-sm {
+    padding: .1rem .35rem;
+}
+
+.kv-upload-progress .progress {
+    height: 20px;
+    margin: 10px 0;
+    overflow: hidden;
+    position: absolute;
+    left: 9px;
+    top: -10px;
+    z-index: 9999999;
+    width: 97%;
 }
 
 /*用户中心结束*/

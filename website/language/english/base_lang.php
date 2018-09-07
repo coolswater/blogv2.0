@@ -30,5 +30,9 @@ $lang = array(
     'comment_success'         => '评论成功！',
     'request_invalid'         => '非法请求！',
     'please_login'            => '请先登录！',
+    'upload_success'          => '上传成功！',
+    'upload_errro'            => '上传失败！',
     'comment_error'           => '评论内容为空！',
+    'thumbType_error'         => '图片类型错误，必须是jpg|png|gif格式！',
+    'thumbSize_error'         => '图片大小错误，必须小于2MB',
 );

@@ -3,8 +3,7 @@
     <!--main_left start-->
     <div class="main_left col-12 col-md-2 pl-0 pr-0 bg-white">
         <div class="card-media personal-card bg-white">
-            <img class="rounded-circle" src="https://static.zcool.cn/git_z/z/images/boy.png" width="80" height="80"
-                 title="牛盾007" alt=""/>
+            <img src="/assets/images/header.png" title="牛盾007" alt=""/>
             <div class="presonal-info font-weight-bold">牛盾007</div>
             <a href="/publishArtcle" target="targetDiv" class="btn btn-danger col-md-8 col-xs-2 mt-3">发表文章</a>
         </div>
