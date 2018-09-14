@@ -35,12 +35,7 @@
                     <div class="text-left">
                         <button class="btn btn-danger w-100 mt-4" type="submit">登 录</button>
                         <div class="mt-2 mb-5 button">
-                            <span class="float-left" data-toggle="modal" data-dismiss="modal" data-target="#forgetPwd">
-                                忘记密码?</span>
-                            <span class="float-right" data-toggle="modal" data-dismiss="modal" data-target="#register">
-                                没有账号?
-                                <span class="text-primary">去注册</span>
-                            </span>
+
                         </div>
                     </div>
                 </form>

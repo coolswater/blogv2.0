@@ -35,4 +35,8 @@ $lang = array(
     'comment_error'           => '评论内容为空！',
     'thumbType_error'         => '图片类型错误，必须是jpg|png|gif格式！',
     'thumbSize_error'         => '图片大小错误，必须小于2MB',
+    'publish_success'         => '文章发布成功！',
+    'publish_error'           => '文章发布失败！',
+    'delete_success'          => '删除成功！',
+    'delete_error'            => '删除失败，请稍后再试！',
 );

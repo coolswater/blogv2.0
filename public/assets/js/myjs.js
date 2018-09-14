@@ -332,21 +332,18 @@ var setPaginator = function (pagination, pageCurr, pageSum, callback, callbackPa
             }
         },
         onPageClicked: function (event, originalEvent, type, page) {
-            currPage = page; // 注意currPage的作用域
-            callback && callback(callbackParam);
+            callback && callback(callbackParam, page);
             $("html,body").animate({scrollTop: 0}, 0);
         }
     });
 };
-//定义默认页码
-var currPage = 1;
 
 //获取评论列表
-function getCommentList(params) {
+function getCommentList(params, page) {
     var url = params.url;
     var param = {
         pageSize: 5,
-        pageNo: currPage,
+        pageNo: page,
         param: params.data,
     };
 
@@ -380,10 +377,10 @@ function getCommentList(params) {
 }
 
 //获取文章列表
-var getArtcleList = function (cid) {
+var getArtcleList = function (cid, page) {
     var url = '/getArtcleList';
     var param = {
-        pageNo: currPage,
+        pageNo: page,
         cid: cid,
         pageSize: 10
     };
@@ -407,7 +404,7 @@ var getArtcleList = function (cid) {
                 html += '<div class="media-footer">';
                 html += '<span class="category">' + lists[i].category + '</span>';
                 html += '<span>/</span>';
-                html += '<span class="author">' + lists[i].nickName + '</span>';
+                html += '<span class="author">' + lists[i].hits + '</span>';
                 html += '<span>/</span>';
                 html += '<span class="publish_time">' + lists[i].publishTime + '</span>';
                 html += '</div>';
@@ -420,12 +417,63 @@ var getArtcleList = function (cid) {
         $('#artcleList').html(html);
         $('#listCategory').html(category);
         if (Math.ceil(totalPage / pageSize) > pageNo) {
-            setPaginator('#artcleListPagination', pageNo, Math.ceil(totalPage / pageSize), getCommentList, cid);
+            setPaginator('#artcleListPagination', pageNo, Math.ceil(totalPage / pageSize), getArtcleList, cid);
         }
     };
     //ajax请求
     ajaxReuest(url, param, callbacks);
 };
+
+//获取我的文章列表
+function getMyArtcleList(type, page = 1) {
+    var url = '/getMyArtcleList';
+    var param = {
+        pageNo: page,
+        type: type,
+    };
+    var callbacks = function (data) {
+        var totalPage = data.data.totalPage;
+        var pageSize = 10;
+        var pageNo = data.data.pageNo;
+        var lists = data.data.list;
+        var html = '';
+        if (lists.length > 0) {
+            for (i = 0; i < lists.length; i++) {
+                html += '<li class="media">';
+                html += '<div class="media-body">';
+                html += '<h6 class="mt-1 mb-3">[' + lists[i].category + ']&nbsp;&nbsp;<a href="' + lists[i].url + '" target="_blank">' + lists[i].title + '</a>';
+                html += '</h5>';
+                html += '<div class="media-footer">';
+                html += '<span class="author">阅读：' + lists[i].hits + '</span>';
+                html += '<span class="publish_time">发布：' + lists[i].publishTime + '</span>';
+                html += '<a href="#" class="badge badge-primary mr-1">编辑</a>';
+                if (lists[i].status == 1) {
+                    html += '<a href="javascript:deleteArtcle(' + lists[i].id + ')" class="badge badge-danger mr-1">删除</a>';
+                    html += '<a href="#" class="badge badge-info mr-1">下线</a>';
+                } else if (lists[i].status == 2) {
+                    html += '<a href="javascript:deleteArtcle(' + lists[i].id + ')" class="badge badge-danger mr-1">删除</a>';
+                    html += '<a href="#" class="badge badge-success mr-1">发布</a>';
+                } else {
+                    html += '<a href="#" class="badge badge-danger mr-1">发布</a>';
+                }
+                html += '</div>';
+                html += '</div>';
+                html += '<a href="' + lists[i].url + '" target="_blank">';
+                html += '<img class="mr-3 artcle_thumb_small rounded" src="' + lists[i].thumb + '" alt="文章缩略图">';
+                html += '</a>';
+                html += '</li>';
+            }
+        } else {
+            html += '<p class="mt-3 ml-4">暂无数据</p>';
+        }
+        $('#artcleList').html(html);
+        if (Math.ceil(totalPage / pageSize) > pageNo) {
+            setPaginator('#artcleListPagination', pageNo, Math.ceil(totalPage / pageSize), callbacks, type);
+        }
+    };
+    //ajax请求
+    ajaxReuest(url, param, callbacks);
+}
 
 //发表评论
 function comment(artcleId) {

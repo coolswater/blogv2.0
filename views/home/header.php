@@ -69,9 +69,9 @@
         </nav>
     </div>
     <?php $this->load->view('home/login') ?>
-    <?php $this->load->view('home/forgetPwd') ?>
-    <?php $this->load->view('home/success') ?>
-    <?php $this->load->view('home/register') ?>
+    <!--    --><?php //$this->load->view('home/forgetPwd') ?>
+    <!--    --><?php //$this->load->view('home/success') ?>
+    <!--    --><?php //$this->load->view('home/register') ?>
 
 </div>
 <!--header end-->

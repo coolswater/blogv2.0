@@ -14,6 +14,13 @@ class M_artcle extends M_comm {
         $this->_table = 't_artcles';
     }
     
+    //添加文章
+    public function addArtcle($data) {
+        $result = $this->add($data);
+        
+        return $result;
+    }
+    
     //根据id获取文章
     public function getArtcleById($id) {
         $cols = 't_artcles.id as aid,title,nick_name as nickName,publish_time as publishTime,hits,summary,content ';
@@ -80,6 +87,29 @@ class M_artcle extends M_comm {
             ->from($this->_table)
             ->join('t_artcle_categorys', 't_artcle_categorys.cid=t_artcles.cid', 'left')
             ->join('t_users', 't_artcles.user_id=t_users.id', 'left')
+            ->where($where)
+            ->limit($limit, $offset)
+            ->order_by('publishTime desc')
+            ->get()
+            ->result_array();
+        $pageNo = $param['pageNo'];
+        $totalPage = $this->getTotal($where);
+        
+        return compact('pageNo', 'totalPage', 'list');
+    }
+    
+    //获取我的文章列表
+    public function getMyArtcleList($param) {
+        $status = $param['status'];
+        $limit = $param['pageSize'];
+        $offset = ($param['pageNo'] - 1) * $param['pageSize'];
+        $cols = 't_artcles.id,t_artcles.cid,title,thumb,category,publish_time as publishTime,hits,t_artcles.status';
+        $where = array(
+            't_artcles.status' => $status,
+        );
+        $list = $this->db->select($cols)
+            ->from($this->_table)
+            ->join('t_artcle_categorys', 't_artcle_categorys.cid=t_artcles.cid', 'left')
             ->where($where)
             ->limit($limit, $offset)
             ->order_by('publishTime desc')
@@ -184,6 +214,13 @@ class M_artcle extends M_comm {
             ->limit(5)
             ->get()
             ->result_array();
+        
+        return $result;
+    }
+    
+    //根据文章id删除文章
+    public function deleteArtcleById($where) {
+        $result = $this->deleteData($where);
         
         return $result;
     }

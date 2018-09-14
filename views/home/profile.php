@@ -52,14 +52,18 @@
     <!--main_left end-->
     <!--main_right start-->
     <div class="main_right col-md-10 pr-0">
-        <iframe id="myIframe" src="/myPage" name="targetDiv" scrolling="no" frameborder="0"
-                style="width: 100%;height: 100%"></iframe>
+        <iframe id="myIframe" src="/myPage" name="targetDiv" scrolling="no" frameborder="0" style="width: 100%;"></iframe>
     </div>
 
     <!--main_right end-->
 </div>
 <!--main end-->
 <script>
+    $('.menu-list-default').on('click', function (e) {
+        $('.menu-list-default').removeClass('current');
+        $(this).addClass('current');
+    })
+
     // 计算页面的实际高度，iframe自适应会用到
     function calcPageHeight(doc) {
         var cHeight = Math.max(doc.body.clientHeight, doc.documentElement.clientHeight)

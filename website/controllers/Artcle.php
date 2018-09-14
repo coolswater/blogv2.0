@@ -91,15 +91,23 @@ class Artcle extends MY_controller {
     
     //发表文章
     public function publishArtcle() {
-        
         if ($_POST) {
-            var_dump($_POST);
-            die;
             $title = getParam($this->input->post('title'), 'string');
             $summary = getParam($this->input->post('summary'), 'string');
             $type = getParam($this->input->post('type'), 'int');
+            $cid = getParam($this->input->post('category'), 'int');
+            $status = getParam($this->input->post('status'), 'int', 1);
             $content = getParam($this->input->post('content'), 'html');
             $thumb = getParam($this->input->post('thumb'), 'string');
+            $user_id = $this->userInfo['id'];
+            $create_time = $update_time = $publish_time = date('Y-m-d H:i:s');
+            $data = compact('cid', 'title', 'summary', 'type', 'thumb', 'content', 'status', 'user_id', 'create_time', 'update_time', 'publish_time');
+            $result = $this->artcle->addArtcle($data);
+            if ($result) {
+                PJsonMsg(REQUEST_SUCCESS, lang('publish_success'));
+            } else {
+                PJsonMsg(REQUEST_ERROR, lang('publish_error'));
+            }
         } else {
             $categoryList = $this->category->getAllCategory();
             $data = compact('categoryList');
@@ -236,38 +244,36 @@ class Artcle extends MY_controller {
     //上传图片
     public function uploadThumb() {
         if (isset($_FILES['thumb']) && !empty($_FILES['thumb'])) {
-            $typeThumb = $_FILES['thumb']['type'];
-            $tmpThumb = $_FILES['thumb']['tmp_name'];
-            $sizeThumb = $_FILES['thumb']['size'];
+            $thumb = $_FILES['thumb'];
             //验证图片格式
-            $imgType = array(
-                'image/jpeg',
-                'image/jpg',
-                'image/png',
-                'image/gif',
-            );
-            foreach ($typeThumb as $key => $type) {
-                if (!in_array($type, $imgType)) {
-                    PJsonMsg(REQUEST_ERROR, '第' . $key + 1 . '张图片' . lang('thumbType_error'));
-                }
+            switch ($thumb['type']) {
+                case 'image/jpeg':
+                case 'image/jpg':
+                    $ext = '.jpg';
+                    break;
+                case 'image/png':
+                    $ext = '.png';
+                    break;
+                case 'image/gif':
+                    $ext = '.gif';
+                    break;
+                default:
+                    PJsonMsg(REQUEST_ERROR, lang('thumbType_error'));
+                    break;
             }
-            foreach ($sizeThumb as $key => $size) {
-                if ($size > 1024 * 1024 * 2) {
-                    PJsonMsg(REQUEST_ERROR, '第' . $key + 1 . '张图片' . lang('thumbSize_error'));
-                }
+            if ($thumb['size'] > 1024 * 1024) {
+                PJsonMsg(REQUEST_ERROR, lang('thumbSize_error'));
             }
             if (!is_dir(UPLOAD_FILE_PATH)) {
                 mkdir(UPLOAD_FILE_PATH, 0755);
             }
-            foreach ($tmpThumb as $key => $tmp) {
-                $thumb = UPLOAD_FILE_PATH . time() . random(6) . '.jpg';
-                $result = move_uploaded_file($tmp, $thumb);
-                if ($result) {
-                    $newThumb = substr($thumb, 1);
-                    PJsonMsg(REQUEST_SUCCESS, lang('upload_success'), $newThumb);
-                } else {
-                    PJsonMsg(REQUEST_ERROR, lang('upload_error'));
-                }
+            $newThumb = UPLOAD_FILE_PATH . time() . random(6) . $ext;
+            $result = move_uploaded_file($thumb['tmp_name'], $newThumb);
+            if ($result) {
+                $newThumb = substr($newThumb, 1);
+                PJsonMsg(REQUEST_SUCCESS, lang('upload_success'), $newThumb);
+            } else {
+                PJsonMsg(REQUEST_ERROR, lang('upload_error'));
             }
         } else {
             PJsonMsg(REQUEST_ERROR, lang('request_invalid'));
@@ -275,8 +281,34 @@ class Artcle extends MY_controller {
         
     }
     
-    public function deleteThumb() {
-        var_dump($_POST);
-        die;
+    //获取我的文章列表
+    public function getMyArtcleList() {
+        $pageNo = getParam($this->input->post('pageNo'), 'int', 1);
+        $pageSize = getParam($this->input->post('pageSize'), 'int', 8);
+        $status = getParam($this->input->post('type'), 'int');
+        $user_id = $this->userInfo['id'];
+        $data = compact('status', 'user_id', 'pageNo', 'pageSize');
+        $result = $this->artcle->getMyArtcleList($data);
+        if ($result) {
+            foreach ($result['list'] as &$artcle) {
+                $artcle['url'] = '/artcle/' . $artcle['id'] . parent::$urlSuffix;
+                $artcle['publishTime'] = formatTime(strtotime($artcle['publishTime']), 'Y.m.d');
+            }
+            PJsonMsg(REQUEST_SUCCESS, lang('request_success'), $result);
+        } else {
+            PJsonMsg(REQUEST_ERROR, lang('request_error'));
+        }
+    }
+    
+    //删除文章
+    public function deleteArtcle() {
+        $id = getParam($this->input->post('id'), 'int');
+        $user_id = $this->userInfo['id'];
+        $result = $this->artcle->deleteArtcleById(compact('id', 'user_id'));
+        if ($result) {
+            PJsonMsg(REQUEST_SUCCESS, lang('delete_success'));
+        } else {
+            PJsonMsg(REQUEST_ERROR, lang('delete_error'));
+        }
     }
 }

@@ -12,7 +12,8 @@
 <div class="main mt-0 font-85">
     <h6 class="mb-2 bg-white p-3 border-bottom-0 font-weight-bold">发表文章</h6>
     <div class="bg-white p-3">
-        <form id="publishArtcle" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div class="errorInfo"></div>
+        <form id="publishArtcle" enctype="multipart/form-data">
             <!--文章栏目-->
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -27,7 +28,6 @@
             </div>
             <!--文章标题-->
             <div class="input-group mb-3">
-                <div class="errorInfo"></div>
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">标题</span>
                 </div>
@@ -37,7 +37,6 @@
             </div>
             <!--文章摘要-->
             <div class="input-group mb-3">
-                <div class="errorInfo"></div>
                 <div class="input-group-prepend">
                     <span class="input-group-text">摘要</span>
                 </div>
@@ -64,9 +63,8 @@
             </div>
             <!--缩率图-->
             <div class="input-group mb-3">
-                <div class="errorInfo"></div>
-                <input type="file" class="custom-file-input" name="thumb" id="thumb" multiple required>
-                <div class="thumbList"></div>
+                <input type="file" class="custom-file-input" name="thumb" id="thumb" multiple>
+                <input type="hidden" name="thumbs" id="thumbs"/>
             </div>
             <!--文章内容-->
             <textarea type="text" name="summernote" id="summernote" required></textarea>
@@ -121,7 +119,7 @@
                 formData.append("picture", file[0]);
                 $.ajax({
                     type: 'post',
-                    url: '/',
+                    url: '/uploadThumb',
                     cache: false,
                     data: formData,
                     processData: false,
@@ -141,7 +139,7 @@
     $('#thumb').fileinput({
         language: 'zh',                             //设置语言
         uploadUrl: "/uploadThumb",                  //上传的地址
-        // deleteUrl: "/deleteThumb",                  //删除图片地址
+        // deleteUrl: "/deleteThumb",               //删除图片地址
         allowedFileExtensions: ['jpg', 'png'],      //接收的文件后缀
         uploadAsync: true,                          //默认异步上传
         showUpload: true,                           //是否显示上传按钮
@@ -153,113 +151,73 @@
         dropZoneEnabled: true,                      //是否显示拖拽区域
         maxFileSize: 1024,                          //单位为kb，如果为0表示不限制文件大小
         minFileCount: 1,
-        maxFileCount: 3,                            //表示允许同时上传的最大文件个数
+        maxFileCount: 1,                            //表示允许同时上传的最大文件个数
         enctype: 'multipart/form-data',
         validateInitialCount: true,
         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
     }).on("fileuploaded", function (event, data, previewId, index) {
         if (data.response.code == 1) {
-            var thumbList = '<input type="hidden" name="thumbs" value="' + data.response.data + '" />';
-            $('.thumbList').append(thumbList);
+            $('#thumbs').val(data.response.data);
         }
     });
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
     //提交表单验证
-    // $("#publishArtcle").validate({
-    //     // ignore: "",
-    //     // errorLabelContainer: '.errorInfo',
-    //     // rules: {
-    //     //     category: {
-    //     //         required: true
-    //     //     },
-    //     //     title: {
-    //     //         required: true,
-    //     //     },
-    //     //     summary: {
-    //     //         required: true,
-    //     //         checkPwd: true
-    //     //     },
-    //     //     thumb: {
-    //     //         required: true
-    //     //     },
-    //     //     summernote: {
-    //     //         required: true,
-    //     //     },
-    //     // },
-    //     // messages: {
-    //     //     title: {
-    //     //         required: "*标题不能为空"
-    //     //     },
-    //     //     summary: {
-    //     //         required: "*摘要不能为空"
-    //     //     },
-    //     //     thumb: {
-    //     //         required: "*缩率图不能为空"
-    //     //     },
-    //     //     summernote: {
-    //     //         required: "*内容不能为空"
-    //     //     }
-    //     // },
-    //     submitHandler: function (form) {
-    //         'use strict';
-    //         window.addEventListener('load', function () {
-    //             // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    //             var forms = document.getElementsByClassName('needs-validation');
-    //             // Loop over them and prevent submission
-    //             var validation = Array.prototype.filter.call(forms, function (form) {
-    //                 form.addEventListener('submit', function (event) {
-    //                     if (form.checkValidity() === false) {
-    //                         event.preventDefault();
-    //                         event.stopPropagation();
-    //                     }
-    //                     form.classList.add('was-validated');
-    //                 }, false);
-    //             });
-    //         }, false);
-    //         // var thumbs = [];
-    //         // $('input[name="thumbs"]').each(function () {
-    //         //     var thumb = $(this).val();
-    //         //     console.log(thumb);
-    //         //     thumbs.push();
-    //         // })
-    //         // console.log(thumbs);
-    //         // var _data = {
-    //         //     category: $('#category').val(),
-    //         //     title: $('#title').val(),
-    //         //     summary: $('#summary').val(),
-    //         //     type: $('#type').val(),
-    //         //     thumb: $('#thumb').val(),
-    //         //     content: $("#summernote").summernote("code"),
-    //         // };
-    //         // $.ajax({
-    //         //     url: '/publishArtcle',
-    //         //     type: 'post',
-    //         //     data: _data,
-    //         //     dataType: 'json',
-    //         //     succsess: function (data) {
-    //         //         console.log(data);
-    //         //     }
-    //         //
-    //         // })
-    //     }
-    // });
+    $("#publishArtcle").validate({
+        ignore: '',
+        errorLabelContainer: '.errorInfo',
+        wrapper: 'li',
+        rules: {
+            category: {
+                required: true
+            },
+            title: {
+                required: true,
+            },
+            summary: {
+                required: true,
+                rangelength: [5, 150]
+            },
+            thumbs: {
+                required: true
+            },
+            summernote: {
+                required: true,
+            },
+        },
+        messages: {
+            title: {
+                required: "*标题不能为空!"
+            },
+            summary: {
+                required: "*摘要不能为空"
+            },
+            thumbs: {
+                required: '*请上传缩略图'
+            },
+            summernote: {
+                required: "*内容不能为空"
+            }
+        },
+        submitHandler: function (form) {
+            var _data = {
+                category: $('#category').val(),
+                title: $('#title').val(),
+                summary: $('#summary').val(),
+                type: $("input[name='type']:checked").val(),
+                thumb: $('#thumbs').val(),
+                content: $("#summernote").summernote("code"),
+            };
+            $.ajax({
+                url: '/publishArtcle',
+                type: 'post',
+                data: _data,
+                dataType: 'json',
+                success: function (data) {
+                    window.location.replace('/myArtcles');
+                }
+            })
+        }
+    });
 
     function publishCallback(data) {
         console.log(data)

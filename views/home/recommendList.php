@@ -3,7 +3,7 @@
     <?php foreach ($recommendList as $recommend): ?>
         <div class="featured-item">
             <a href="/artcle/<?= $recommend['id'] ?>.html">
-                <img class="w-100 artcle_thumb" src="<?= $recommend['thumb'] ?>">
+                <img class="artcle_thumb w-100 h-100" src="<?= $recommend['thumb'] ?>">
             </a>
             <h5>
                 <a href="/artcle/<?= $recommend['id'] ?>.html"><?= $recommend['title'] ?></a>
