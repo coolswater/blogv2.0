@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/icon.css" rel="stylesheet">
-    <link href="/assets/css/summernote-bs4.css" rel="stylesheet">
     <link href="/assets/css/fileinput.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/summernote-bs4.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 <div class="main mt-0 font-85">
@@ -93,16 +93,15 @@
     //在线编辑器
     $('#summernote').summernote({
         toolbar: [
-            ['style', ['style']],
-            ['fontname', ['fontname']],
-            ['fontsize', ['fontsize']], //字体大小
-            ['font', ['bold', 'underline', 'clear']],
-            ['height', ['height']], //行高
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['fontname', 'strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
             ['table', ['table']],
             ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview']]
+            ['view', ['fullscreen', 'codeview']],
         ],
         lang: 'zh-CN',
         placeholder: '内容',
