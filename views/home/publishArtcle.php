@@ -116,7 +116,7 @@
                 //将图片放入Formdate对象中
                 var formData = new FormData();
                 //‘picture’为后台获取的文件名，file[0]是要上传的文件
-                formData.append("picture", file[0]);
+                formData.append("thumb", file[0]);
                 $.ajax({
                     type: 'post',
                     url: '/uploadThumb',
@@ -124,9 +124,9 @@
                     data: formData,
                     processData: false,
                     contentType: false,
-                    dataType: 'text', //请求成功后，后台返回图片访问地址字符串，故此以text格式获取，而不是json格式
+                    dataType: 'json', //请求成功后，后台返回图片访问地址字符串，故此以text格式获取，而不是json格式
                     success: function (picture) {
-                        $('#summernote').summernote('insertImage', picture);
+                        $('#summernote').summernote('insertImage', picture.data);
                     },
                     error: function () {
                         alert("上传失败");
@@ -143,7 +143,7 @@
         allowedFileExtensions: ['jpg', 'png'],      //接收的文件后缀
         uploadAsync: true,                          //默认异步上传
         showUpload: true,                           //是否显示上传按钮
-        showCaption: true,                         //是否显示被选文件的简介
+        showCaption: false,                         //是否显示被选文件的简介
         showBrowse: true,                           //是否显示浏览按钮
         showPreview: true,                          //是否显示预览
         showClose: false,                           //是否显示标题
