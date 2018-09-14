@@ -77,7 +77,7 @@ class MY_controller extends CI_Controller {
      */
     protected function preventBrush($timestamp = 60) {
         if (isset($_SESSION['preventBrush']) && $_SESSION['preventBrush'] + $timestamp > time()) {
-            PJsonMsg(REQUEST_ERROR, lang('request_invalid'));
+            PJsonMsg(REQUEST_ERROR, lang('operation_frequently'));
         } else {
             $_SESSION['preventBrush'] = time();
         }
