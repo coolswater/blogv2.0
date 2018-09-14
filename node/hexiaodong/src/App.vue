@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <Profile/>
   </div>
 </template>
 
 <script>
+import Profile from './pages/Profile'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Profile
+  }
 }
 </script>
