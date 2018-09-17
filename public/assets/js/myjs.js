@@ -81,6 +81,7 @@ function modifyLoginStatus(data) {
         html += '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"';
         html += 'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
         html += '<img src="' + data.data.portrait + '"/>';
+        html += '<span>' + data.data.nickName + '</span>';
         html += '</a>';
         html += '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
         html += '<a class="dropdown-item" href="/profile">个人主页</a>';

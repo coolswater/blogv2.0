@@ -26,7 +26,7 @@ class M_user extends M_comm {
     
     //根据用户名查询用户信息
     public function getUserByUsername($username) {
-        $cols = 'id,username,password,portrait';
+        $cols = 'id,username,password,portrait,nick_name as nickName';
         $where = array(
             'status'   => 0,
             'username' => $username,
