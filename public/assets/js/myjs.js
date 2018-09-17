@@ -425,7 +425,8 @@ var getArtcleList = function (cid, page) {
 };
 
 //获取我的文章列表
-function getMyArtcleList(type, page = 1) {
+function getMyArtcleList(type = 1, page = 1) {
+    console.log(type);
     var url = '/getMyArtcleList';
     var param = {
         pageNo: page,
@@ -446,7 +447,7 @@ function getMyArtcleList(type, page = 1) {
                 html += '<div class="media-footer">';
                 html += '<span class="author">阅读：' + lists[i].hits + '</span>';
                 html += '<span class="publish_time">发布：' + lists[i].publishTime + '</span>';
-                html += '<a href="#" class="badge badge-primary mr-1">编辑</a>';
+                html += '<a href="/modifyArtcle?id=' + lists[i].id + '" class="badge badge-primary mr-1">编辑</a>';
                 if (lists[i].status == 1) {
                     html += '<a href="javascript:deleteArtcle(' + lists[i].id + ')" class="badge badge-danger mr-1">删除</a>';
                     html += '<a href="#" class="badge badge-info mr-1">下线</a>';
@@ -500,3 +501,81 @@ function commentCallback(data, artcleId) {
         }, 2000);
     }
 }
+
+//初始化在线编辑器
+function initSummernote() {
+    $('#summernote').summernote({
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['fontname', 'strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview']],
+        ],
+        lang: 'zh-CN',
+        placeholder: '内容',
+        height: 250,                 //编辑器高度
+        disableDragAndDrop: true,    //禁止拖放,
+        focus: true,
+        airMode: false,
+        shortcuts: true,
+        callbacks: {
+            onImageUpload: function (file) {  //图片默认以二进制的形式存储到数据库，调用此方法将请求后台将图片存储到服务器，返回图片请求地址到前端
+                //将图片放入Formdate对象中
+                var formData = new FormData();
+                //‘picture’为后台获取的文件名，file[0]是要上传的文件
+                formData.append("thumb", file[0]);
+                $.ajax({
+                    type: 'post',
+                    url: '/uploadThumb',
+                    cache: false,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json', //请求成功后，后台返回图片访问地址字符串，故此以text格式获取，而不是json格式
+                    success: function (picture) {
+                        $('#summernote').summernote('insertImage', picture.data);
+                    },
+                    error: function () {
+                        alert("上传失败");
+                    }
+                });
+            }
+        }
+    });
+}
+
+//初始化图片上传
+function initFileinput() {
+    //图片上传
+    $('#thumb').fileinput({
+        language: 'zh',                             //设置语言
+        uploadUrl: "/uploadThumb",                  //上传的地址
+        // deleteUrl: "/deleteThumb",               //删除图片地址
+        allowedFileExtensions: ['jpg', 'png'],      //接收的文件后缀
+        uploadAsync: true,                          //默认异步上传
+        showUpload: true,                           //是否显示上传按钮
+        showCaption: false,                         //是否显示被选文件的简介
+        showBrowse: true,                           //是否显示浏览按钮
+        showPreview: true,                          //是否显示预览
+        showClose: false,                           //是否显示标题
+        browseClass: "btn btn-danger",              //按钮样式
+        dropZoneEnabled: true,                      //是否显示拖拽区域
+        maxFileSize: 1024,                          //单位为kb，如果为0表示不限制文件大小
+        minFileCount: 1,
+        maxFileCount: 1,                            //表示允许同时上传的最大文件个数
+        enctype: 'multipart/form-data',
+        validateInitialCount: true,
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+    }).on("fileuploaded", function (event, data, previewId, index) {
+        if (data.response.code == 1) {
+            $('#thumbs').val(data.response.data);
+        }
+    });
+}
+

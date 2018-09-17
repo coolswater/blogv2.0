@@ -681,6 +681,10 @@ a, img {
     width: 80px;
 }
 
+.nav-tabs .nav-item {
+    cursor: pointer;
+}
+
 /*用户中心结束*/
 
 @media (min-width: 1200px) {

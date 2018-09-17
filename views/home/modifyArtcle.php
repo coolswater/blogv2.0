@@ -10,7 +10,7 @@
 </head>
 <body class="bg-light">
 <div class="main mt-0 font-85">
-    <h6 class="mb-2 bg-white p-3 border-bottom-0 font-weight-bold">发表文章</h6>
+    <h6 class="mb-2 bg-white p-3 border-bottom-0 font-weight-bold">编辑文章</h6>
     <div class="bg-white p-3">
         <div class="errorInfo"></div>
         <form id="publishArtcle" enctype="multipart/form-data">
@@ -20,9 +20,9 @@
                     <label class="input-group-text" for="inputGroupSelect01">栏目</label>
                 </div>
                 <select class="custom-select" id="category" name="category">
-                    <option selected>==========请选择文章栏目==========</option>
                     <?php foreach ($categoryList as $cate): ?>
-                        <option value="<?= $cate['cid'] ?>"><?= $cate['category'] ?></option>
+                        <option <?php if ($artcle['aid'] === $cate['cid']) echo "selected"; ?>
+                                value="<?= $cate['cid'] ?>"><?= $cate['category'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -31,7 +31,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">标题</span>
                 </div>
-                <input type="text" class="form-control" id="title" name="title" aria-label="Default"
+                <input type="text" class="form-control" id="title" name="title" value="<?= $artcle['title'] ?>"
+                       aria-label="Default"
                        placeholder="标题：8-50个字"
                        aria-describedby="inputGroup-sizing-default" required>
             </div>
@@ -41,7 +42,7 @@
                     <span class="input-group-text">摘要</span>
                 </div>
                 <textarea class="form-control" id="summary" name="summary" rows="2" aria-label="With textarea"
-                          placeholder="摘要：150个字" required></textarea>
+                          placeholder="摘要：150个字" required><?= $artcle['summary'] ?></textarea>
             </div>
             <!--文章类别-->
             <div class="input-group mb-3">
@@ -49,27 +50,31 @@
                     <span class="input-group-text" id="inputGroup-sizing-default">类别</span>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" checked name="type" value="0" id="inlineRadio1">
+                    <input class="form-check-input" type="radio" name="type"
+                           value="0" <?php if ((int)$artcle['type'] === 0) echo "checked"; ?> id="inlineRadio1">
                     <label class="form-check-label" for="inlineRadio1">默认</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type" value="1" id="inlineRadio2">
+                    <input class="form-check-input" type="radio" name="type"
+                           value="1" <?php if ((int)$artcle['type'] === 1) echo "checked"; ?> id="inlineRadio2">
                     <label class="form-check-label" for="inlineRadio2">精选</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type" value="2" id="inlineRadio3">
+                    <input class="form-check-input" type="radio" name="type"
+                           value="2" <?php if ((int)$artcle['type'] === 2) echo "checked"; ?> id="inlineRadio3">
                     <label class="form-check-label" for="inlineRadio3">专题</label>
                 </div>
             </div>
             <!--缩率图-->
             <div class="input-group mb-3">
                 <input type="file" class="custom-file-input" name="thumb" id="thumb" multiple>
-                <input type="hidden" name="thumbs" id="thumbs"/>
+                <input type="hidden" name="thumbs" id="thumbs" value="<?= $artcle['thumb'] ?>"/>
             </div>
             <!--文章内容-->
             <textarea type="text" name="summernote" id="summernote" required></textarea>
 
             <div class="mt-3">
+                <input type="hidden" name="id" id="id" value="<?= $artcle['aid'] ?>"/>
                 <button type="submit" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">保存</button>
                 <button type="submit" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">发表</button>
             </div>
@@ -91,9 +96,13 @@
 <script src="/assets/js/myjs.js"></script>
 <script>
     $(document).ready(function () {
+        var html = '<?=$artcle['content']?>';
         initSummernote();   //初始化在线编辑器
         initFileinput();    //初始化图片上传
+        $('#summernote').summernote('code', html);
     })
+
+    //发布文章
     $("#publishArtcle").validate({
         ignore: '',
         errorLabelContainer: '.errorInfo',
@@ -132,16 +141,16 @@
         },
         submitHandler: function (form) {
             var _data = {
-                category: $('#category').val(),
+                id: $('#id').val(),
                 title: $('#title').val(),
-                summary: $('#summary').val(),
-                type: $("input[name='type']:checked").val(),
                 thumb: $('#thumbs').val(),
+                summary: $('#summary').val(),
+                category: $('#category').val(),
+                type: $("input[name='type']:checked").val(),
                 content: $("#summernote").summernote("code"),
-                status: status
             };
             $.ajax({
-                url: '/publishArtcle',
+                url: '/modifyArtcle',
                 type: 'post',
                 data: _data,
                 dataType: 'json',
@@ -151,6 +160,7 @@
             })
         }
     });
+
 </script>
 </body>
 </html>

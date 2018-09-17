@@ -10,17 +10,20 @@
 <div class="mt-0">
     <ul class="nav nav-tabs bg-white pt-3 pl-3" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" data-target="1" role="tab"
+            <a class="nav-link active" id="home-tab" data-toggle="tab" onclick="getMyArtcleList(1)"
+               data-target="1" role="tab"
                aria-controls="home"
                aria-selected="true">已发布</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#" data-target="2" role="tab"
+            <a class="nav-link" id="profile-tab" data-toggle="tab" onclick="getMyArtcleList(2)" data-target="2"
+               role="tab"
                aria-controls="profile"
                aria-selected="false">待发布</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#" data-target="3" role="tab"
+            <a class="nav-link" id="contact-tab" data-toggle="tab" onclick="getMyArtcleList(3)" data-target="3"
+               role="tab"
                aria-controls="contact"
                aria-selected="false">已删除</a>
         </li>
@@ -42,13 +45,9 @@
 <script src="/assets/js/bootstrap-paginator.js"></script>
 <script src="/assets/js/myjs.js"></script>
 <script>
-    getMyArtcleList(1);
-    var type = 0;
-    $('#myTab a').on('click', function (e) {
-        $('#artcleListPagination').html('');
-        type = $(this).attr('data-target');
-        getMyArtcleList(type);
-    })
+    $(document).ready(function () {
+        getMyArtcleList();
+    });
 
     //删除文章
     function deleteArtcle(id) {
@@ -56,6 +55,11 @@
             id: id,
         }
         ajaxReuest('/deleteArtcle', param, getMyArtcleList, type);
+    }
+    
+    //编辑状态
+    function modifyStatus(id, status) {
+
     }
 </script>
 </body>

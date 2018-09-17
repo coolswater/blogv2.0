@@ -14,16 +14,32 @@ class M_artcle extends M_comm {
         $this->_table = 't_artcles';
     }
     
-    //添加文章
+    /**
+     * 添加文章
+     *
+     * @param   array $data 数据
+     *
+     * @return mixed
+     */
     public function addArtcle($data) {
-        $result = $this->add($data);
-        
-        return $result;
+        return parent::add($data);
+    }
+    
+    /**
+     * 更新文章
+     *
+     * @param array $data   更新数据
+     * @param       $where  更新条件
+     *
+     * @return mixed
+     */
+    public function modifyArtcle($data, $where) {
+        return parent::modify($data, $where);
     }
     
     //根据id获取文章
     public function getArtcleById($id) {
-        $cols = 't_artcles.id as aid,title,nick_name as nickName,publish_time as publishTime,hits,summary,content ';
+        $cols = 't_artcles.id as aid,title,nick_name as nickName,publish_time as publishTime,hits,summary,content,type,thumb';
         $where = array(
             't_artcles.status' => 1,
             't_artcles.id'     => $id,
@@ -220,8 +236,6 @@ class M_artcle extends M_comm {
     
     //根据文章id删除文章
     public function deleteArtcleById($where) {
-        $result = $this->deleteData($where);
-        
-        return $result;
+        return parent::deleteData($where);
     }
 }

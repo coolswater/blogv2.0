@@ -115,6 +115,59 @@ class Artcle extends MY_controller {
         }
     }
     
+    //删除文章
+    public function deleteArtcle() {
+        $id = getParam($this->input->post('id'), 'int');
+        $user_id = $this->userInfo['id'];
+        $result = $this->artcle->deleteArtcleById(compact('id', 'user_id'));
+        if ($result) {
+            PJsonMsg(REQUEST_SUCCESS, lang('delete_success'));
+        } else {
+            PJsonMsg(REQUEST_ERROR, lang('delete_error'));
+        }
+    }
+    
+    //修改文章
+    public function modifyArtcle() {
+        if ($_POST) {
+            $id = getParam($this->input->post('id'), 'int');
+            $title = getParam($this->input->post('title'), 'string');
+            $summary = getParam($this->input->post('summary'), 'string');
+            $type = getParam($this->input->post('type'), 'int');
+            $cid = getParam($this->input->post('category'), 'int');
+            $status = getParam($this->input->post('status'), 'int', 1);
+            $content = getParam($this->input->post('content'), 'html');
+            $thumb = getParam($this->input->post('thumb'), 'string');
+            $update_time = date('Y-m-d H:i:s');
+            $where = compact('id');
+            $data = compact('cid', 'title', 'summary', 'type', 'thumb', 'content', 'status', 'update_time');
+            $result = $this->artcle->modifyArtcle($data, $where);
+            if ($result) {
+                PJsonMsg(REQUEST_SUCCESS, lang('update_success'));
+            } else {
+                PJsonMsg(REQUEST_ERROR, lang('update_error'));
+            }
+        } else {
+            //查询文章信息
+            $id = getParam($this->input->get('id'), 'int');
+            $artcle = $this->getArtcleById($id);
+            if (!$artcle) {
+                PJsonMsg(REQUEST_ERROR, lang('request_invalid'));
+            }
+            $categoryList = $this->category->getAllCategory();
+            $data = compact('categoryList', 'artcle');
+            $this->load->view('home/modifyArtcle', $data);
+        }
+    }
+    
+    //文章下线
+    public function modifyStatus() {
+        $id = getParam($this->input->post('aid'), 'int');
+        
+        $status = getParam($this->input->post('status'), 'int');
+        
+        $result = $this->artcle->modifyStatus();
+    }
     
     //获取推荐文章
     private function getRecommendList($pageSize = 5) {
@@ -297,18 +350,6 @@ class Artcle extends MY_controller {
             PJsonMsg(REQUEST_SUCCESS, lang('request_success'), $result);
         } else {
             PJsonMsg(REQUEST_ERROR, lang('request_error'));
-        }
-    }
-    
-    //删除文章
-    public function deleteArtcle() {
-        $id = getParam($this->input->post('id'), 'int');
-        $user_id = $this->userInfo['id'];
-        $result = $this->artcle->deleteArtcleById(compact('id', 'user_id'));
-        if ($result) {
-            PJsonMsg(REQUEST_SUCCESS, lang('delete_success'));
-        } else {
-            PJsonMsg(REQUEST_ERROR, lang('delete_error'));
         }
     }
 }

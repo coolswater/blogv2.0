@@ -39,5 +39,7 @@ $lang = array(
     'publish_error'           => '文章发布失败！',
     'delete_success'          => '删除成功！',
     'delete_error'            => '删除失败，请稍后再试！',
+    'update_success'          => '更新成功！',
+    'update_error'            => '更新失败，请稍后再试！',
     'operation_frequently'    => '操作过于频繁！',
 );
