@@ -119,7 +119,11 @@ class Artcle extends MY_controller {
     public function deleteArtcle() {
         $id = getParam($this->input->post('id'), 'int');
         $user_id = $this->userInfo['id'];
-        $result = $this->artcle->deleteArtcleById(compact('id', 'user_id'));
+        $data = array(
+            'status' => 3,
+        );
+        $where = compact('id', 'user_id');
+        $result = $this->artcle->modifyArtcle($data, $where);
         if ($result) {
             PJsonMsg(REQUEST_SUCCESS, lang('delete_success'));
         } else {
@@ -160,13 +164,29 @@ class Artcle extends MY_controller {
         }
     }
     
-    //文章下线
+    //切换状态
     public function modifyStatus() {
-        $id = getParam($this->input->post('aid'), 'int');
-        
+        $id = getParam($this->input->post('id'), 'int');
         $status = getParam($this->input->post('status'), 'int');
-        
-        $result = $this->artcle->modifyStatus();
+        $user_id = $this->userInfo['id'];
+        //查询当前文章是否属于当前用户
+        $where = compact('id', 'user_id');
+        $artcle = $this->artcle->getOneArtcle($where);
+        if (empty($artcle)) {
+            PJsonMsg(REQUEST_ERROR, lang('request_invalid'));
+        }
+        $publish_time = $update_time = date('Y-m-d H:i:s');
+        if ($status === 1) {
+            $data = compact('status', 'update_time', 'publish_time');
+        } else {
+            $data = compact('status', 'update_time');
+        }
+        $result = $this->artcle->modifyArtcle($data, $where);
+        if ($result) {
+            PJsonMsg(REQUEST_SUCCESS, lang('operation_success'));
+        } else {
+            PJsonMsg(REQUEST_ERROR, lang('operation_error'));
+        }
     }
     
     //获取推荐文章
@@ -264,14 +284,20 @@ class Artcle extends MY_controller {
         return $totalInfo;
     }
     
-    //根据id获取文章信息
+    /**
+     * 根据id获取文章信息
+     *
+     * @param int $id 文章id
+     *
+     * @return mixed
+     */
     private function getArtcleById($id) {
-        $artcleInfo = $this->artcle->getArtcleById($id);
-        if ($artcleInfo) {
-            $artcleInfo['publishTime'] = date('Y.m.d', strtotime($artcleInfo['publishTime']));
+        $artcle = $this->artcle->getArtcleById($id);
+        if ($artcle) {
+            $artcle['publishTime'] = date('Y.m.d', strtotime($artcle['publishTime']));
         }
         
-        return $artcleInfo;
+        return $artcle;
     }
     
     //获取文章标签

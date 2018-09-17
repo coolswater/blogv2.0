@@ -39,10 +39,9 @@ class M_artcle extends M_comm {
     
     //根据id获取文章
     public function getArtcleById($id) {
-        $cols = 't_artcles.id as aid,title,nick_name as nickName,publish_time as publishTime,hits,summary,content,type,thumb';
+        $cols = 't_artcles.id as aid,title,user_id,nick_name as nickName,publish_time as publishTime,hits,summary,content,type,thumb';
         $where = array(
-            't_artcles.status' => 1,
-            't_artcles.id'     => $id,
+            't_artcles.id' => $id,
         );
         $artcelInfo = $this->db->select($cols)
             ->from($this->_table)
@@ -54,7 +53,7 @@ class M_artcle extends M_comm {
         return $artcelInfo;
     }
     
-    //获取5条推荐文章
+    //获取5条推荐文章（已发表）
     public function getRecommendList($pageSize = 5) {
         $cols = 'id,title,thumb,summary';
         $where = array(
@@ -66,7 +65,7 @@ class M_artcle extends M_comm {
         return $result;
     }
     
-    //获取最新文章
+    //获取最新文章（已发表）
     public function getLastArtcleList($param) {
         $limit = $param['pageSize'];
         $offset = ($param['pageNo'] - 1) * $param['pageSize'];
@@ -87,7 +86,7 @@ class M_artcle extends M_comm {
         return $result;
     }
     
-    //获取文章列表
+    //获取文章列表(已发布)
     public function getArtcleList($param) {
         $cid = $param['cid'];
         $limit = $param['pageSize'];
@@ -114,7 +113,7 @@ class M_artcle extends M_comm {
         return compact('pageNo', 'totalPage', 'list');
     }
     
-    //获取我的文章列表
+    //获取我的文章列表（已发表）
     public function getMyArtcleList($param) {
         $status = $param['status'];
         $limit = $param['pageSize'];
@@ -137,7 +136,7 @@ class M_artcle extends M_comm {
         return compact('pageNo', 'totalPage', 'list');
     }
     
-    //获取专题文章
+    //获取专题文章（已发表）
     public function getSubjectList() {
         $cols = 'id,title,summary';
         $where = array(
@@ -149,7 +148,7 @@ class M_artcle extends M_comm {
         return $result;
     }
     
-    //获取热门文章
+    //获取热门文章（已发表）
     public function getHotArtcleList() {
         $cols = 'id,title,thumb,hits';
         $where = array(
@@ -170,7 +169,7 @@ class M_artcle extends M_comm {
         return $result;
     }
     
-    //获取统计信息
+    //获取统计信息（已发表）
     public function getTotalInfo($param = NULL) {
         $cols = 'max(publish_time) as lastTime,count(1) as totalArtcle,count(hits) as totalHits';
         $where = array(
@@ -216,7 +215,7 @@ class M_artcle extends M_comm {
         return $result;
     }
     
-    //随机获取
+    //随机获取（已发表）
     public function getRandArtcle() {
         $cols = 't_artcles.id,title,thumb,nick_name as nickName,publish_time as publishTime';
         $where = array(
@@ -234,8 +233,8 @@ class M_artcle extends M_comm {
         return $result;
     }
     
-    //根据文章id删除文章
-    public function deleteArtcleById($where) {
-        return parent::deleteData($where);
+    //多条件查询某篇文章
+    public function getOneArtcle($where) {
+        return parent::getOne('*', $where);
     }
 }

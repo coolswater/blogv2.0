@@ -449,13 +449,13 @@ function getMyArtcleList(type = 1, page = 1) {
                 html += '<span class="publish_time">发布：' + lists[i].publishTime + '</span>';
                 html += '<a href="/modifyArtcle?id=' + lists[i].id + '" class="badge badge-primary mr-1">编辑</a>';
                 if (lists[i].status == 1) {
-                    html += '<a href="javascript:deleteArtcle(' + lists[i].id + ')" class="badge badge-danger mr-1">删除</a>';
-                    html += '<a href="#" class="badge badge-info mr-1">下线</a>';
+                    html += '<a href="javascript:void(0)" onclick="modifyStatus(' + lists[i].id + ',3)" class="badge badge-danger mr-1">删除</a>';
+                    html += '<a href="javascript:void(0)" onclick="modifyStatus(' + lists[i].id + ',2)" class="badge badge-info mr-1">下线</a>';
                 } else if (lists[i].status == 2) {
-                    html += '<a href="javascript:deleteArtcle(' + lists[i].id + ')" class="badge badge-danger mr-1">删除</a>';
-                    html += '<a href="#" class="badge badge-success mr-1">发布</a>';
+                    html += '<a href="javascript:void(0)" onclick="modifyStatus(' + lists[i].id + ',3)" class="badge badge-danger mr-1">删除</a>';
+                    html += '<a href="javascript:void(0)" onclick="modifyStatus(' + lists[i].id + ',1)" class="badge badge-success mr-1">发布</a>';
                 } else {
-                    html += '<a href="#" class="badge badge-danger mr-1">发布</a>';
+                    html += '<a href="javascript:void(0)" onclick="modifyStatus(' + lists[i].id + ',1)" class="badge badge-success mr-1">发布</a>';
                 }
                 html += '</div>';
                 html += '</div>';
@@ -577,5 +577,87 @@ function initFileinput() {
             $('#thumbs').val(data.response.data);
         }
     });
+}
+
+//发布文章
+function modifyArtcle(status) {
+    $("#postForm").validate({
+        ignore: '',
+        errorLabelContainer: '.errorInfo',
+        wrapper: 'li',
+        rules: {
+            category: {
+                required: true
+            },
+            title: {
+                required: true,
+            },
+            summary: {
+                required: true,
+                rangelength: [5, 150]
+            },
+            thumbs: {
+                required: true
+            },
+            summernote: {
+                required: true,
+            },
+        },
+        messages: {
+            title: {
+                required: "*标题不能为空!"
+            },
+            summary: {
+                required: "*摘要不能为空"
+            },
+            thumbs: {
+                required: '*请上传缩略图'
+            },
+            summernote: {
+                required: "*内容不能为空"
+            }
+        },
+    });
+    if ($('#postForm').valid()) {
+        var _data = {
+            status: status,
+            id: $('#id').val(),
+            title: $('#title').val(),
+            thumb: $('#thumbs').val(),
+            summary: $('#summary').val(),
+            category: $('#category').val(),
+            type: $("input[name='type']:checked").val(),
+            content: $("#summernote").summernote("code"),
+        };
+        $.ajax({
+            url: $("#postForm").attr('action'),
+            type: 'post',
+            data: _data,
+            dataType: 'json',
+            success: function (data) {
+                window.location.replace('/myArtcles');
+            }
+        })
+
+    } else {
+        return false;
+    }
+}
+
+//切换状态
+function modifyStatus(id, status) {
+    var _data = {
+        id: id,
+        status: status,
+    };
+    $.ajax({
+        url: '/modifyStatus',
+        type: 'post',
+        data: _data,
+        dataType: 'json',
+        success: function (data) {
+            window.location.replace('/myArtcles');
+        }
+    })
 }
 

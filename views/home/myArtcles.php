@@ -48,19 +48,6 @@
     $(document).ready(function () {
         getMyArtcleList();
     });
-
-    //删除文章
-    function deleteArtcle(id) {
-        var param = {
-            id: id,
-        }
-        ajaxReuest('/deleteArtcle', param, getMyArtcleList, type);
-    }
-    
-    //编辑状态
-    function modifyStatus(id, status) {
-
-    }
 </script>
 </body>
 </html>

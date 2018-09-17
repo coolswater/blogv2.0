@@ -42,4 +42,6 @@ $lang = array(
     'update_success'          => '更新成功！',
     'update_error'            => '更新失败，请稍后再试！',
     'operation_frequently'    => '操作过于频繁！',
+    'operation_success'       => '操作成功！',
+    'operation_error'         => '操作失败，请稍后再试！',
 );

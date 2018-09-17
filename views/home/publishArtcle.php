@@ -13,7 +13,7 @@
     <h6 class="mb-2 bg-white p-3 border-bottom-0 font-weight-bold">发表文章</h6>
     <div class="bg-white p-3">
         <div class="errorInfo"></div>
-        <form id="publishArtcle" enctype="multipart/form-data">
+        <form id="postForm" action="/publishArtcle" enctype="multipart/form-data">
             <!--文章栏目-->
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -70,8 +70,8 @@
             <textarea type="text" name="summernote" id="summernote" required></textarea>
 
             <div class="mt-3">
-                <button type="submit" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">保存</button>
-                <button type="submit" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">发表</button>
+                <button type="button" onclick="modifyArtcle(2)" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">保存</button>
+                <button type="button" onclick="modifyArtcle(1)" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">发表</button>
             </div>
         </form>
     </div>
@@ -94,63 +94,6 @@
         initSummernote();   //初始化在线编辑器
         initFileinput();    //初始化图片上传
     })
-    $("#publishArtcle").validate({
-        ignore: '',
-        errorLabelContainer: '.errorInfo',
-        wrapper: 'li',
-        rules: {
-            category: {
-                required: true
-            },
-            title: {
-                required: true,
-            },
-            summary: {
-                required: true,
-                rangelength: [5, 150]
-            },
-            thumbs: {
-                required: true
-            },
-            summernote: {
-                required: true,
-            },
-        },
-        messages: {
-            title: {
-                required: "*标题不能为空!"
-            },
-            summary: {
-                required: "*摘要不能为空"
-            },
-            thumbs: {
-                required: '*请上传缩略图'
-            },
-            summernote: {
-                required: "*内容不能为空"
-            }
-        },
-        submitHandler: function (form) {
-            var _data = {
-                category: $('#category').val(),
-                title: $('#title').val(),
-                summary: $('#summary').val(),
-                type: $("input[name='type']:checked").val(),
-                thumb: $('#thumbs').val(),
-                content: $("#summernote").summernote("code"),
-                status: status
-            };
-            $.ajax({
-                url: '/publishArtcle',
-                type: 'post',
-                data: _data,
-                dataType: 'json',
-                success: function (data) {
-                    window.location.replace('/myArtcles');
-                }
-            })
-        }
-    });
 </script>
 </body>
 </html>

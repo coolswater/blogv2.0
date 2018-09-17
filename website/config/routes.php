@@ -60,6 +60,7 @@ $route = array(
     'getArtcleList'          => 'Artcle/getArtcleList',           //文章列表
     'deleteArtcle'           => 'Artcle/deleteArtcle',            //删除文章
     'modifyArtcle'           => 'Artcle/modifyArtcle',            //编辑文章
+    'modifyStatus'           => 'Artcle/modifyStatus',            //切换文章状态
     'getMyArtcleList'        => 'Artcle/getMyArtcleList',         //我的文章列表
     'publishArtcle'          => 'Artcle/publishArtcle',           //发表文章
     'uploadThumb'            => 'Artcle/uploadThumb',             //上传图片
