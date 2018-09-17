@@ -37,6 +37,11 @@ class M_artcle extends M_comm {
         return parent::modify($data, $where);
     }
     
+    //删除文章
+    public function deleteArtcle($where) {
+        return parent::deleteData($where);
+    }
+    
     //根据id获取文章
     public function getArtcleById($id) {
         $cols = 't_artcles.id as aid,title,user_id,nick_name as nickName,publish_time as publishTime,hits,summary,content,type,thumb';

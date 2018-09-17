@@ -119,11 +119,8 @@ class Artcle extends MY_controller {
     public function deleteArtcle() {
         $id = getParam($this->input->post('id'), 'int');
         $user_id = $this->userInfo['id'];
-        $data = array(
-            'status' => 3,
-        );
         $where = compact('id', 'user_id');
-        $result = $this->artcle->modifyArtcle($data, $where);
+        $result = $this->artcle->deleteArtcle($where);
         if ($result) {
             PJsonMsg(REQUEST_SUCCESS, lang('delete_success'));
         } else {

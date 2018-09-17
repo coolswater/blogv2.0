@@ -456,6 +456,7 @@ function getMyArtcleList(type = 1, page = 1) {
                     html += '<a href="javascript:void(0)" onclick="modifyStatus(' + lists[i].id + ',1)" class="badge badge-success mr-1">发布</a>';
                 } else {
                     html += '<a href="javascript:void(0)" onclick="modifyStatus(' + lists[i].id + ',1)" class="badge badge-success mr-1">发布</a>';
+                    html += '<a href="javascript:void(0)" onclick="deleteArtcle(' + lists[i].id + ')" class="badge badge-danger mr-1">彻底删除</a>';
                 }
                 html += '</div>';
                 html += '</div>';
@@ -652,6 +653,22 @@ function modifyStatus(id, status) {
     };
     $.ajax({
         url: '/modifyStatus',
+        type: 'post',
+        data: _data,
+        dataType: 'json',
+        success: function (data) {
+            window.location.replace('/myArtcles');
+        }
+    })
+}
+
+//彻底删除
+function deleteArtcle(id) {
+    var _data = {
+        id: id,
+    };
+    $.ajax({
+        url: '/deleteArtcle',
         type: 'post',
         data: _data,
         dataType: 'json',

@@ -25,7 +25,7 @@
             <a class="nav-link" id="contact-tab" data-toggle="tab" onclick="getMyArtcleList(3)" data-target="3"
                role="tab"
                aria-controls="contact"
-               aria-selected="false">已删除</a>
+               aria-selected="false">回收站</a>
         </li>
     </ul>
     <div>
