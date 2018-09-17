@@ -145,6 +145,13 @@ class User extends MY_controller {
         PJsonMsg(REQUEST_SUCCESS, lang('logout_success'));
     }
     
+    //个人设置
+    public function mySetting() {
+        $userId = $this->userInfo['id'];
+        $user = $this->user->getUserById($userId);
+        $this->load->view('home/mysetting', compact('user'));
+    }
+    
     //获取验证码
     public function getVerifyCode() {
         verifyCode(100, 32);

@@ -47,4 +47,15 @@ class M_user extends M_comm {
         
         return $result;
     }
+    
+    //根据用户id查询用户
+    public function getUserById($userId) {
+        $cols = 'id,username,nick_name,portrait,mobile,email';
+        $where = array(
+            'id' => $userId,
+        );
+        $result = $this->getOne($cols, $where);
+        
+        return $result;
+    }
 }

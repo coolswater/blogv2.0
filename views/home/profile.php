@@ -52,7 +52,8 @@
     <!--main_left end-->
     <!--main_right start-->
     <div class="main_right col-md-10 pr-0">
-        <iframe id="myIframe" src="/myPage" name="targetDiv" scrolling="no" frameborder="0" style="width: 100%;"></iframe>
+        <iframe id="myIframe" src="/myPage" name="targetDiv" scrolling="no" frameborder="0"
+                style="width: 100%;height: 100%;"></iframe>
     </div>
 
     <!--main_right end-->
