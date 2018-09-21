@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <?php foreach ($categoryList as $cate): ?>
-                        <?php if (isset($cid) && $cid === $cate['cid']): ?>
+                        <?php if (isset($cid) && $cid === $cate['id']): ?>
                             <li class="nav-item active">
                         <?php else: ?>
                             <li class="nav-item">

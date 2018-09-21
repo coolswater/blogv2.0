@@ -61,6 +61,7 @@ class User extends MY_controller {
                 if (md5(md5($password) . $encrpt) . $encrpt !== $userInfo['password']) {
                     PJsonMsg(REQUEST_ERROR, lang('password_error'));
                 } else {
+                    $userInfo['portrait'] = empty($userInfo['portrait']) ? DEFAULT_HEADER : $userInfo['portrait'];
                     unset($userInfo['password']);
                     $_SESSION['userInfo'] = $userInfo;
                     PJsonMsg(REQUEST_SUCCESS, lang('login_success'), $userInfo);

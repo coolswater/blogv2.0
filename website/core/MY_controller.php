@@ -27,7 +27,7 @@ class MY_controller extends CI_Controller {
     //是否登录
     private function isLogined() {
         if (isset($_SESSION['userInfo'])) {
-            if (!isset($_SESSION['userInfo']['portrait'])) {
+            if (empty($_SESSION['userInfo']['portrait'])) {
                 $_SESSION['userInfo']['portrait'] = DEFAULT_HEADER;
             }
             $this->userInfo = $_SESSION['userInfo'];
@@ -89,7 +89,7 @@ class MY_controller extends CI_Controller {
         $categoryList = $this->category->getCategoryList();
         if ($categoryList) {
             foreach ($categoryList as &$value) {
-                $value['url'] = '/lists/' . $value['cid'] . self::$urlSuffix;
+                $value['url'] = '/lists/' . $value['id'] . self::$urlSuffix;
             }
         }
         
