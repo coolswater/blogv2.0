@@ -62,7 +62,7 @@
                     <div class="sign-in">
                         <button type="button" class="btn btn-secondary btn-sm col-sm-12" data-toggle="modal"
                                 data-target="#login">
-                            <span class="glyphicon glyphicon-user"> </span> Login
+                            <span class="glyphicon glyphicon-user"> </span>登录
                         </button>
                     </div>
                 <?php endif; ?>

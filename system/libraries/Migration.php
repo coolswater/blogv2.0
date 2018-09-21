@@ -214,7 +214,7 @@ class CI_Migration {
 			$this->_error_string = sprintf($this->lang->line('migration_not_found'), $target_version);
 			return FALSE;
 		}
-
+  
 		if ($target_version > $current_version)
 		{
 			$method = 'up';
