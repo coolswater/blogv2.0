@@ -18,7 +18,7 @@ class M_category extends M_comm {
     public function getCategoryByCid($cid) {
         $cols = 'category';
         $where = array(
-            'cid' => $cid,
+            'id' => $cid,
         );
         $result = $this->getOne($cols, $where);
         
@@ -27,22 +27,22 @@ class M_category extends M_comm {
     
     //查询栏目列表
     public function getCategoryList() {
-        $cols = 'cid,category,';
+        $cols = 'id,category,';
         $where = array(
             'status' => 0,
         );
-        $result = $this->getList($cols, $where, 'cid asc', 6);
+        $result = $this->getList($cols, $where, 'id asc', 6);
         
         return $result;
     }
     
     //查询所有栏目
     public function getAllCategory() {
-        $cols = 'cid,category,';
+        $cols = 'id,category,';
         $where = array(
             'status' => 0,
         );
-        $result = $this->getList($cols, $where, 'cid asc');
+        $result = $this->getList($cols, $where, 'id asc');
         
         return $result;
     }

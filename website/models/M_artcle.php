@@ -80,7 +80,7 @@ class M_artcle extends M_comm {
         );
         $result = $this->db->select($cols)
             ->from($this->_table)
-            ->join('t_artcle_categorys', 't_artcle_categorys.cid=t_artcles.cid', 'left')
+            ->join('t_artcle_categorys', 't_artcle_categorys.id=t_artcles.cid', 'left')
             ->join('t_users', 't_artcles.user_id=t_users.id', 'left')
             ->where($where)
             ->limit($limit, $offset)
@@ -105,7 +105,7 @@ class M_artcle extends M_comm {
         }
         $list = $this->db->select($cols)
             ->from($this->_table)
-            ->join('t_artcle_categorys', 't_artcle_categorys.cid=t_artcles.cid', 'left')
+            ->join('t_artcle_categorys', 't_artcle_categorys.id=t_artcles.cid', 'left')
             ->join('t_users', 't_artcles.user_id=t_users.id', 'left')
             ->where($where)
             ->limit($limit, $offset)
@@ -129,7 +129,7 @@ class M_artcle extends M_comm {
         );
         $list = $this->db->select($cols)
             ->from($this->_table)
-            ->join('t_artcle_categorys', 't_artcle_categorys.cid=t_artcles.cid', 'left')
+            ->join('t_artcle_categorys', 't_artcle_categorys.id=t_artcles.cid', 'left')
             ->where($where)
             ->limit($limit, $offset)
             ->order_by('publishTime desc')

@@ -17,6 +17,7 @@ class Migration_Create_tables extends CI_Migration {
                 'type'       => 'VARCHAR',
                 'constraint' => 30,
                 'null'       => FALSE,
+                'unique'     => TRUE,
                 'comment'    => '用户名',
             ),
             'password'        => array(
@@ -35,6 +36,7 @@ class Migration_Create_tables extends CI_Migration {
                 'type'       => 'VARCHAR',
                 'constraint' => 30,
                 'null'       => FALSE,
+                'unique'     => TRUE,
                 'comment'    => '昵称',
             ),
             'portrait'        => array(
@@ -46,12 +48,14 @@ class Migration_Create_tables extends CI_Migration {
             'mobile'          => array(
                 'type'       => 'VARCHAR',
                 'constraint' => 11,
+                'unique'     => TRUE,
                 'null'       => FALSE,
                 'comment'    => '手机号码',
             ),
             'email'           => array(
                 'type'       => 'VARCHAR',
                 'constraint' => 50,
+                'unique'     => TRUE,
                 'null'       => FALSE,
                 'comment'    => '电子邮箱',
             ),
@@ -77,9 +81,6 @@ class Migration_Create_tables extends CI_Migration {
             ),
         ));
         $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->add_key('username');
-        $this->dbforge->add_key('mobile');
-        $this->dbforge->add_key('email');
         $attributes = array(
             'ENGINE'          => 'InnoDB',
             'DEFAULT CHARSET' => 'utf8',
@@ -172,6 +173,7 @@ class Migration_Create_tables extends CI_Migration {
             'title'        => array(
                 'type'       => 'VARCHAR',
                 'constraint' => 30,
+                'unique'     => TRUE,
                 'null'       => FALSE,
                 'comment'    => '文章标题',
             ),
@@ -252,7 +254,6 @@ class Migration_Create_tables extends CI_Migration {
         ));
         $this->dbforge->add_key('id', TRUE);
         $this->dbforge->add_key('cid');
-        $this->dbforge->add_key('title');
         $attributes = array(
             'ENGINE'          => 'InnoDB',
             'DEFAULT CHARSET' => 'utf8',
@@ -271,6 +272,7 @@ class Migration_Create_tables extends CI_Migration {
             ),
             'tag_name' => array(
                 'type'       => 'VARCHAR',
+                'unique'     => TRUE,
                 'constraint' => 50,
                 'unsigned'   => TRUE,
                 'comment'    => '标签名称',
@@ -353,6 +355,7 @@ class Migration_Create_tables extends CI_Migration {
             ),
             'category' => array(
                 'type'       => 'VARCHAR',
+                'unique'     => TRUE,
                 'constraint' => 50,
                 'unsigned'   => TRUE,
                 'comment'    => '栏目名称',
@@ -372,13 +375,99 @@ class Migration_Create_tables extends CI_Migration {
             ),
         ));
         $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->add_key('category');
         $attributes = array(
             'ENGINE'          => 'InnoDB',
             'DEFAULT CHARSET' => 'utf8',
             'COMMENT'         => "'文章栏目表'",
         );
         $this->dbforge->create_table('t_artcle_categorys', TRUE, $attributes);
+        
+        //=====================插入初始化数据===================================
+        //插入用户数据
+        $userData = array(
+            'username'        => 'hexd0070',
+            'password'        => '57127ab77527def52dada083e0ce1c0f3eesf2',
+            'group_id'        => 0,
+            'nick_name'       => '牛盾007',
+            'portrait'        => NULL,
+            'mobile'          => 15210881179,
+            'email'           => 'hexiaodong2810@163.com	',
+            'last_login_time' => '2018-08-08 18:11:58',
+            'last_login_ip'   => '111.200.218.67',
+            'status'          => 0,
+        );
+        
+        $insertUser = $this->db->insert('t_users', $userData);
+        
+        //插入栏目
+        $categoryData = array(
+            array(
+                'pid'      => 0,
+                'category' => '前端开发',
+                'status'   => 0,
+            ),
+            array(
+                'pid'      => 0,
+                'category' => '后端开发',
+                'status'   => 0,
+            ),
+            array(
+                'pid'      => 0,
+                'category' => '系统运维',
+                'status'   => 0,
+            ),
+            array(
+                'pid'      => 0,
+                'category' => '大数据',
+                'status'   => 0,
+            ),
+            array(
+                'pid'      => 0,
+                'category' => '网站运营',
+                'status'   => 0,
+            ),
+            array(
+                'pid'      => 0,
+                'category' => '数据库',
+                'status'   => 0,
+            ),
+        );
+        
+        $insertCategory = $this->db->insert_batch('t_artcle_categorys', $categoryData);
+        
+        //插入友情链接
+        $linkData = array(
+            array(
+                'name'        => '想做设计的java',
+                'logo'        => NULL,
+                'url'         => 'http://www.luotianchang.com',
+                'create_time' => '2018-08-08 21:27:40',
+                'status'      => 0,
+            ),
+            array(
+                'name'        => '全栈工程师',
+                'logo'        => NULL,
+                'url'         => 'http://www.liuzhaoning.com',
+                'create_time' => '2018-08-08 21:27:40',
+                'status'      => 0,
+            ),
+            array(
+                'name'        => '会适配的java',
+                'logo'        => NULL,
+                'url'         => 'http://www.lvlvstart.com',
+                'create_time' => '2018-08-08 21:27:40',
+                'status'      => 0,
+            ),
+            array(
+                'name'        => '想做开发的运维',
+                'logo'        => NULL,
+                'url'         => 'http://www.itwithauto.com',
+                'create_time' => '2018-08-08 21:27:40',
+                'status'      => 0,
+            ),
+        );
+        
+        $insertLink = $this->db->insert_batch('t_friend_links', $linkData);
     }
     
     public function down() {
