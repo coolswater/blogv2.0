@@ -471,7 +471,7 @@ function getMyArtcleList(type = 1, page = 1) {
         }
         $('#artcleList').html(html);
         if (Math.ceil(totalPage / pageSize) > pageNo) {
-            setPaginator('#artcleListPagination', pageNo, Math.ceil(totalPage / pageSize), callbacks, type);
+            setPaginator('#artcleListPagination', pageNo, Math.ceil(totalPage / pageSize), callbacks);
         }
     };
     //ajax请求

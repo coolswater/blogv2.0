@@ -41,6 +41,13 @@
                 </li>
                 <li class="menu-list-default ">
                     <i></i>
+                    <a href="/myLink" target="targetDiv">
+                        <span class="glyphicon glyphicon-link"></span>
+                        友情链接
+                    </a>
+                </li>
+                <li class="menu-list-default ">
+                    <i></i>
                     <a href="/mySetting" target="targetDiv">
                         <span class="glyphicon glyphicon-cog"></span>
                         个人设置

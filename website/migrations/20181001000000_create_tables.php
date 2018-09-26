@@ -389,7 +389,7 @@ class Migration_Create_tables extends CI_Migration {
             'password'        => '57127ab77527def52dada083e0ce1c0f3eesf2',
             'group_id'        => 0,
             'nick_name'       => '牛盾007',
-            'portrait'        => NULL,
+            'portrait'        => '/public/assets/images/header.png',
             'mobile'          => 15210881179,
             'email'           => 'hexiaodong2810@163.com	',
             'last_login_time' => '2018-08-08 18:11:58',
@@ -398,7 +398,9 @@ class Migration_Create_tables extends CI_Migration {
         );
         
         $insertUser = $this->db->insert('t_users', $userData);
-        
+        if (!$insertUser) {
+            write_log('logs/migrate.log', '初始化用户数据错误');
+        }
         //插入栏目
         $categoryData = array(
             array(
@@ -434,7 +436,9 @@ class Migration_Create_tables extends CI_Migration {
         );
         
         $insertCategory = $this->db->insert_batch('t_artcle_categorys', $categoryData);
-        
+        if (!$insertCategory) {
+            write_log('logs/migrate.log', '初始化栏目数据错误');
+        }
         //插入友情链接
         $linkData = array(
             array(
@@ -468,6 +472,10 @@ class Migration_Create_tables extends CI_Migration {
         );
         
         $insertLink = $this->db->insert_batch('t_friend_links', $linkData);
+        if (!$insertLink) {
+            write_log('logs/migrate.log', '初始化友情链接数据错误');
+        }
+        
     }
     
     public function down() {
