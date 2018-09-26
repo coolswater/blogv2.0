@@ -8,7 +8,7 @@ if (!defined('BASEPATH')) {
  * author: hexiaodong
  * Date: 2018/8/10
  */
-class User extends MY_controller {
+class User extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_user', 'user');

@@ -8,7 +8,7 @@ if (!defined('BASEPATH')) {
  * author: hexiaodong
  * Date: 2018/8/14
  */
-class Errors extends MY_controller {
+class Errors extends MY_Controller {
     public function __construct() {
         parent::__construct();
     }

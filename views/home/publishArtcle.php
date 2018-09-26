@@ -22,7 +22,7 @@
                 <select class="custom-select" id="category" name="category">
                     <option selected>==========请选择文章栏目==========</option>
                     <?php foreach ($categoryList as $cate): ?>
-                        <option value="<?= $cate['cid'] ?>"><?= $cate['category'] ?></option>
+                        <option value="<?= $cate['id'] ?>"><?= $cate['category'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

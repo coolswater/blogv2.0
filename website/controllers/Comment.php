@@ -8,7 +8,7 @@ if (!defined('BASEPATH')) {
  * author: hexiaodong
  * Date: 2018/8/10
  */
-class Comment extends MY_controller {
+class Comment extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_comment', 'comment');
@@ -50,6 +50,10 @@ class Comment extends MY_controller {
         $this->preventBrush();
         $content = getParam($this->input->post('content'), 'string');
         if (empty($content)) {
+            PJsonMsg(REQUEST_ERROR, lang('comment_error'));
+        }
+        //判断评论内容长度
+        if (strlen($content) > 150) {
             PJsonMsg(REQUEST_ERROR, lang('comment_error'));
         }
         //判断是否登录

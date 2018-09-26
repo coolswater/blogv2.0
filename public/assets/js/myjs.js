@@ -405,7 +405,7 @@ var getArtcleList = function (cid, page) {
                 html += '<div class="media-footer">';
                 html += '<span class="category">' + lists[i].category + '</span>';
                 html += '<span>/</span>';
-                html += '<span class="author">' + lists[i].hits + '</span>';
+                html += '<span class="author">' + lists[i].nickName + '</span>';
                 html += '<span>/</span>';
                 html += '<span class="publish_time">' + lists[i].publishTime + '</span>';
                 html += '</div>';

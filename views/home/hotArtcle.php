@@ -5,7 +5,7 @@
         <?php foreach ($hotArtcleList as $key => $hot): ?>
             <li class="media">
                 <a href="<?= $hot['url'] ?>" target="_blank">
-                    <img class="mr-3 rounded artcle_thumb_small" src="/assets/images/Parallax.jpg" alt="热门文章"></a>
+                    <img class="mr-3 rounded artcle_thumb_small" src="<?= $hot['thumb'] ?>" alt="热门文章"></a>
                 <div class="media-body">
                     <h5 class="mt-1 small_title">
                         <a href="<?= $hot['url'] ?>" target="_blank"><?= $hot['title'] ?></a>

@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Hexd
  * @date   2018/08/08
  */
-class MY_controller extends CI_Controller {
+class MY_Controller extends CI_Controller {
     protected static $urlSuffix;
     protected $userInfo;
     

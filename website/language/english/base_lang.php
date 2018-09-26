@@ -44,4 +44,5 @@ $lang = array(
     'operation_frequently'    => '操作过于频繁！',
     'operation_success'       => '操作成功！',
     'operation_error'         => '操作失败，请稍后再试！',
+    'over_maxSize'            => '超过最大字数限制！',
 );

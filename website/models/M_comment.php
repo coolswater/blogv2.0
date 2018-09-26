@@ -23,7 +23,7 @@ class M_comment extends M_comm {
     
     //根据文章id获取文章评论列表
     public function getCommentListByArtcleId($param) {
-        $cols = 't_artcle_comments.id,nick_name as nickName,portrait,content,t_artcle_comments.create_time';
+        $cols = 't_artcle_comments.id,title,nick_name as nickName,portrait,content,t_artcle_comments.create_time';
         $where = array(
             'artcle_id' => $param['artcleId'],
         );
@@ -31,6 +31,7 @@ class M_comment extends M_comm {
         $list = $this->db->select($cols)
             ->from($this->_table)
             ->join('t_users', 't_users.id=t_artcle_comments.user_id', 'left')
+            ->join('t_artcles', 't_artcles.id=t_artcle_comments.artcle_id', 'left')
             ->where($where)
             ->order_by('create_time desc')
             ->limit($param['pageSize'], $offset)
