@@ -155,6 +155,7 @@ class Artcle extends MY_Controller {
             if (!$artcle) {
                 PJsonMsg(REQUEST_ERROR, lang('request_invalid'));
             }
+            $artcle['content'] = addcslashes($artcle['content']);
             $categoryList = $this->category->getAllCategory();
             $data = compact('categoryList', 'artcle');
             $this->load->view('home/modifyArtcle', $data);
