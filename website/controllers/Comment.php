@@ -53,7 +53,7 @@ class Comment extends MY_Controller {
             PJsonMsg(REQUEST_ERROR, lang('comment_error'));
         }
         //判断评论内容长度
-        if (strlen($content) > 150) {
+        if (strlen($content) > 75) {
             PJsonMsg(REQUEST_ERROR, lang('comment_error'));
         }
         //判断是否登录

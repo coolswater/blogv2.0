@@ -21,8 +21,8 @@
                 </div>
                 <select class="custom-select" id="category" name="category">
                     <?php foreach ($categoryList as $cate): ?>
-                        <option <?php if ($artcle['aid'] === $cate['cid']) echo "selected"; ?>
-                                value="<?= $cate['cid'] ?>"><?= $cate['category'] ?></option>
+                        <option <?php if ($artcle['cid'] === $cate['id']) echo "selected"; ?>
+                                value="<?= $cate['id'] ?>"><?= $cate['category'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -74,7 +74,7 @@
             <textarea type="text" name="summernote" id="summernote" required></textarea>
 
             <div class="mt-3">
-                <input type="hidden" name="id" id="id" value="<?= $artcle['aid'] ?>"/>
+                <input type="hidden" name="id" id="id" value="<?= $artcle['id'] ?>"/>
                 <button type="button" onclick="modifyArtcle(2)" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">保存</button>
                 <button type="button" onclick="modifyArtcle(1)" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">发表</button>
             </div>

@@ -44,7 +44,7 @@ class M_artcle extends M_comm {
     
     //根据id获取文章
     public function getArtcleById($id) {
-        $cols = 't_artcles.id as aid,title,user_id,nick_name as nickName,publish_time as publishTime,hits,summary,content,type,thumb';
+        $cols = 't_artcles.id as id,cid,title,user_id,nick_name as nickName,publish_time as publishTime,hits,summary,content,type,thumb';
         $where = array(
             't_artcles.id' => $id,
         );
@@ -143,7 +143,7 @@ class M_artcle extends M_comm {
     
     //获取专题文章（已发表）
     public function getSubjectList() {
-        $cols = 'id,title,summary';
+        $cols = 'id,title,summary,thumb';
         $where = array(
             'status' => 1,
             'type'   => 2,

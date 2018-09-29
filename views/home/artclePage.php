@@ -50,7 +50,7 @@
         <!--猜你喜欢 start-->
         <?php $this->load->view('home/randArtcle') ?>
         <!--我的标签 start-->
-        <?php $this->load->view('home/artcleTags') ?>
+<!--        --><?php //$this->load->view('home/artcleTags') ?>
     </div>
     <!--main_right end-->
 </div>

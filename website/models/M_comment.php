@@ -23,7 +23,7 @@ class M_comment extends M_comm {
     
     //根据文章id获取文章评论列表
     public function getCommentListByArtcleId($param) {
-        $cols = 't_artcle_comments.id,title,nick_name as nickName,portrait,content,t_artcle_comments.create_time';
+        $cols = 't_artcle_comments.id,title,nick_name as nickName,portrait,t_artcle_comments.content,t_artcle_comments.create_time';
         $where = array(
             'artcle_id' => $param['artcleId'],
         );
