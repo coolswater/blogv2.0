@@ -552,7 +552,7 @@ function initSummernote() {
 }
 
 //初始化图片上传
-function initFileinput() {
+function initFileinput(initThumb = '') {
     //图片上传
     $('#thumb').fileinput({
         language: 'zh',                             //设置语言
@@ -571,6 +571,10 @@ function initFileinput() {
         minFileCount: 1,
         maxFileCount: 1,                            //表示允许同时上传的最大文件个数
         enctype: 'multipart/form-data',
+        initialPreviewAsData: true,               
+        initialPreviewFileType: 'image',
+        initialPreview: initThumb,           
+        // initialPreviewConfig:con,
         validateInitialCount: true,
         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",

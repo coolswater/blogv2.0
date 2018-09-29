@@ -98,7 +98,7 @@
     $(document).ready(function () {
         var html = '<?=$artcle['content']?>';
         initSummernote();   //初始化在线编辑器
-        initFileinput();    //初始化图片上传
+        initFileinput("<?= $artcle['thumb'] ?>");    //初始化图片上传
         $('#summernote').summernote('code', html);
     })
 </script>
