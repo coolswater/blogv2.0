@@ -84,6 +84,7 @@ class Artcle extends MY_Controller {
         
         //获取友情连接
         $friendLink = $this->getFriendLinks();
+        $this->artcle->modifyHits($artcleId);
         $this->load->view('home/header', compact('userInfo', 'artcle', 'artcleTags', 'categoryList', 'myTagList', 'subjectList', 'randArtcle', 'friendLink'));
         $this->load->view('home/artclePage');
         $this->load->view('home/footer');

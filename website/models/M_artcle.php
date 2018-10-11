@@ -242,4 +242,10 @@ class M_artcle extends M_comm {
     public function getOneArtcle($where) {
         return parent::getOne('*', $where);
     }
+    
+    public function modifyHits($artcleId) {
+        $this->db->where(array('id' => $artcleId));
+        $this->db->set('hits', 'hits + 1', FALSE);
+        $this->db->update($this->_table);
+    }
 }
