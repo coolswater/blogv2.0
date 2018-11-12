@@ -16,6 +16,16 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/share.css">
     <script src="/assets/js/jquery.min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0745ccb7f659e04927bbaee9e0d6e433";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
 </head>
 <body class="bg-light"><!--header start-->
 <div class="container-fluid bg-dark fixed-top header">
@@ -49,7 +59,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="<?= $userInfo['portrait'] ?>"/>
-                                <span><?=$userInfo['nickName']?></span>
+                                <span><?= $userInfo['nickName'] ?></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/profile">个人主页</a>
