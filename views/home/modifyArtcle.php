@@ -102,6 +102,29 @@
     editor.customConfig.uploadFileName = 'thumb'
     editor.customConfig.uploadImgMaxSize = 1024 * 1024
     editor.customConfig.uploadImgServer = '/uploadThumb'
+    // 自定义配置颜色（字体颜色、背景色）
+    editor.customConfig.colors = [
+        '#000000',
+        '#eeece0',
+        '#1c487f',
+        '#4d80bf',
+        '#c24f4a',
+        '#8baa4a',
+        '#46acc8',
+        '#f9963b',
+        '#ffd400',
+        '#fcaf17',
+        '#ffffff',
+        '#f47920',
+        '#f15b6c',
+        '#1d953f',
+        '#225a1f',
+        '#ed1941',
+        '#2a5caa',
+        '#102b6a',
+        '#8552a1',
+        '#0000FF',
+    ]
     editor.customConfig.uploadImgHooks = {
         // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
         // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
@@ -115,7 +138,7 @@
         }
     }
     editor.create()
-
+    
     $(document).ready(function () {
         initFileinput();    //初始化图片上传
     })
