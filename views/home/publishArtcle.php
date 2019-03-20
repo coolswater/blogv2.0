@@ -6,7 +6,6 @@
     <link href="/assets/css/icon.css" rel="stylesheet">
     <link href="/assets/css/fileinput.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
-    <link href="/assets/css/summernote-bs4.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 <div class="main mt-0 font-85">
@@ -67,7 +66,9 @@
                 <input type="hidden" name="thumbs" id="thumbs"/>
             </div>
             <!--文章内容-->
-            <textarea type="text" name="summernote" id="summernote" required></textarea>
+            <div style="text-align:left;">
+                <div id="content"><p>欢迎使用<b>wangEditor 富文本编辑器</b>，请输入内容...</p></div>
+            </div><!--demo end-->
 
             <div class="mt-3">
                 <button type="button" onclick="modifyArtcle(2)" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">保存</button>
@@ -77,23 +78,106 @@
     </div>
 </div>
 <script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/popper.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/summernote-bs4.js"></script>
-<script src="/assets/js/summernote-zh-CN.js"></script>
-
-<script src="/assets/js/piexif.js"></script>
-<script src="/assets/js/sortable.js"></script>
-<script src="/assets/js/purify.js"></script>
 <script src="/assets/js/fileinput.min.js"></script>
+<script src="/assets/js/piexif.js"></script>
 <script src="/assets/js/zh.js"></script>
 <script src="/assets/js/jquery.validate.min.js"></script>
+<script src="/assets/js/wangEditor.js"></script>
 <script src="/assets/js/myjs.js"></script>
 <script>
+    //初始化在线编辑器
+    var E = window.wangEditor
+    var editor = new E('#content')
+    editor.customConfig.uploadImgShowBase64 = true
+    // 配置服务器端地址
+    editor.customConfig.uploadFileName = 'thumb'
+    editor.customConfig.uploadImgMaxSize = 1024 * 1024
+    editor.customConfig.uploadImgServer = '/uploadThumb'
+    editor.customConfig.uploadImgHooks = {
+        // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
+        // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
+        customInsert: function (insertImg, result, editor) {
+            // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+            // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
+
+            // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
+            var url = result.data
+            insertImg(url)
+        }
+    }
+    editor.create()
+    
     $(document).ready(function () {
-        initSummernote();   //初始化在线编辑器
         initFileinput();    //初始化图片上传
     })
+
+    //发布文章
+    function modifyArtcle(status) {
+        $("#postForm").validate({
+            ignore: '',
+            errorLabelContainer: '.errorInfo',
+            wrapper: 'li',
+            rules: {
+                category: {
+                    required: true
+                },
+                title: {
+                    required: true,
+                },
+                summary: {
+                    required: true,
+                    rangelength: [5, 150]
+                },
+                thumbs: {
+                    required: true
+                },
+                content: {
+                    required: true,
+                },
+            },
+            messages: {
+                title: {
+                    required: "*标题不能为空!"
+                },
+                summary: {
+                    required: "*摘要不能为空"
+                },
+                thumbs: {
+                    required: '*请上传缩略图'
+                },
+                content: {
+                    required: "*内容不能为空"
+                }
+            },
+        });
+        if ($('#postForm').valid()) {
+            var content = editor.txt.html();
+            var filterHtml = filterXSS(content)  // 此处进行 xss 攻击过滤
+            var _data = {
+                status: status,
+                id: $('#id').val(),
+                title: $('#title').val(),
+                thumb: $('#thumbs').val(),
+                summary: $('#summary').val(),
+                category: $('#category').val(),
+                type: $("input[name='type']:checked").val(),
+                content: filterHtml,
+            };
+            $.ajax({
+                url: $("#postForm").attr('action'),
+                type: 'post',
+                data: _data,
+                dataType: 'json',
+                success: function (data) {
+                    window.location.replace('/myArtcles');
+                }
+            })
+
+        } else {
+            return false;
+        }
+    }
 </script>
 </body>
 </html>

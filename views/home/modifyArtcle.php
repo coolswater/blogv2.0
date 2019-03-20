@@ -71,7 +71,11 @@
                 <input type="hidden" name="thumbs" id="thumbs" value="<?= $artcle['thumb'] ?>"/>
             </div>
             <!--文章内容-->
-            <textarea type="text" name="summernote" id="summernote" required></textarea>
+            <div style="text-align:left;">
+                <div id="content">
+                    <?= stripslashes($artcle['content'])?>
+                </div>
+            </div><!--demo end-->
 
             <div class="mt-3">
                 <input type="hidden" name="id" id="id" value="<?= $artcle['id'] ?>"/>
@@ -82,24 +86,104 @@
     </div>
 </div>
 <script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/popper.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/summernote-bs4.js"></script>
-<script src="/assets/js/summernote-zh-CN.js"></script>
-
-<script src="/assets/js/piexif.js"></script>
-<script src="/assets/js/sortable.js"></script>
-<script src="/assets/js/purify.js"></script>
 <script src="/assets/js/fileinput.min.js"></script>
+<script src="/assets/js/piexif.js"></script>
 <script src="/assets/js/zh.js"></script>
 <script src="/assets/js/jquery.validate.min.js"></script>
+<script src="/assets/js/wangEditor.js"></script>
 <script src="/assets/js/myjs.js"></script>
 <script>
+    //初始化在线编辑器
+    var E = window.wangEditor
+    var editor = new E('#content')
+    editor.customConfig.uploadImgShowBase64 = true
+    // 配置服务器端地址
+    editor.customConfig.uploadFileName = 'thumb'
+    editor.customConfig.uploadImgMaxSize = 1024 * 1024
+    editor.customConfig.uploadImgServer = '/uploadThumb'
+    editor.customConfig.uploadImgHooks = {
+        // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
+        // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
+        customInsert: function (insertImg, result, editor) {
+            // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+            // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
+
+            // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
+            var url = result.data
+            insertImg(url)
+        }
+    }
+    editor.create()
+
     $(document).ready(function () {
-        initSummernote();   //初始化在线编辑器
-        initFileinput("<?= $artcle['thumb'] ?>");    //初始化图片上传
-        $('#summernote').summernote('code', '<?= $artcle['content']?>');
+        initFileinput();    //初始化图片上传
     })
+
+    //发布文章
+    function modifyArtcle(status) {
+        $("#postForm").validate({
+            ignore: '',
+            errorLabelContainer: '.errorInfo',
+            wrapper: 'li',
+            rules: {
+                category: {
+                    required: true
+                },
+                title: {
+                    required: true,
+                },
+                summary: {
+                    required: true,
+                    rangelength: [5, 150]
+                },
+                thumbs: {
+                    required: true
+                },
+                content: {
+                    required: true,
+                },
+            },
+            messages: {
+                title: {
+                    required: "*标题不能为空!"
+                },
+                summary: {
+                    required: "*摘要不能为空"
+                },
+                thumbs: {
+                    required: '*请上传缩略图'
+                },
+                content: {
+                    required: "*内容不能为空"
+                }
+            },
+        });
+        if ($('#postForm').valid()) {
+            var _data = {
+                status: status,
+                id: $('#id').val(),
+                title: $('#title').val(),
+                thumb: $('#thumbs').val(),
+                summary: $('#summary').val(),
+                category: $('#category').val(),
+                type: $("input[name='type']:checked").val(),
+                content: editor.txt.html(),
+            };
+            $.ajax({
+                url: $("#postForm").attr('action'),
+                type: 'post',
+                data: _data,
+                dataType: 'json',
+                success: function (data) {
+                    window.location.replace('/myArtcles');
+                }
+            })
+
+        } else {
+            return false;
+        }
+    }
 </script>
 </body>
 </html>

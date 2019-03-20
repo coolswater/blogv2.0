@@ -503,54 +503,6 @@ function commentCallback(data, artcleId) {
         }, 2000);
     }
 }
-
-//初始化在线编辑器
-function initSummernote() {
-    $('#summernote').summernote({
-        toolbar: [
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['fontname', 'strikethrough', 'superscript', 'subscript']],
-            ['fontsize', ['fontsize']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['height', ['height']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview']],
-        ],
-        lang: 'zh-CN',
-        placeholder: '内容',
-        height: 250,                 //编辑器高度
-        disableDragAndDrop: true,    //禁止拖放,
-        focus: true,
-        airMode: false,
-        shortcuts: true,
-        callbacks: {
-            onImageUpload: function (file) {  //图片默认以二进制的形式存储到数据库，调用此方法将请求后台将图片存储到服务器，返回图片请求地址到前端
-                //将图片放入Formdate对象中
-                var formData = new FormData();
-                //‘picture’为后台获取的文件名，file[0]是要上传的文件
-                formData.append("thumb", file[0]);
-                $.ajax({
-                    type: 'post',
-                    url: '/uploadThumb',
-                    cache: false,
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    dataType: 'json', //请求成功后，后台返回图片访问地址字符串，故此以text格式获取，而不是json格式
-                    success: function (picture) {
-                        $('#summernote').summernote('insertImage', picture.data);
-                    },
-                    error: function () {
-                        alert("上传失败");
-                    }
-                });
-            }
-        }
-    });
-}
-
 //初始化图片上传
 function initFileinput(initThumb = '') {
     //图片上传
@@ -583,71 +535,6 @@ function initFileinput(initThumb = '') {
             $('#thumbs').val(data.response.data);
         }
     });
-}
-
-//发布文章
-function modifyArtcle(status) {
-    $("#postForm").validate({
-        ignore: '',
-        errorLabelContainer: '.errorInfo',
-        wrapper: 'li',
-        rules: {
-            category: {
-                required: true
-            },
-            title: {
-                required: true,
-            },
-            summary: {
-                required: true,
-                rangelength: [5, 150]
-            },
-            thumbs: {
-                required: true
-            },
-            summernote: {
-                required: true,
-            },
-        },
-        messages: {
-            title: {
-                required: "*标题不能为空!"
-            },
-            summary: {
-                required: "*摘要不能为空"
-            },
-            thumbs: {
-                required: '*请上传缩略图'
-            },
-            summernote: {
-                required: "*内容不能为空"
-            }
-        },
-    });
-    if ($('#postForm').valid()) {
-        var _data = {
-            status: status,
-            id: $('#id').val(),
-            title: $('#title').val(),
-            thumb: $('#thumbs').val(),
-            summary: $('#summary').val(),
-            category: $('#category').val(),
-            type: $("input[name='type']:checked").val(),
-            content: $("#summernote").summernote("code"),
-        };
-        $.ajax({
-            url: $("#postForm").attr('action'),
-            type: 'post',
-            data: _data,
-            dataType: 'json',
-            success: function (data) {
-                window.location.replace('/myArtcles');
-            }
-        })
-
-    } else {
-        return false;
-    }
 }
 
 //切换状态
