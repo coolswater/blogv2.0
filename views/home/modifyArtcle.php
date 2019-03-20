@@ -140,7 +140,7 @@
     editor.create()
     
     $(document).ready(function () {
-        initFileinput();    //初始化图片上传
+        initFileinput("<?= $artcle['thumb'] ?>");    //初始化图片上传
     })
 
     //发布文章
