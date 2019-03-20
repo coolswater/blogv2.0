@@ -1,5 +1,5 @@
 <!--footer start-->
-<div class="container-fluid bg-dark fixed-bottom">
+<div class="container-fluid bg-dark">
     <div class="footer container pt-2 pb-2">
         <div class="col-12 col-md-8">
             <span class="col-md-3 pl-0"><span class="glyphicon glyphicon-link">友情链接：</span></span>

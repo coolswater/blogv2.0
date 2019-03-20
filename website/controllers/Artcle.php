@@ -156,7 +156,7 @@ class Artcle extends MY_Controller {
             if (!$artcle) {
                 PJsonMsg(REQUEST_ERROR, lang('request_invalid'));
             }
-            $artcle['content'] = addcslashes($artcle['content']);
+	    $artcle['content'] = addslashes($artcle['content']);
             $categoryList = $this->category->getAllCategory();
             $data = compact('categoryList', 'artcle');
             $this->load->view('home/modifyArtcle', $data);
@@ -295,7 +295,6 @@ class Artcle extends MY_Controller {
         if ($artcle) {
             $artcle['publishTime'] = date('Y.m.d', strtotime($artcle['publishTime']));
         }
-        
         return $artcle;
     }
     
@@ -312,6 +311,7 @@ class Artcle extends MY_Controller {
         if ($randArtcle) {
             foreach ($randArtcle as &$value) {
                 $value['url'] = '/artcle/' . $value['id'] . parent::$urlSuffix;
+		$value['title'] = mb_substr($value['title'], 0, 30);
                 $value['publishTime'] = date('Y.m.d', strtotime($value['publishTime']));
             }
         }

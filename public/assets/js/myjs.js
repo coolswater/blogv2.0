@@ -558,7 +558,7 @@ function initFileinput(initThumb = '') {
         language: 'zh',                             //设置语言
         uploadUrl: "/uploadThumb",                  //上传的地址
         // deleteUrl: "/deleteThumb",               //删除图片地址
-        allowedFileExtensions: ['jpg', 'png'],      //接收的文件后缀
+        allowedFileExtensions: ['jpg', 'png','jpeg'],      //接收的文件后缀
         uploadAsync: true,                          //默认异步上传
         showUpload: true,                           //是否显示上传按钮
         showCaption: false,                         //是否显示被选文件的简介

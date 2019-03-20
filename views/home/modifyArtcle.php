@@ -96,10 +96,9 @@
 <script src="/assets/js/myjs.js"></script>
 <script>
     $(document).ready(function () {
-        var html = '<?=$artcle['content']?>';
         initSummernote();   //初始化在线编辑器
         initFileinput("<?= $artcle['thumb'] ?>");    //初始化图片上传
-        $('#summernote').summernote('code', html);
+        $('#summernote').summernote('code', '<?= $artcle['content']?>');
     })
 </script>
 </body>

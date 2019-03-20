@@ -6,7 +6,6 @@
         <?php $this->load->view('home/recommendList'); ?>
         <!--ads start-->
         <div class="md_ads">
-            <img src="/assets/images/ads.jpg" class="w-100">
         </div>
         <!--ads end-->
         <!--最新文章 start-->

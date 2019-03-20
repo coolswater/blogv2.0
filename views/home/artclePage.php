@@ -28,16 +28,16 @@
             <?= $artcle['content'] ?>
         </div>
         <!--文章内容 end-->
-        <!--文章标签 start-->
+        <!--文章标签 start
         <div class="tags mt-5 mb-5">
             <span>TAGS:</span>
             <a href="#" rel="tag">mobile</a>
             <a href="#" rel="tag">gadgets</a>
             <a href="#" rel="tag">satelite</a>
-        </div>
+        </div>-->
         <!--文章标签 end-->
         <!--评论列表-->
-        <?php $this->load->view('home/commentList') ?>
+        <?php //$this->load->view('home/commentList') ?>
     </div>
     <!--main_left end-->
     <!--main_right start-->
@@ -45,7 +45,6 @@
         <!--专题 start-->
         <?php $this->load->view('home/subject') ?>
         <div class="right_ads">
-            <img class="w-100" src="/assets/images/right_ads.jpg"/>
         </div>
         <!--猜你喜欢 start-->
         <?php $this->load->view('home/randArtcle') ?>
