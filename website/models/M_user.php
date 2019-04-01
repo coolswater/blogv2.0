@@ -27,7 +27,7 @@ class M_user extends M_comm {
     
     //新增userInfo
     public function addUserInfo($data){
-        $result = $this->db->insert('t_user_info', $data);
+        $result = $this->db->insert('t_users_info', $data);
         return $result;
     }
     

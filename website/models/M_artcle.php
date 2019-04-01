@@ -51,6 +51,7 @@ class M_artcle extends M_comm {
         $artcelInfo = $this->db->select($cols)
             ->from($this->_table)
             ->join('t_users', 't_users.id = t_artcles.user_id', 'left')
+            ->join('t_users_info', 't_users.id = t_users_info.user_id', 'left')
             ->where($where)
             ->get()
             ->row_array();
@@ -82,6 +83,7 @@ class M_artcle extends M_comm {
             ->from($this->_table)
             ->join('t_categorys', 't_categorys.id=t_artcles.cid', 'left')
             ->join('t_users', 't_artcles.user_id=t_users.id', 'left')
+            ->join('t_users_info', 't_users.id = t_users_info.user_id', 'left')
             ->where($where)
             ->limit($limit, $offset)
             ->order_by('publishTime desc')
@@ -229,6 +231,7 @@ class M_artcle extends M_comm {
         $result = $this->db->select($cols)
             ->from($this->_table)
             ->join('t_users', 't_users.id = t_artcles.user_id', 'left')
+            ->join('t_users_info', 't_users.id = t_users_info.user_id', 'left')
             ->where($where)
             ->order_by('rand()')
             ->limit(5)

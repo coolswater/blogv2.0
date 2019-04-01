@@ -53,11 +53,12 @@ class SnsUser extends MY_Controller{
                 'email'             => '',
             );
             $this->user->trans_start();
-            $uesrId = $this->user->addUser($param);
+            $userId = $this->user->addUser($param);
+            $nick_name = isset($userInfo['name'])? $userInfo['name'] : $userInfo['screen_name'] ;
             $data = array(
-                'user_id'           => $uesrId,
+                'user_id'           => $userId,
                 'portrait'          => $userInfo['avatar_large'],
-                'nick_name'         => isset($userInfo['name'])? $userInfo['name'] : $userInfo['screen_name'] ,
+                'nick_name'         => $nick_name,
                 'description'       => $userInfo['description'],
                 'source'            => 'weibo',
                 'source_user_id'    => $userInfo['idstr'],
@@ -65,8 +66,14 @@ class SnsUser extends MY_Controller{
             );
             $this->user->addUserInfo($data);
             $this->user->trans_complete();
-            
+            $_SESSION['userInfo'] = array(
+                'id'        => $userId,
+                'username'  => 'wb_'.$userInfo['domain'],
+                'portrait'  => $userInfo['avatar_large'],
+                'nickName'  => $nick_name
+            );
             redirect('/');
+            
         }
     }
     
