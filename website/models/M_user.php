@@ -19,8 +19,15 @@ class M_user extends M_comm {
         $salt = rand_str(6);
         $param['password'] = md5(md5($param['password']) . $salt) . $salt;
         $param['last_login_ip'] = get_client_ip();
-        $result = $this->add($param);
+        $param['last_login_time'] = date('Y-m-d H:i:s');
+        $this->add($param);
         
+        return $this->db->insert_id();
+    }
+    
+    //新增userInfo
+    public function addUserInfo($data){
+        $result = $this->db->insert('t_user_info', $data);
         return $result;
     }
     

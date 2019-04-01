@@ -79,4 +79,6 @@ $route = array(
     'register'               => 'User/register',                  //用户注册
     'forgetPwd'              => 'User/forgetPwd',                 //忘记密码
     'getVerifyCode'          => 'User/getVerifyCode',             //验证码
+    'snsLogin'               => 'SnsUser/snsLogin',               //验证码
+    'snsCallback'            => 'SnsUser/snsCallback',            //验证码
 );

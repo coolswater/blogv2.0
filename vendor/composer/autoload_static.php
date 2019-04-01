@@ -20,6 +20,10 @@ class ComposerStaticInite4458d44bacd3c4704b22b3da9beed1f
         array (
             'Monolog\\' => 8,
         ),
+        'H' => 
+        array (
+            'Hexd\\' => 5,
+        ),
         'E' => 
         array (
             'Elasticsearch\\' => 14,
@@ -42,6 +46,10 @@ class ComposerStaticInite4458d44bacd3c4704b22b3da9beed1f
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Hexd\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hexd/weibo/src',
         ),
         'Elasticsearch\\' => 
         array (
