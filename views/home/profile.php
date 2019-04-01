@@ -3,8 +3,8 @@
     <!--main_left start-->
     <div class="main_left col-12 col-md-2 pl-0 pr-0 bg-white">
         <div class="card-media personal-card bg-white">
-            <img src="/assets/images/header.png" title="牛盾007" alt=""/>
-            <div class="presonal-info font-weight-bold">牛盾007</div>
+            <img src="<?= $userInfo['portrait']?>" title="<?= $userInfo['nickName']?>" alt=""/>
+            <div class="presonal-info font-weight-bold"><?= $userInfo['nickName']?></div>
             <a href="/publishArtcle" target="targetDiv" class="btn btn-danger col-md-8 col-xs-2 mt-3">发表文章</a>
         </div>
 
@@ -24,28 +24,28 @@
                         我的文章
                     </a>
                 </li>
-                <li class="menu-list-default ">
-                    <i></i>
-
-                    <a href="/myFollow" target="targetDiv">
-                        <span class="glyphicon glyphicon-heart"></span>
-                        我的关注
-                    </a>
-                </li>
-                <li class="menu-list-default ">
-                    <i></i>
-                    <a href="/myCollections" target="targetDiv">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        我的收藏
-                    </a>
-                </li>
-                <li class="menu-list-default ">
-                    <i></i>
-                    <a href="/myLink" target="targetDiv">
-                        <span class="glyphicon glyphicon-link"></span>
-                        友情链接
-                    </a>
-                </li>
+<!--                <li class="menu-list-default ">-->
+<!--                    <i></i>-->
+<!---->
+<!--                    <a href="/myFollow" target="targetDiv">-->
+<!--                        <span class="glyphicon glyphicon-heart"></span>-->
+<!--                        我的关注-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="menu-list-default ">-->
+<!--                    <i></i>-->
+<!--                    <a href="/myCollections" target="targetDiv">-->
+<!--                        <span class="glyphicon glyphicon-folder-open"></span>-->
+<!--                        我的收藏-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="menu-list-default ">-->
+<!--                    <i></i>-->
+<!--                    <a href="/myLink" target="targetDiv">-->
+<!--                        <span class="glyphicon glyphicon-link"></span>-->
+<!--                        友情链接-->
+<!--                    </a>-->
+<!--                </li>-->
                 <li class="menu-list-default ">
                     <i></i>
                     <a href="/mySetting" target="targetDiv">

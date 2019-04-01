@@ -50,7 +50,7 @@
                     <span class="input-group-text">简介</span>
                 </div>
                 <textarea class="form-control" id="profile" name="profile" rows="3" aria-label="With textarea"
-                          placeholder="个人简介：150个字" required><?= $user['profile'] ?></textarea>
+                          placeholder="个人简介：150个字" required><?= $user['description'] ?></textarea>
             </div>
             <div class="mt-3">
                 <button type="button" onclick="modifyArtcle(2)" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">保存</button>

@@ -128,6 +128,7 @@ class M_artcle extends M_comm {
         $cols = 't_artcles.id,t_artcles.cid,title,thumb,category,publish_time as publishTime,hits,t_artcles.status';
         $where = array(
             't_artcles.status' => $status,
+            't_artcles.user_id' => $param['status']['user_id'],
         );
         $list = $this->db->select($cols)
             ->from($this->_table)

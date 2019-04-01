@@ -57,12 +57,29 @@ class M_user extends M_comm {
     
     //根据用户id查询用户
     public function getUserById($userId) {
-        $cols = 'id,username,nick_name,portrait,mobile,email';
+        $cols = 't_users.id,username,nick_name,description,mobile,email';
         $where = array(
-            'id' => $userId,
+            't_users.id' => $userId,
         );
-        $result = $this->getOne($cols, $where);
-        
+        $result = $this->db->select($cols)
+            ->from($this->_table)
+            ->join('t_users_info','t_users_info.user_id=t_users.id','id')
+            ->where($where)
+            ->get()
+            ->row_array();
+    
+        return $result;
+    }
+    //多条件查询用户信息
+    public function getUser($where) {
+        $cols = 'username,nick_name,portrait,mobile,email';
+        $result = $this->db->select($cols)
+            ->from($this->_table)
+            ->join('t_users_info','t_users_info.user_id=t_users.id','id')
+            ->where($where)
+            ->get()
+            ->row_array();
+    
         return $result;
     }
 }
