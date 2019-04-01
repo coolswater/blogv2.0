@@ -1,10 +1,10 @@
 #
-# TABLE STRUCTURE FOR: t_artcle_categorys
+# TABLE STRUCTURE FOR: t_categorys
 #
 
-DROP TABLE IF EXISTS `t_artcle_categorys`;
+DROP TABLE IF EXISTS `t_categorys`;
 
-CREATE TABLE `t_artcle_categorys` (
+CREATE TABLE `t_categorys` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '文章栏目id',
   `category` varchar(50) NOT NULL COMMENT '栏目名称',
   `pid` int(11) unsigned NOT NULL COMMENT '父ID',
@@ -13,21 +13,21 @@ CREATE TABLE `t_artcle_categorys` (
   UNIQUE KEY `category` (`category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='文章栏目表';
 
-INSERT INTO `t_artcle_categorys` (`id`, `category`, `pid`, `status`) VALUES (1, '前端开发', 0, 0);
-INSERT INTO `t_artcle_categorys` (`id`, `category`, `pid`, `status`) VALUES (2, '后端开发', 0, 0);
-INSERT INTO `t_artcle_categorys` (`id`, `category`, `pid`, `status`) VALUES (3, '系统运维', 0, 0);
-INSERT INTO `t_artcle_categorys` (`id`, `category`, `pid`, `status`) VALUES (4, '大数据', 0, 0);
-INSERT INTO `t_artcle_categorys` (`id`, `category`, `pid`, `status`) VALUES (5, '网站运营', 0, 0);
-INSERT INTO `t_artcle_categorys` (`id`, `category`, `pid`, `status`) VALUES (6, '数据库', 0, 0);
+INSERT INTO `t_categorys` (`id`, `category`, `pid`, `status`) VALUES (1, '前端开发', 0, 0);
+INSERT INTO `t_categorys` (`id`, `category`, `pid`, `status`) VALUES (2, '后端开发', 0, 0);
+INSERT INTO `t_categorys` (`id`, `category`, `pid`, `status`) VALUES (3, '系统运维', 0, 0);
+INSERT INTO `t_categorys` (`id`, `category`, `pid`, `status`) VALUES (4, '大数据', 0, 0);
+INSERT INTO `t_categorys` (`id`, `category`, `pid`, `status`) VALUES (5, '网站运营', 0, 0);
+INSERT INTO `t_categorys` (`id`, `category`, `pid`, `status`) VALUES (6, '数据库', 0, 0);
 
 
 #
-# TABLE STRUCTURE FOR: t_artcle_comments
+# TABLE STRUCTURE FOR: t_comments
 #
 
-DROP TABLE IF EXISTS `t_artcle_comments`;
+DROP TABLE IF EXISTS `t_comments`;
 
-CREATE TABLE `t_artcle_comments` (
+CREATE TABLE `t_comments` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论id',
   `artcle_id` int(11) unsigned NOT NULL COMMENT '文章id',
   `content` varchar(150) NOT NULL COMMENT '评论内容',
@@ -42,12 +42,12 @@ CREATE TABLE `t_artcle_comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章评论表';
 
 #
-# TABLE STRUCTURE FOR: t_artcle_tags
+# TABLE STRUCTURE FOR: t_tags
 #
 
-DROP TABLE IF EXISTS `t_artcle_tags`;
+DROP TABLE IF EXISTS `t_tags`;
 
-CREATE TABLE `t_artcle_tags` (
+CREATE TABLE `t_tags` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '文章标签ID',
   `tag_name` varchar(50) NOT NULL COMMENT '标签名称',
   PRIMARY KEY (`id`),

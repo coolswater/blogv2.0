@@ -284,7 +284,7 @@ class Migration_Create_tables extends CI_Migration {
             'DEFAULT CHARSET' => 'utf8',
             'COMMENT'         => "'文章标签表'",
         );
-        $this->dbforge->create_table('t_artcle_tags', TRUE, $attributes);
+        $this->dbforge->create_table('t_tags', TRUE, $attributes);
         
         //=================文章评论表=========================================
         $this->dbforge->add_field(array(
@@ -342,7 +342,7 @@ class Migration_Create_tables extends CI_Migration {
             'DEFAULT CHARSET' => 'utf8',
             'COMMENT'         => "'文章评论表'",
         );
-        $this->dbforge->create_table('t_artcle_comments', TRUE, $attributes);
+        $this->dbforge->create_table('t_comments', TRUE, $attributes);
         
         //===============创建栏目表========================================
         $this->dbforge->add_field(array(
@@ -380,7 +380,7 @@ class Migration_Create_tables extends CI_Migration {
             'DEFAULT CHARSET' => 'utf8',
             'COMMENT'         => "'文章栏目表'",
         );
-        $this->dbforge->create_table('t_artcle_categorys', TRUE, $attributes);
+        $this->dbforge->create_table('t_categorys', TRUE, $attributes);
         
         //=====================插入初始化数据===================================
         //插入用户数据
@@ -435,7 +435,7 @@ class Migration_Create_tables extends CI_Migration {
             ),
         );
         
-        $insertCategory = $this->db->insert_batch('t_artcle_categorys', $categoryData);
+        $insertCategory = $this->db->insert_batch('t_categorys', $categoryData);
         if (!$insertCategory) {
             write_log('logs/migrate.log', '初始化栏目数据错误');
         }
@@ -483,8 +483,8 @@ class Migration_Create_tables extends CI_Migration {
         $this->dbforge->drop_table('t_tags_map');
         $this->dbforge->drop_table('t_friend_links');
         $this->dbforge->drop_table('t_artcles');
-        $this->dbforge->drop_table('t_artcle_tags');
-        $this->dbforge->drop_table('t_artcle_comments');
-        $this->dbforge->drop_table('t_artcle_categorys');
+        $this->dbforge->drop_table('t_tags');
+        $this->dbforge->drop_table('t_comments');
+        $this->dbforge->drop_table('t_categorys');
     }
 }

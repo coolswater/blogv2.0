@@ -80,7 +80,7 @@ class M_artcle extends M_comm {
         );
         $result = $this->db->select($cols)
             ->from($this->_table)
-            ->join('t_artcle_categorys', 't_artcle_categorys.id=t_artcles.cid', 'left')
+            ->join('t_categorys', 't_categorys.id=t_artcles.cid', 'left')
             ->join('t_users', 't_artcles.user_id=t_users.id', 'left')
             ->where($where)
             ->limit($limit, $offset)
@@ -105,7 +105,7 @@ class M_artcle extends M_comm {
         }
         $list = $this->db->select($cols)
             ->from($this->_table)
-            ->join('t_artcle_categorys', 't_artcle_categorys.id=t_artcles.cid', 'left')
+            ->join('t_categorys', 't_categorys.id=t_artcles.cid', 'left')
             ->join('t_users', 't_artcles.user_id=t_users.id', 'left')
             ->where($where)
             ->limit($limit, $offset)
@@ -129,7 +129,7 @@ class M_artcle extends M_comm {
         );
         $list = $this->db->select($cols)
             ->from($this->_table)
-            ->join('t_artcle_categorys', 't_artcle_categorys.id=t_artcles.cid', 'left')
+            ->join('t_categorys', 't_categorys.id=t_artcles.cid', 'left')
             ->where($where)
             ->limit($limit, $offset)
             ->order_by('publishTime desc')
@@ -167,7 +167,7 @@ class M_artcle extends M_comm {
     //获取标签列表
     public function getTagsList() {
         $result = $this->db->select('*')
-            ->from('t_artcle_tags')
+            ->from('t_tags')
             ->get()
             ->result_array();
         
@@ -196,7 +196,7 @@ class M_artcle extends M_comm {
     public function getCommentCount() {
         $cols = 'count(1) as totalComment';
         $result = $this->db->select($cols)
-            ->from('t_artcle_comments')
+            ->from('t_comments')
             ->get()
             ->row_array();
         
@@ -210,8 +210,8 @@ class M_artcle extends M_comm {
             'artcle_id' => $id,
         );
         $result = $this->db->select($cols)
-            ->from('t_artcle_comments')
-            ->join('t_users', 't_users.id=t_artcle_comments.user_id', 'left')
+            ->from('t_comments')
+            ->join('t_users', 't_users.id=t_comments.user_id', 'left')
             ->where($where)
             ->order_by('create_time desc')
             ->get()

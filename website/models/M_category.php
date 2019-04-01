@@ -11,7 +11,7 @@ if (!defined('BASEPATH')) {
 class M_category extends M_comm {
     public function __construct() {
         parent::__construct();
-        $this->_table = 't_artcle_categorys';
+        $this->_table = 't_categorys';
     }
     
     //根据栏目id查询栏目名称
