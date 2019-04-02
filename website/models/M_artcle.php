@@ -44,14 +44,14 @@ class M_artcle extends M_comm {
     
     //根据id获取文章
     public function getArtcleById($id) {
-        $cols = 't_artcles.id as id,cid,title,user_id,nick_name as nickName,publish_time as publishTime,hits,summary,content,type,thumb';
+        $cols = 't_artcles.id as id,cid,title,t_artcles.user_id,nick_name as nickName,publish_time as publishTime,hits,summary,content,type,thumb';
         $where = array(
             't_artcles.id' => $id,
         );
         $artcelInfo = $this->db->select($cols)
             ->from($this->_table)
             ->join('t_users', 't_users.id = t_artcles.user_id', 'left')
-            ->join('t_users_info', 't_users.id = t_users_info.user_id', 'left')
+            ->join('t_users_info', 't_artcles.user_id = t_users_info.user_id', 'left')
             ->where($where)
             ->get()
             ->row_array();
@@ -83,7 +83,7 @@ class M_artcle extends M_comm {
             ->from($this->_table)
             ->join('t_categorys', 't_categorys.id=t_artcles.cid', 'left')
             ->join('t_users', 't_artcles.user_id=t_users.id', 'left')
-            ->join('t_users_info', 't_users.id = t_users_info.user_id', 'left')
+            ->join('t_users_info', 't_artcles.user_id = t_users_info.user_id', 'left')
             ->where($where)
             ->limit($limit, $offset)
             ->order_by('publishTime desc')
@@ -109,6 +109,7 @@ class M_artcle extends M_comm {
             ->from($this->_table)
             ->join('t_categorys', 't_categorys.id=t_artcles.cid', 'left')
             ->join('t_users', 't_artcles.user_id=t_users.id', 'left')
+            ->join('t_users_info', 't_users_info.user_id=t_artcles.user_id', 'left')
             ->where($where)
             ->limit($limit, $offset)
             ->order_by('publishTime desc')
@@ -128,7 +129,7 @@ class M_artcle extends M_comm {
         $cols = 't_artcles.id,t_artcles.cid,title,thumb,category,publish_time as publishTime,hits,t_artcles.status';
         $where = array(
             't_artcles.status' => $status,
-            't_artcles.user_id' => $param['status']['user_id'],
+            't_artcles.user_id' => $param['user_id'],
         );
         $list = $this->db->select($cols)
             ->from($this->_table)
@@ -232,7 +233,7 @@ class M_artcle extends M_comm {
         $result = $this->db->select($cols)
             ->from($this->_table)
             ->join('t_users', 't_users.id = t_artcles.user_id', 'left')
-            ->join('t_users_info', 't_users.id = t_users_info.user_id', 'left')
+            ->join('t_users_info', 't_artcles.user_id = t_users_info.user_id', 'left')
             ->where($where)
             ->order_by('rand()')
             ->limit(5)

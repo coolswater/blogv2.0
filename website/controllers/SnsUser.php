@@ -36,22 +36,60 @@ class SnsUser extends MY_Controller{
     //微信回调
     private function weiboCallBack(){
         //获取微信用户信息
-        $userInfo = $this->getWeiboUser();
-        //查询本地是否有已存在该用户，数据入库，写入session
-        if (!$this->checkUser($userInfo)){
-            $this->user->trans_start();
-            $userId = $this->addUser($userInfo);      //插入t_users表
-            $this->addUserInfo($userId,$userInfo);    //插入t_users_info表
-            $this->user->trans_complete();
-        }
-        //写入session
-        $username = empty($userInfo['domain']) ? $userInfo['idstr'] : $userInfo['domain'];
-        $_SESSION['userInfo'] = array(
-            'id'        => $userId,
-            'username'  => 'wb_' . $username,
-            'portrait'  => $userInfo['avatar_large'],
-            'nickName'  => isset($userInfo['name'])? $userInfo['name'] : $userInfo['screen_name'],
+        $wexinUserInfo = $this->getWeiboUser();
+        $username = empty($wexinUserInfo['domain']) ? $wexinUserInfo['idstr'] : $wexinUserInfo['domain'];
+        $nickName = isset($wexinUserInfo['name'])? $wexinUserInfo['name'] : $wexinUserInfo['screen_name'];
+        //查询本地是否有已存在该用户，不存在，则入库
+        $where = array(
+            'source'            => 'weibo',
+            'source_user_id'    => $wexinUserInfo['idstr'],
         );
+        $userInfo = $this->checkUser($where);
+        if (!$userInfo){
+            $this->user->trans_start();
+            $param = array(
+                'mobile'            => '',
+                'email'             => '',
+                'username'          => 'wb_'.$username,
+                'password'          => md5($wexinUserInfo['idstr']),
+            );
+            //插入t_users表,返回用户id
+            $userId = $this->addUser($param);
+            $data = array(
+                'source'            => 'weibo',
+                'user_id'           => $userId,
+                'nick_name'         => $nickName,
+                'home_page'         => $wexinUserInfo['url'],
+                'source_user_id'    => $wexinUserInfo['idstr'],
+                'description'       => $wexinUserInfo['description'],
+                'portrait'          => $wexinUserInfo['avatar_large'],
+            );
+            //插入t_users_info表
+            $this->addUserInfo($data);
+            $this->user->trans_complete();
+    
+            $userInfo = array(
+                'id'        => $userId,
+                'nickName'  => $nickName,
+                'username'  => 'wb_' . $username,
+                'portrait'  => $wexinUserInfo['avatar_large'],
+            );
+        //存在的话，更新用户数据
+        }else{
+            $data = array(
+                'nick_name'     => $nickName,
+                'home_page'     => $wexinUserInfo['url'],
+                'description'   => $wexinUserInfo['description'],
+                'portrait'      => $wexinUserInfo['avatar_large'],
+            );
+            $where = array(
+                'source_user_id' => $wexinUserInfo['idstr']
+            );
+            $this->user->modify($data, $where);
+        }
+        
+        //写入session
+        $_SESSION['userInfo'] = $userInfo;
         
         redirect('/');
     }
@@ -70,41 +108,20 @@ class SnsUser extends MY_Controller{
         
         return $userInfo;
     }
+    
+    //插入用户
+    private function addUser($data){
+        return $this->user->addUser($data);
+    }
+    //插入用户信息表
+    private function addUserInfo($data){
+        return $this->user->addUserInfo($data);
+    }
+    
     //检测账户是否已存在
-    private function checkUser($userInfo){
-        $where = array(
-            'source_user_id'    => $userInfo['idstr'],
-            'source'            => 'weibo'
-        );
+    private function checkUser($where){
         $existUser = $this->user->getUser($where);
         
         return $existUser;
     }
-    //插入用户
-    private function addUser($userInfo){
-        $username = empty($userInfo['domain']) ? $userInfo['idstr'] : $userInfo['domain'];
-        $param = array(
-            'username'          => 'wb_'.$username,
-            'password'          => md5($userInfo['idstr']),
-            'mobile'            => '',
-            'email'             => '',
-        );
-        
-        return $this->user->addUser($param);
-    }
-    //插入用户信息表
-    private function addUserInfo($userId,$userInfo){
-        $data = array(
-            'user_id'           => $userId,
-            'portrait'          => $userInfo['avatar_large'],
-            'nick_name'         => isset($userInfo['name'])? $userInfo['name'] : $userInfo['screen_name'],
-            'description'       => $userInfo['description'],
-            'source'            => 'weibo',
-            'source_user_id'    => $userInfo['idstr'],
-            'home_page'         => $userInfo['url'],
-        );
-        
-        return $this->user->addUserInfo($data);
-    }
-    
 }

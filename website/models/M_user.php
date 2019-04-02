@@ -72,7 +72,7 @@ class M_user extends M_comm {
     }
     //多条件查询用户信息
     public function getUser($where) {
-        $cols = 'username,nick_name,portrait,mobile,email';
+        $cols = 't_users.id,username,nick_name as nickName,portrait';
         $result = $this->db->select($cols)
             ->from($this->_table)
             ->join('t_users_info','t_users_info.user_id=t_users.id','id')
@@ -80,6 +80,19 @@ class M_user extends M_comm {
             ->get()
             ->row_array();
     
+        return $result;
+    }
+    /**
+     * 修改一条数据
+     *
+     * @param   array $data 修改数据
+     * @param   array $where 修改条件
+     *
+     * @return mixed
+     */
+    public function modify($data, $where) {
+        $result = $this->db->update('t_users_info', $data, $where);
+        
         return $result;
     }
 }
