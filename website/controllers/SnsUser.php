@@ -22,7 +22,7 @@ class SnsUser extends MY_Controller{
             case 'weixin':
                 $this->weixinCallBack();
                 break;
-            case 'git':
+            case 'github':
                 $this->gitCallBack();
                 break;
             case 'qq':
@@ -33,6 +33,7 @@ class SnsUser extends MY_Controller{
                 break;
         }
     }
+    //======================微信登录===============================
     //微信回调
     private function weiboCallBack(){
         //获取微信用户信息
@@ -107,6 +108,21 @@ class SnsUser extends MY_Controller{
         $userInfo = $weibo->getUserInfo($accessToken['access_token'],$accessToken['uid']);
         
         return $userInfo;
+    }
+    
+    //=======================github================================
+    private function gitCallBack(){
+        $code = getParam($this->input->get_post('code'));
+        $url = 'https://github.com/login/oauth/access_token';
+        $data = array(
+            'client_id' => 'bbb01e36067881427e96',
+            'client_secret' => '07670309fee2b4c509855df8a373f42fbb3270a2',
+            'code' => $code,
+        );
+        $accessToken = getHttpResponsePOST($url,$data);
+        
+        var_dump($code);
+        var_dump($accessToken);die;
     }
     
     //插入用户
