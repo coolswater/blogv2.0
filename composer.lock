@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d4b7f9d303049c1817d4749050d90a3",
+    "content-hash": "26ff55dc1618e3802e886c2299cf8f05",
     "packages": [
         {
             "name": "elasticsearch/elasticsearch",
@@ -156,6 +156,39 @@
             ],
             "abandoned": "guzzlehttp/guzzle",
             "time": "2015-03-18T18:23:50+00:00"
+        },
+        {
+            "name": "hexd/github",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coolswater/githubLogin.git",
+                "reference": "ed37400a0a0b7d52a7d3a2ea32bb76f927a0ca03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coolswater/githubLogin/zipball/ed37400a0a0b7d52a7d3a2ea32bb76f927a0ca03",
+                "reference": "ed37400a0a0b7d52a7d3a2ea32bb76f927a0ca03",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Hexd\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "hexd",
+                    "email": "hexiaodong2810@163.com"
+                }
+            ],
+            "description": "github授权登录",
+            "time": "2019-04-03T02:37:49+00:00"
         },
         {
             "name": "hexd/weibo",
@@ -479,7 +512,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "hexd/weibo": 20
+        "hexd/weibo": 20,
+        "hexd/github": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

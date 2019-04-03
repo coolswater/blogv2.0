@@ -49,7 +49,8 @@ class ComposerStaticInite4458d44bacd3c4704b22b3da9beed1f
         ),
         'Hexd\\' => 
         array (
-            0 => __DIR__ . '/..' . '/hexd/weibo/src',
+            0 => __DIR__ . '/..' . '/hexd/github/src',
+            1 => __DIR__ . '/..' . '/hexd/weibo/src',
         ),
         'Elasticsearch\\' => 
         array (

@@ -155,6 +155,41 @@
         "abandoned": "guzzlehttp/guzzle"
     },
     {
+        "name": "hexd/github",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/coolswater/githubLogin.git",
+            "reference": "ed37400a0a0b7d52a7d3a2ea32bb76f927a0ca03"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/coolswater/githubLogin/zipball/ed37400a0a0b7d52a7d3a2ea32bb76f927a0ca03",
+            "reference": "ed37400a0a0b7d52a7d3a2ea32bb76f927a0ca03",
+            "shasum": ""
+        },
+        "time": "2019-04-03T02:37:49+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Hexd\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "hexd",
+                "email": "hexiaodong2810@163.com"
+            }
+        ],
+        "description": "github授权登录"
+    },
+    {
         "name": "hexd/weibo",
         "version": "dev-master",
         "version_normalized": "9999999-dev",

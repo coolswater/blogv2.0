@@ -1,6 +1,7 @@
 {
 	"require": {
 		"elasticsearch/elasticsearch": "~1.0",
-		"hexd/weibo": "dev-master"
+		"hexd/weibo": "dev-master",
+		"hexd/github": "dev-master"
 	}
 }

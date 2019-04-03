@@ -10,6 +10,7 @@ $config['weibo'] = array(
 
 //github配置
 $config['github'] = array(
-    'client_id' => 'bbb01e36067881427e96',
+    'client_id'     => 'bbb01e36067881427e96',
     'client_secret' => '07670309fee2b4c509855df8a373f42fbb3270a2',
+    'callback'      => 'https://www.hexiaodong.com/snsCallback?s=github'
 );

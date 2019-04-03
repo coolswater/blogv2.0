@@ -10,6 +10,6 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
-    'Hexd\\' => array($vendorDir . '/hexd/weibo/src'),
+    'Hexd\\' => array($vendorDir . '/hexd/github/src', $vendorDir . '/hexd/weibo/src'),
     'Elasticsearch\\' => array($vendorDir . '/elasticsearch/elasticsearch/src/Elasticsearch'),
 );
