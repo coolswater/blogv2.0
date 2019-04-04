@@ -33,7 +33,7 @@ class M_user extends M_comm {
     
     //根据用户名查询用户信息
     public function getUserByUsername($username) {
-        $cols = 'id,username,password,portrait,nick_name as nickName';
+        $cols = 't_users.id,username,password,portrait,nick_name as nickName';
         $where = array(
             'status'   => 0,
             'username' => $username,
@@ -45,13 +45,24 @@ class M_user extends M_comm {
     
     //根据电子邮件查询用户信息
     public function getUserByEmail($email) {
-        $cols = 'id,username,password,portrait';
+        $cols = 't_users.id,username,password,portrait';
         $where = array(
             'status' => 0,
             'email'  => $email,
         );
         $result = $this->getOne($cols, $where);
         
+        return $result;
+    }
+    
+    public function getOne($cols, $where) {
+        $result = $this->db->select($cols)
+            ->from($this->_table)
+            ->join('t_users_info','t_users.id=t_users_info.user_id','left')
+            ->where($where)
+            ->get()
+            ->row_array();
+    
         return $result;
     }
     
