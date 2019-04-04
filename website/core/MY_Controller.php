@@ -17,6 +17,7 @@ class MY_Controller extends CI_Controller {
         session_start();
         $this->initData();
         $this->isLogined();
+        $this->load->model('M_user', 'user');
     }
     
     //初始化数据

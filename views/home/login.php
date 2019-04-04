@@ -40,7 +40,7 @@
                     </div>
                     <div class="quick_login">
                         <span>快捷登录：</span>
-                        <a href="https://api.weibo.com/oauth2/authorize?client_id=103340070&response_type=code&redirect_uri=https://www.hexiaodong.com/snsCallback?s=weibo"><img src="/assets/images/weibo.png" /></a>
+                        <a href="https://api.weibo.com/oauth2/authorize?client_id=103340070&response_type=code&redirect_uri=https://www.hexiaodong.com/wbCallback"><img src="/assets/images/weibo.png" /></a>
                         <img src="/assets/images/weixin.png" />
                         <img src="/assets/images/qq.png" />
                         <a href="https://github.com/login/oauth/authorize?client_id=bbb01e36067881427e96&scope=user:email"><img src="/assets/images/github2.png" /></a>
