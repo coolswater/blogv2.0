@@ -1,4 +1,7 @@
 <?php
+
+use Hexd\WeiboSDK;
+
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -8,18 +11,31 @@ if (!defined('BASEPATH')) {
  * Date: 2019/4/3
  */
 class Weibo extends MY_Controller{
+    private static $weibo;
     public function __construct() {
         parent::__construct();
+        $weiboConfig = config_item('weibo');
+        self::$weibo =new Hexd\Weibo($weiboConfig);
     }
     //获取登录地址
     public function getLoginURL(){
-        $weiboConfig = config_item('weibo');
-        $weibo = new Hexd\WeiboSDK($weiboConfig);
-        $loginUrl = $weibo->getAuthorizeUrl();
-        
+        $loginUrl = self::$weibo->getAuthorizeUrl();
         PJsonMsg(1,'请求成功',$loginUrl);
     }
-    
+
+    //发布微博
+    public function publish(){
+        $summary = getParam($this->input->post('summary'), 'string');
+        $thumb = getParam($this->input->post('thumb'), 'string');
+        $result = self::$weibo->publishWeibo($accessToken['access_token'],$summary,base_url().$thumb);
+        var_dump($result);die;
+        if ($result){
+            PJsonMsg(1,'发布成功！');
+        }else{
+            PJsonMsg(0,'发布失败!');
+        }
+    }
+
     //微信回调
     public function callback(){
         //获取微信用户信息
@@ -47,16 +63,14 @@ class Weibo extends MY_Controller{
     }
     //获取微信用户信息
     private function getWeiboUser(){
-        $weiboConfig = config_item('weibo');
-        $weibo = new Hexd\WeiboSDK($weiboConfig);
         $code = getParam($this->input->get_post('code'),'string');
         
         if (isset($_SESSION[$code])){
             $accessToken = $_SESSION[$code];
         }else{
-            $accessToken = $_SESSION[$code] = $weibo->getAccessToken($code);
+            $accessToken = $_SESSION[$code] = self::$weibo->getAccessToken($code);
         }
-        $userInfo = $weibo->getUserInfo($accessToken['access_token'],$accessToken['uid']);
+        $userInfo = self::$weibo->getUserInfo($accessToken['access_token'],$accessToken['uid']);
         
         return $userInfo;
     }

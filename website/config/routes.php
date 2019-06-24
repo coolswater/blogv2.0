@@ -79,6 +79,8 @@ $route = array(
     'register'               => 'User/register',                  //用户注册
     'forgetPwd'              => 'User/forgetPwd',                 //忘记密码
     'getVerifyCode'          => 'User/getVerifyCode',             //验证码
+    'sysWeibo'               => 'Weibo/publish',                  //验证码
     'wbCallback'             => 'Weibo/callback',                 //验证码
     'gitCallback'            => 'Github/callback',                //验证码
+    'qqCallback'            => 'QQ/qqCallback',                //验证码
 );

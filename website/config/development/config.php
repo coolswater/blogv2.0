@@ -15,3 +15,9 @@ $config['github'] = array(
     'callback'      => 'https://www.hexiaodong.com/gitCallback',
     'app_name'      => 'coding程序员'
 );
+//QQ配置
+$config['qq'] = array(
+    'appid'         => '101546289',
+    'appkey'        => '097eaacef2fe75073403d32c312cc826',
+    'callbackUrl'   => 'https://www.hexiaodong.com/qqCallback',
+);

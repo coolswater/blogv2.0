@@ -69,7 +69,20 @@
             <div style="text-align:left;">
                 <div id="content"><p>欢迎使用<b>wangEditor 富文本编辑器</b>，请输入内容...</p></div>
             </div><!--demo end-->
-
+            <!--文章类别-->
+            <div class="input-group mb-3 mt-3">
+                <div class="input-group-prepend mr-2">
+                    <span class="input-group-text" id="inputGroup-sizing-default">同步至微博</span>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" checked name="sysWeibo" value="0" id="sysWeibo1">
+                    <label class="form-check-label" for="sysWeibo1">否</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sysWeibo" value="1" id="sysWeibo2">
+                    <label class="form-check-label" for="sysWeibo2">是</label>
+                </div>
+            </div>
             <div class="mt-3">
                 <button type="button" onclick="modifyArtcle(2)" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">保存</button>
                 <button type="button" onclick="modifyArtcle(1)" class="btn btn-danger mt-2 mb-5 pl-5 pr-5">发表</button>
@@ -191,6 +204,9 @@
                 data: _data,
                 dataType: 'json',
                 success: function (data) {
+                    if ($("input[name='type']:checked").val()){
+                        sysWeibo();
+                    }
                     window.location.replace('/myArtcles');
                 }
             })
@@ -198,6 +214,21 @@
         } else {
             return false;
         }
+    }
+    function sysWeibo() {
+        var _data = {
+            thumb: $('#thumbs').val(),
+            summary: $('#summary').val(),
+        };
+        $.ajax({
+            url: '/sysWeibo',
+            type: 'post',
+            data: _data,
+            dataType: 'json',
+            success: function (data) {
+                window.location.replace('/myArtcles');
+            }
+        })
     }
 </script>
 </body>
