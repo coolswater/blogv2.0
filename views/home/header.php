@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <?php if(isset($artcle['title'])):?>
-    <title><?= $artcle['title'] ?>--Hexd Personal Website</title>
+    <title><?= $artcle['title'] ?>--Hexd Personal Website~</title>
     <?php else:?>
     <title>Hexd Personal Website一个记录程序员成长历程网站，与大家一起分享!http://www.hexiaodong.com</title>
     <?php endif;?>
